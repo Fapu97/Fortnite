@@ -19,6 +19,9 @@
     <Filter Include="Resource Files\MinHook">
       <UniqueIdentifier>{bb1ad4ad-90fc-46ab-8339-379f9f7a0308}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SDK">
+      <UniqueIdentifier>{a9ab9dac-32c2-4ca5-a173-a780aa613b2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -92,6 +95,12 @@
     </ClInclude>
     <ClInclude Include="MinHook\src\hde\table64.h">
       <Filter>Resource Files\MinHook</Filter>
+    </ClInclude>
+    <ClInclude Include="SDK.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="variables.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +196,30 @@
     </ClCompile>
     <ClCompile Include="MinHook\src\hde\hde64.c">
       <Filter>Resource Files\MinHook</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\FN_Basic.cpp">
+      <Filter>Source Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\FN_SlateCore_functions.cpp">
+      <Filter>Source Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\FN_Slate_functions.cpp">
+      <Filter>Source Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\FN_PacketHandler_functions.cpp">
+      <Filter>Source Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\FN_Overlay_functions.cpp">
+      <Filter>Source Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\FN_InputCore_functions.cpp">
+      <Filter>Source Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\FN_Engine_functions.cpp">
+      <Filter>Source Files\SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="SDK\FN_CoreUObject_functions.cpp">
+      <Filter>Source Files\SDK</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

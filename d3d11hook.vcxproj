@@ -166,6 +166,8 @@
     <ClInclude Include="MinHook\src\hde\table32.h" />
     <ClInclude Include="MinHook\src\hde\table64.h" />
     <ClInclude Include="MinHook\src\trampoline.h" />
+    <ClInclude Include="SDK.hpp" />
+    <ClInclude Include="variables.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FW1FontWrapper\CFW1ColorRGBA.cpp" />
@@ -198,6 +200,14 @@
     <ClCompile Include="MinHook\src\hde\hde64.c" />
     <ClCompile Include="MinHook\src\hook.c" />
     <ClCompile Include="MinHook\src\trampoline.c" />
+    <ClCompile Include="SDK\FN_Basic.cpp" />
+    <ClCompile Include="SDK\FN_CoreUObject_functions.cpp" />
+    <ClCompile Include="SDK\FN_Engine_functions.cpp" />
+    <ClCompile Include="SDK\FN_InputCore_functions.cpp" />
+    <ClCompile Include="SDK\FN_Overlay_functions.cpp" />
+    <ClCompile Include="SDK\FN_PacketHandler_functions.cpp" />
+    <ClCompile Include="SDK\FN_SlateCore_functions.cpp" />
+    <ClCompile Include="SDK\FN_Slate_functions.cpp" />
     <ClCompile Include="universal.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

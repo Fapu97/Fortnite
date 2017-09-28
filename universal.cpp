@@ -1,6 +1,5 @@
 ﻿//d3d11 w2s finder by n7
-
-#include <Windows.h>
+#include "variables.h"
 #include <vector>
 #include <d3d11.h>
 #include <D3D11Shader.h>
@@ -51,14 +50,50 @@ DWORD_PTR* pDeviceVTable = NULL;
 IFW1Factory *pFW1Factory = NULL;
 IFW1FontWrapper *pFontWrapper = NULL;
 
+
 #include "main.h" //helper funcs
 
+
 //==========================================================================================================================
+
+
+DWORD WINAPI UpdateThread(LPVOID)
+{
+	try
+	{
+		BaseAddress = (DWORD_PTR)GetModuleHandle(NULL);
+		m_UWorld = reinterpret_cast<SDK::UWorld*>(BaseAddress + 0x65DAB00);
+		m_OwningGameInstance = m_UWorld->OwningGameInstance;
+		m_LocalPlayers = m_OwningGameInstance->LocalPlayers;
+		//m_LocalPlayer = m_LocalPlayers[0];
+
+		isInitialized = true;
+
+		while (true)
+		{
+			WCHAR ptrBuf[1000];
+			WCHAR ptrData[] = L"UWorld: 0x%016X\n";
+			wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
+			//printf("m_UWorld: 0x%016X\n", (DWORD_PTR)m_UWorld);
+			//printf("m_OwningGameInstance: 0x%016X\n", (DWORD_PTR)m_OwningGameInstance);
+			//printf("m_LocalPlayers: 0x%016X\n", (DWORD_PTR)&m_LocalPlayers);
+			//printf("m_LocalPlayer: 0x%016X\n", (DWORD_PTR)m_LocalPlayer);
+			Sleep(1000);
+		}
+	}
+	catch (...)
+	{
+		printf("----------------!!!AN ERROR HAS OCCURRED!!!----------------\n");
+	}
+	
+	return NULL;
+}
 
 HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags)
 {
 	if (firstTime)
 	{
+
 		//get device
 		if (SUCCEEDED(pSwapChain->GetDevice(__uuidof(ID3D11Device), (void **)&pDevice)))
 		{
@@ -160,185 +195,20 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 	if (!psGreen)
 	GenerateShader(pDevice, &psGreen, 0.0f, 1.0f, 0.0f);
 
-
 	//call before you draw
 	pContext->OMSetRenderTargets(1, &RenderTargetView, NULL);
 	//draw
 	if (pFontWrapper)
-	pFontWrapper->DrawString(pContext, L"D3D11 Hook", 14, 16.0f, 16.0f, 0xffff1612, FW1_RESTORESTATE);
+	{
+		pFontWrapper->DrawString(pContext, L"not copy paste", 14, 16.0f, 16.0f, 0xffff1612, FW1_RESTORESTATE);
+
+	}
 
 	//show target amount 
 	//wchar_t reportValueS[256];
 	//swprintf_s(reportValueS, L"AimEspInfo.size() = %d", (int)AimEspInfo.size());
 	//if (pFontWrapper)
 	//pFontWrapper->DrawString(pContext, reportValueS, 14.0f, 16.0f, 30.0f, 0xffffffff, FW1_RESTORESTATE);
-	
-
-	//menu
-	if (IsReady() == false)
-	{
-		Init_Menu(pContext, L"D3D11 Menu", 100, 100);
-		Do_Menu();
-		Color_Font = WHITE;
-		Color_Off = RED;
-		Color_On = GREEN;
-		Color_Folder = GRAY;
-		Color_Current = ORANGE;
-	}
-	Draw_Menu();
-	Navigation();
-	
-
-	//draw aimpoint/esp
-	//if (sOptions[2].Function) //if esp is selected in menu
-	if (AimEspInfo.size() != NULL)
-	{
-		for (unsigned int i = 0; i < AimEspInfo.size(); i++)
-		{
-			//text esp
-			if (AimEspInfo[i].vOutX > 1 && AimEspInfo[i].vOutY > 1 && AimEspInfo[i].vOutX < viewport.Width && AimEspInfo[i].vOutY < viewport.Height)
-			{
-				if (pFontWrapper)
-				pFontWrapper->DrawString(pContext, L"Enemy", 14, (int)AimEspInfo[i].vOutX, (int)AimEspInfo[i].vOutY, 0xFFFFFFFF, FW1_RESTORESTATE| FW1_NOGEOMETRYSHADER | FW1_CENTER | FW1_ALIASED);
-			}
-		}
-	}
-	
-	//RMouse|LMouse|Shift|Ctrl|Alt|Space|X|C
-	if (sOptions[4].Function == 0) Daimkey = VK_RBUTTON;
-	if (sOptions[4].Function == 1) Daimkey = VK_LBUTTON;
-	if (sOptions[4].Function == 2) Daimkey = VK_SHIFT;
-	if (sOptions[4].Function == 3) Daimkey = VK_CONTROL;
-	if (sOptions[4].Function == 4) Daimkey = VK_MENU;
-	if (sOptions[4].Function == 5) Daimkey = VK_SPACE;
-	if (sOptions[4].Function == 6) Daimkey = 0x58; //X
-	if (sOptions[4].Function == 7) Daimkey = 0x43; //C
-	aimheight = sOptions[7].Function;//aimheight
-	
-	//aimbot
-	if(sOptions[3].Function==1)
-	//if (AimEspInfo.size() != NULL && GetAsyncKeyState(Daimkey) & 0x8000)//warning: GetAsyncKeyState here would cause aimbot not to work for a few people
-	if (AimEspInfo.size() != NULL)
-	{
-		UINT BestTarget = -1;
-		DOUBLE fClosestPos = 99999;
-
-		for (unsigned int i = 0; i < AimEspInfo.size(); i++)
-		{
-			//aimfov
-			float radiusx = (sOptions[6].Function*10.0f) * (ScreenCenterX / 100.0f);
-			float radiusy = (sOptions[6].Function*10.0f) * (ScreenCenterY / 100.0f);
-
-			//get crosshairdistance
-			AimEspInfo[i].CrosshairDst = GetmDst(AimEspInfo[i].vOutX, AimEspInfo[i].vOutY, ScreenCenterX, ScreenCenterY);
-
-			//aim at team 1 or 2 (not needed)
-			//if (aimbot == AimEspInfo[i].iTeam)
-
-			//if in fov
-			if (AimEspInfo[i].vOutX >= ScreenCenterX - radiusx && AimEspInfo[i].vOutX <= ScreenCenterX + radiusx && AimEspInfo[i].vOutY >= ScreenCenterY - radiusy && AimEspInfo[i].vOutY <= ScreenCenterY + radiusy)
-
-				//get closest/nearest target to crosshair
-				if (AimEspInfo[i].CrosshairDst < fClosestPos)
-				{
-					fClosestPos = AimEspInfo[i].CrosshairDst;
-					BestTarget = i;
-				}
-		}
-
-		//if nearest target to crosshair
-		if (BestTarget != -1)
-		{
-			double DistX = AimEspInfo[BestTarget].vOutX - ScreenCenterX;
-			double DistY = AimEspInfo[BestTarget].vOutY - ScreenCenterY;
-
-			//aimsens
-			DistX /= (1 + sOptions[5].Function);
-			DistY /= (1 + sOptions[5].Function);
-
-			//aim
-			if(GetAsyncKeyState(Daimkey) & 0x8000)
-			mouse_event(MOUSEEVENTF_MOVE, (float)DistX, (float)DistY, 0, NULL);
-
-			//autoshoot on
-			//if ((!GetAsyncKeyState(VK_LBUTTON) && (*sOptions[8].Function))) //
-			if ((!GetAsyncKeyState(VK_LBUTTON) && (sOptions[8].Function) && (GetAsyncKeyState(Daimkey) & 0x8000)))
-			{
-				if (!IsPressed)
-				{
-					mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-					IsPressed = true;
-				}
-			}
-		}
-	}
-	AimEspInfo.clear();
-
-	//autoshoot off
-	if (sOptions[8].Function && IsPressed)
-	{
-		if (timeGetTime() - astime >= asdelay)
-		{
-			mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-			IsPressed = false;
-			astime = timeGetTime();
-		}
-	}
-
-
-	//logger
-	if (GetAsyncKeyState(VK_MENU) && GetAsyncKeyState(VK_CONTROL) && GetAsyncKeyState(0x4C) & 1) //ALT + CTRL + L toggles logger
-		logger = !logger;
-	if (logger && pFontWrapper) //&& countnum >= 0)
-	{
-		//bruteforce WorldViewCBnum
-		if (GetAsyncKeyState('Z') & 1) //-
-			WorldViewCBnum--;
-		if (GetAsyncKeyState('U') & 1) //+
-			WorldViewCBnum++;
-		if (GetAsyncKeyState(0x37) & 1) //7 reset, set to 0
-			WorldViewCBnum = 0;
-		if (WorldViewCBnum < 0)
-			WorldViewCBnum = 0;
-
-		//bruteforce ProjCBnum
-		if (GetAsyncKeyState('H') & 1) //-
-			ProjCBnum--;
-		if (GetAsyncKeyState('J') & 1) //+
-			ProjCBnum++;
-		if (GetAsyncKeyState(0x38) & 1) //8 reset, set to 0
-			ProjCBnum = 0;
-		if (ProjCBnum < 0)
-			ProjCBnum = 0;
-
-		//bruteforce matProjnum
-		if (GetAsyncKeyState('N') & 1) //-
-			matProjnum--;
-		if (GetAsyncKeyState('M') & 1) //+
-			matProjnum++;
-		if (GetAsyncKeyState(0x39) & 1) //9 reset, set to 0
-			matProjnum = 0;
-		if (matProjnum < 0)
-			matProjnum = 0;
-
-		wchar_t reportValue[256];
-		swprintf_s(reportValue, L"(Keys:-O P+ I=Log) countnum = %d", countnum);
-		pFontWrapper->DrawString(pContext, reportValue, 20.0f, 220.0f, 100.0f, 0xff00ff00, FW1_RESTORESTATE);
-
-		wchar_t reportValueA[256];
-		swprintf_s(reportValueA, L"(Keys:-Z U+) WorldViewCBnum = %d", WorldViewCBnum);
-		pFontWrapper->DrawString(pContext, reportValueA, 20.0f, 220.0f, 120.0f, 0xffffffff, FW1_RESTORESTATE);
-
-		wchar_t reportValueB[256];
-		swprintf_s(reportValueB, L"(Keys:-H J+) ProjCBnum = %d", ProjCBnum);
-		pFontWrapper->DrawString(pContext, reportValueB, 20.0f, 220.0f, 140.0f, 0xffffffff, FW1_RESTORESTATE);
-
-		wchar_t reportValueC[256];
-		swprintf_s(reportValueC, L"(Keys:-N M+) matProjnum = %d", matProjnum);
-		pFontWrapper->DrawString(pContext, reportValueC, 20.0f, 220.0f, 160.0f, 0xffffffff, FW1_RESTORESTATE);
-
-		pFontWrapper->DrawString(pContext, L"F9 = log drawfunc", 20.0f, 220.0f, 180.0f, 0xffffffff, FW1_RESTORESTATE);
-	}
 
 	return phookD3D11Present(pSwapChain, SyncInterval, Flags);
 }
@@ -368,58 +238,16 @@ void __stdcall hookD3D11DrawIndexed(ID3D11DeviceContext* pContext, UINT IndexCou
 		pcsBuffer->GetDesc(&pscdesc);
 	if (pcsBuffer != NULL) { pcsBuffer->Release(); pcsBuffer = NULL; }
 
-
 	//wallhack/chams
 	//if (sOptions[0].Function||sOptions[1].Function) //if wallhack/chams option is selected in menu
-	if (Stride == countnum)
+	if (Stride == 24 || Stride == countnum)
 	//if (Stride == ? && indesc.ByteWidth ? && indesc.ByteWidth ? && Descr.Format .. ) //later here you do better model rec, values are different in every game
 	{
 		SetDepthStencilState(DISABLED);
-		if (sOptions[1].Function)
 		pContext->PSSetShader(psRed, NULL, NULL);
 		phookD3D11DrawIndexed(pContext, IndexCount, StartIndexLocation, BaseVertexLocation);
-		if (sOptions[1].Function)
 		pContext->PSSetShader(psGreen, NULL, NULL);
 		SetDepthStencilState(READ_NO_WRITE);
-	}
-
-	//esp/aimbot
-	//if ((sOptions[3].Function) || (sOptions[4].Function)) //if aimbot/esp option is selected in menu
-	if(Stride == countnum)
-	//if (Stride == ? && indesc.ByteWidth ? && indesc.ByteWidth ? && Descr.Format .. ) //later here you do better model rec, values are different in every game
-	{
-		AddModel(pContext);//w2s
-	}
-
-
-	//small bruteforce logger
-	//ALT + CTRL + L toggles logger
-	if (logger)
-	{
-		if ((Stride == countnum) && (GetAsyncKeyState(VK_F10) & 1))
-			Log("Stride == %d && IndexCount == %d && indesc.ByteWidth == %d && vedesc.ByteWidth == %d && texdesc.Format == %d && Descr.Format == %d && pscdesc.ByteWidth == %d && Descr.Buffer.NumElements == %d && texdesc.Width == %d && texdesc.Height == %d", Stride, IndexCount, indesc.ByteWidth, vedesc.ByteWidth, texdesc.Format, Descr.Format, pscdesc.ByteWidth, Descr.Buffer.NumElements, texdesc.Width, texdesc.Height);
-
-		//hold down P key until a texture is wallhacked, press I to log values of those textures
-		if (GetAsyncKeyState('O') & 1) //-
-			countnum--;
-		if (GetAsyncKeyState('P') & 1) //+
-			countnum++;
-		if ((GetAsyncKeyState(VK_MENU)) && (GetAsyncKeyState('9') & 1)) //reset, set to -1
-			countnum = -1;
-		if (countnum == Stride)//IndexCount / 100)
-			if (GetAsyncKeyState('I') & 1)
-				Log("Stride == %d && IndexCount == %d && indesc.ByteWidth == %d && vedesc.ByteWidth == %d && texdesc.Format == %d && Descr.Format == %d && pscdesc.ByteWidth == %d && Descr.Buffer.NumElements == %d && texdesc.Width == %d && texdesc.Height == %d", Stride, IndexCount, indesc.ByteWidth, vedesc.ByteWidth, texdesc.Format, Descr.Format, pscdesc.ByteWidth, Descr.Buffer.NumElements, texdesc.Width, texdesc.Height);
-
-		if (countnum == Stride)//IndexCount / 100)
-		{
-			SetDepthStencilState(DISABLED);
-			//pContext->RSSetState(rwState);    //wireframe
-			pContext->PSSetShader(psRed, NULL, NULL);
-			phookD3D11DrawIndexed(pContext, IndexCount, StartIndexLocation, BaseVertexLocation);
-			SetDepthStencilState(READ_NO_WRITE);
-			//pContext->RSSetState(rsState);    //solid
-			pContext->PSSetShader(psGreen, NULL, NULL);
-		}
 	}
 	
     return phookD3D11DrawIndexed(pContext, IndexCount, StartIndexLocation, BaseVertexLocation);
@@ -551,19 +379,27 @@ void __stdcall hookD3D11PSSetSamplers(ID3D11DeviceContext* pContext, UINT StartS
 	return phookD3D11PSSetSamplers(pContext, StartSlot, NumSamplers, ppSamplers);
 }
 
-//==========================================================================================================================
+//=========================================================================================================================
 
 const int MultisampleCount = 1; // Set to 1 to disable multisampling
 LRESULT CALLBACK DXGIMsgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam){ return DefWindowProc(hwnd, uMsg, wParam, lParam); }
 DWORD __stdcall InitializeHook(LPVOID)
 {
+	FreeConsole();
+	AllocConsole();
+	freopen("CONIN$", "r", stdin);
+	freopen("CONOUT$", "w", stdout);
+	freopen("CONOUT$", "w", stderr);
+
 	HMODULE hDXGIDLL = 0;
 	do
 	{
 		hDXGIDLL = GetModuleHandle("dxgi.dll");
-		Sleep(8000);
+		Sleep(100);
 	} while (!hDXGIDLL);
 	Sleep(100);
+
+	CreateThread(NULL, 0, UpdateThread, NULL, 0, NULL);
 
     IDXGISwapChain* pSwapChain;
 
@@ -638,14 +474,6 @@ DWORD __stdcall InitializeHook(LPVOID)
 	if (MH_EnableHook((DWORD_PTR*)pSwapChainVtable[8]) != MH_OK) { return 1; }
 	if (MH_CreateHook((DWORD_PTR*)pContextVTable[12], hookD3D11DrawIndexed, reinterpret_cast<void**>(&phookD3D11DrawIndexed)) != MH_OK) { return 1; }
 	if (MH_EnableHook((DWORD_PTR*)pContextVTable[12]) != MH_OK) { return 1; }
-	if (MH_CreateHook((DWORD_PTR*)pContextVTable[13], hookD3D11Draw, reinterpret_cast<void**>(&phookD3D11Draw)) != MH_OK) { return 1; }
-	if (MH_EnableHook((DWORD_PTR*)pContextVTable[13]) != MH_OK) { return 1; }
-	if (MH_CreateHook((DWORD_PTR*)pContextVTable[8], hookD3D11PSSetShaderResources, reinterpret_cast<void**>(&phookD3D11PSSetShaderResources)) != MH_OK) { return 1; }
-	if (MH_EnableHook((DWORD_PTR*)pContextVTable[8]) != MH_OK) { return 1; }
-	if (MH_CreateHook((DWORD_PTR*)pContextVTable[7], hookD3D11VSSetConstantBuffers, reinterpret_cast<void**>(&phookD3D11VSSetConstantBuffers)) != MH_OK) { return 1; }
-	if (MH_EnableHook((DWORD_PTR*)pContextVTable[7]) != MH_OK) { return 1; }
-	if (MH_CreateHook((DWORD_PTR*)pContextVTable[10], hookD3D11PSSetSamplers, reinterpret_cast<void**>(&phookD3D11PSSetSamplers)) != MH_OK) { return 1; }
-	if (MH_EnableHook((DWORD_PTR*)pContextVTable[10]) != MH_OK) { return 1; }
 
     DWORD dwOld;
     VirtualProtect(phookD3D11Present, 2, PAGE_EXECUTE_READWRITE, &dwOld);
