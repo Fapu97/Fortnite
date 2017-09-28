@@ -65,19 +65,34 @@ DWORD WINAPI UpdateThread(LPVOID)
 		m_UWorld = reinterpret_cast<SDK::UWorld*>(BaseAddress + 0x65DAB00);
 		m_OwningGameInstance = m_UWorld->OwningGameInstance;
 		m_LocalPlayers = m_OwningGameInstance->LocalPlayers;
-		//m_LocalPlayer = m_LocalPlayers[0];
 
-		isInitialized = true;
+		wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
+		wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_OwningGameInstance);
+		wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&m_LocalPlayers);
+		m_LocalPlayer = m_LocalPlayers[0];
+
+		//isInitialized = true;
 
 		while (true)
 		{
-			WCHAR ptrBuf[1000];
-			WCHAR ptrData[] = L"UWorld: 0x%016X\n";
 			wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
+			wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_OwningGameInstance);
+			wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&m_LocalPlayers);
+			wmemset(ptrBuf4, '\0', 1000);
+			/*if (m_LocalPlayers.IsValidIndex(0))
+			{
+				m_LocalPlayer = m_LocalPlayers[0];
+				wsprintfW(ptrBuf4, ptrData4, (DWORD_PTR)m_LocalPlayer);
+			}
+			else*/
+			{
+				wsprintfW(ptrBuf4, ptrData4, m_LocalPlayers.Num());
+			}
 			//printf("m_UWorld: 0x%016X\n", (DWORD_PTR)m_UWorld);
 			//printf("m_OwningGameInstance: 0x%016X\n", (DWORD_PTR)m_OwningGameInstance);
 			//printf("m_LocalPlayers: 0x%016X\n", (DWORD_PTR)&m_LocalPlayers);
 			//printf("m_LocalPlayer: 0x%016X\n", (DWORD_PTR)m_LocalPlayer);
+			isInitialized = true;
 			Sleep(1000);
 		}
 	}
@@ -200,7 +215,14 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 	//draw
 	if (pFontWrapper)
 	{
-		pFontWrapper->DrawString(pContext, L"not copy paste", 14, 16.0f, 16.0f, 0xffff1612, FW1_RESTORESTATE);
+		pFontWrapper->DrawString(pContext, L"not copy paste", 14, 16.0f, 16.0f, 0xff0000ff, FW1_RESTORESTATE);
+		if (isInitialized)
+		{
+			pFontWrapper->DrawString(pContext, ptrBuf, 14, 16.0f, 32.0f, 0xff0000ff, FW1_RESTORESTATE);
+			pFontWrapper->DrawString(pContext, ptrBuf2, 14, 16.0f, 48.0f, 0xff0000ff, FW1_RESTORESTATE);
+			pFontWrapper->DrawString(pContext, ptrBuf3, 14, 16.0f, 64.0f, 0xff0000ff, FW1_RESTORESTATE);
+			pFontWrapper->DrawString(pContext, ptrBuf4, 14, 16.0f, 80.0f, 0xff0000ff, FW1_RESTORESTATE);
+		}
 
 	}
 
