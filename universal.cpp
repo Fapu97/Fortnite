@@ -70,8 +70,6 @@ DWORD WINAPI UpdateThread(LPVOID)
 		m_LocalPlayer = LocalPlayers[0];
 		m_Actors = &m_persistentLevel->actors;
 
-		SDK::APlayerCameraManager
-
 		wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
 		wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_owningGameInstance);
 		wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&LocalPlayers);
