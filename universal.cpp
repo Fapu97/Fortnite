@@ -62,13 +62,12 @@ DWORD WINAPI UpdateThread(LPVOID)
 	try
 	{
 		BaseAddress = (DWORD_PTR)GetModuleHandle(NULL);
-		m_UWorld = reinterpret_cast<UWorld*>(BaseAddress + 0x65DAB00);
-		m_cUWorld = m_UWorld->m_UWorld;
-		m_persistentLevel = m_cUWorld->m_persistentLevel;
-		m_owningGameInstance = m_cUWorld->m_owningGameInstance;
-		LocalPlayers = m_owningGameInstance->localPlayers;
+		m_UWorld = reinterpret_cast<SDK::UWorld*>(BaseAddress + 0x65DAB00);
+		m_persistentLevel = m_UWorld->PersistentLevel;
+		m_owningGameInstance = m_UWorld->OwningGameInstance;
+		LocalPlayers = m_owningGameInstance->LocalPlayers;
 		m_LocalPlayer = LocalPlayers[0];
-		m_Actors = &m_persistentLevel->actors;
+		m_Actors = &m_persistentLevel->AActors;
 
 		wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
 		wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_owningGameInstance);
@@ -83,9 +82,6 @@ DWORD WINAPI UpdateThread(LPVOID)
 			wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&m_LocalPlayers);*/
 			wmemset(ptrBuf4, '\0', 1000);
 			wsprintfW(ptrBuf4, ptrData4, (DWORD_PTR)&m_LocalPlayer);
-			*((float*)(((DWORD_PTR)&m_LocalPlayer) + 0x30 + 0x390 + 0x830 + 0xA84)) = 0.0f;
-			*((float*)(((DWORD_PTR)&m_LocalPlayer) + 0x30 + 0x390 + 0x830 + 0xA88)) = 0.0f;
-			*((float*)(((DWORD_PTR)&m_LocalPlayer) + 0x30 + 0x390 + 0x830 + 0xA8C)) = 0.0f;
 			//m_LocalPlayer->0x30->0x390->830->A88 = 0.0f;
 			//m_LocalPlayer->0x30->0x390->830->A8C = 0.0f;
 			//printf("m_UWorld: 0x%016X\n", (DWORD_PTR)m_UWorld);
