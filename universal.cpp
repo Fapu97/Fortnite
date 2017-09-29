@@ -82,7 +82,12 @@ DWORD WINAPI UpdateThread(LPVOID)
 			wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_OwningGameInstance);
 			wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&m_LocalPlayers);*/
 			wmemset(ptrBuf4, '\0', 1000);
-			wsprintfW(ptrBuf4, ptrData4, (*m_Actors).Num());
+			wsprintfW(ptrBuf4, ptrData4, (DWORD_PTR)&m_LocalPlayer);
+			*((float*)(((DWORD_PTR)&m_LocalPlayer) + 0x30 + 0x390 + 830 + 0xA84)) = 0.0f;
+			*((float*)(((DWORD_PTR)&m_LocalPlayer) + 0x30 + 0x390 + 830 + 0xA88)) = 0.0f;
+			*((float*)(((DWORD_PTR)&m_LocalPlayer) + 0x30 + 0x390 + 830 + 0xA8C)) = 0.0f;
+			//m_LocalPlayer->0x30->0x390->830->A88 = 0.0f;
+			//m_LocalPlayer->0x30->0x390->830->A8C = 0.0f;
 			//printf("m_UWorld: 0x%016X\n", (DWORD_PTR)m_UWorld);
 			//printf("m_OwningGameInstance: 0x%016X\n", (DWORD_PTR)m_OwningGameInstance);
 			//printf("m_LocalPlayers: 0x%016X\n", (DWORD_PTR)&m_LocalPlayers);
