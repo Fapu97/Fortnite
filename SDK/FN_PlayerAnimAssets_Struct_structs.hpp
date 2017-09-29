@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -17,6 +17,7 @@ namespace SDK
 struct FPlayerAnimAssets_Struct
 {
 	unsigned char                                      ShouldAimOffsetsApplytoFullBody_31_5AE0E4754B3138F966FD11A295F7B78E : 1;// 0x0000(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0001(0x0007) MISSED OFFSET
 	class UAnimSequence*                               TargetingPose_4_D2562A4A44A308F2ADE73F8A183BA29E;         // 0x0008(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UAimOffsetBlendSpace*                        TargetingAimOffset_13_5040B0EC478A3717BCE10AB68ADAC339;   // 0x0010(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UAnimSequence*                               Non_targetingPose_6_F51CE1094083841D799E088BFC14FC75;     // 0x0018(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)

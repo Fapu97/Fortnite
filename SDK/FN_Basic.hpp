@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -282,7 +282,7 @@ struct FString : private TArray<wchar_t>
 
 	FString(const wchar_t* other)
 	{
-		Max = Count = *other ? std::wcslen(other) + 1 : 0;
+		Max = Count = *other ? (int32_t)std::wcslen(other) + 1 : 0;
 
 		if (Count)
 		{
@@ -399,7 +399,7 @@ struct FText
 
 struct FScriptDelegate
 {
-	char UnknownData[20];
+	char UnknownData[10];
 };
 
 struct FScriptMulticastDelegate

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -27,16 +27,20 @@ public:
 	float                                              Trail_HorizontalMovement_EEEFB2FD467DE31D5FDEDEA006F5C10F;// 0x0FF8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              Trail_VerticalMovement_EEEFB2FD467DE31D5FDEDEA006F5C10F;  // 0x0FFC(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    Trail__Direction_EEEFB2FD467DE31D5FDEDEA006F5C10F;        // 0x1000(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x1001(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          Trail;                                                    // 0x1008(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      ActivateEffects : 1;                                      // 0x1010(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_Net, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      DeActivateEffects : 1;                                    // 0x1011(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_Net, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      CanInteract : 1;                                          // 0x1012(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_Net, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x5];                                       // 0x1013(0x0005) MISSED OFFSET
 	struct FText                                       BluGloQuantity;                                           // 0x1018(0x0018) (CPF_Edit, CPF_BlueprintVisible, CPF_Net, CPF_DisableEditOnInstance)
 	class AFortPawn*                                   NewVar;                                                   // 0x1030(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     StartLocation;                                            // 0x1038(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_Net, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x1044(0x0004) MISSED OFFSET
 	class UParticleSystemComponent*                    TrailEffect;                                              // 0x1048(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class USoundBase*                                  Sound_BluGloLoop;                                         // 0x1050(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FRotator                                    RandomSpawnRotation;                                      // 0x1058(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x1064(0x0004) MISSED OFFSET
 	class ABluGlow_MorphAnimation_C*                   BlugloRef;                                                // 0x1068(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UForceFeedbackEffect*                        PickupForceFeedback;                                      // 0x1070(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UFortWorldItemDefinition*                    BlugloItemDef;                                            // 0x1078(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -28,6 +28,7 @@ public:
 	struct FRotator                                    SKMeleeRotation;                                          // 0x03D0(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     MeleeWeaponDownLoc;                                       // 0x03DC(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FRotator                                    MeleeWeaponEquipRot;                                      // 0x03E8(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x03F4(0x0004) MISSED OFFSET
 	TAssetPtr<class USoundBase>                        SoundWeaponReady;                                         // 0x03F8(0x0020) (CPF_Edit, CPF_BlueprintVisible)
 	class USoundBase*                                  SoundCurrentWeaponReady;                                  // 0x0418(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TAssetPtr<class USoundBase>                        SoundWeaponSwing;                                         // 0x0420(0x0020) (CPF_Edit, CPF_BlueprintVisible)
@@ -39,6 +40,7 @@ public:
 	class USkeletalMeshComponent*                      WeaponObject;                                             // 0x0498(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TAssetPtr<class USkeletalMesh>                     WeaponAssetID;                                            // 0x04A0(0x0020) (CPF_Edit, CPF_BlueprintVisible)
 	unsigned char                                      Debug : 1;                                                // 0x04C0(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x04C1(0x0003) MISSED OFFSET
 	struct FVector                                     WeaponOffsetLoc;                                          // 0x04C4(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FRotator                                    WeaponOffsetRot;                                          // 0x04D0(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 

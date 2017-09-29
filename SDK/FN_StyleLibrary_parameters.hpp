@@ -1,12 +1,13 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
 
-#include "../SDK.hpp"
+//#include "../SDK.hpp"
+#include"FN_FortUIStylesheet_structs.hpp"
 
 namespace SDK
 {

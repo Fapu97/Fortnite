@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -38,10 +38,12 @@ public:
 	class UItem_TierBadge_C*                           Widget_TierBadge;                                         // 0x0930(0x0008) (CPF_BlueprintVisible, CPF_ExportObject, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData, CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	struct FFortRarityItemData                         RarityData;                                               // 0x0938(0x0080) (CPF_Edit, CPF_BlueprintVisible)
 	unsigned char                                      CanBeDragged : 1;                                         // 0x09B8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x09B9(0x0007) MISSED OFFSET
 	struct FString                                     DragTagString;                                            // 0x09C0(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor)
 	class UFortItem*                                   ItemData;                                                 // 0x09D0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TEnumAsByte<EItemDisplayMode>                      DisplayMode;                                              // 0x09D8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TEnumAsByte<EItemDisplayStyle>                     DisplayStyle;                                             // 0x09D9(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x6];                                       // 0x09DA(0x0006) MISSED OFFSET
 	struct FItemTextureSet                             Item_Textures;                                            // 0x09E0(0x0A28) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	struct FItemTextureStylesheet                      Item_Texture_Stylesheet;                                  // 0x1408(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	struct FFortMultiSizeBrush                         Subtype_Icon_Frame;                                       // 0x1418(0x0360) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
@@ -49,6 +51,7 @@ public:
 	struct FText                                       TooltipHeaderText;                                        // 0x19E8(0x0018) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	class USlateBrushAsset*                            TooltipHeaderIcon;                                        // 0x1A00(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      InfiniteAmmo : 1;                                         // 0x1A08(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x7];                                       // 0x1A09(0x0007) MISSED OFFSET
 	class UFortItemDefinition*                         DemoItemData;                                             // 0x1A10(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FFortMultiSizeBrush                         Subtype_Icon_Fill;                                        // 0x1A18(0x0360) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	struct FLinearColor                                Subtype_Fill_Color;                                       // 0x1D78(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)

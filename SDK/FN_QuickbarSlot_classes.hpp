@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -53,7 +53,8 @@ public:
 	unsigned char                                      DoNotPlaySelectionAnimation : 1;                          // 0x0319(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bHideKeybindsWhenAbilityUnavailable : 1;                  // 0x031A(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bKeybindsHidden : 1;                                      // 0x031B(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData01[0x10];                                      // 0x031C(0x0010) UNKNOWN PROPERTY: ArrayProperty QuickbarSlot.QuickbarSlot_C.CooldownTypesSupported
+	unsigned char                                      UnknownData01[0x4];                                       // 0x031C(0x0004) MISSED OFFSET
+	unsigned char                                      UnknownData02[0x10];                                      // 0x031C(0x0010) UNKNOWN PROPERTY: ArrayProperty QuickbarSlot.QuickbarSlot_C.CooldownTypesSupported
 	class UFortItem*                                   Item;                                                     // 0x0330(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 
 	static UClass* StaticClass()

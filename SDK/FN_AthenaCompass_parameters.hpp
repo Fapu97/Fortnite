@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,15 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function AthenaCompass.AthenaCompass_C.UpdateMarker
+struct UAthenaCompass_C_UpdateMarker_Params
+{
+	class UImage*                                      MarkerImage;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	struct FVector2D                                   MarkerWorldPosition;                                      // (CPF_Parm, CPF_IsPlainOldData)
+	struct FRotator                                    CameraRotation;                                           // (CPF_Parm, CPF_IsPlainOldData)
+	struct FVector                                     PawnLocation;                                             // (CPF_Parm, CPF_IsPlainOldData)
+};
 
 // Function AthenaCompass.AthenaCompass_C.UpdateCompassMaterial
 struct UAthenaCompass_C_UpdateCompassMaterial_Params

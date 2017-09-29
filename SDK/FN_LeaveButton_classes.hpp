@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -22,6 +22,7 @@ public:
 	struct FScriptMulticastDelegate                    OnClicked;                                                // 0x0248(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_BlueprintAssignable)
 	class UClass*                                      ButtonStyle;                                              // 0x0258(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<EFortBrushSize>                        BrushSize;                                                // 0x0260(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0261(0x0007) MISSED OFFSET
 	struct FScriptMulticastDelegate                    Update_Visibility;                                        // 0x0268(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_BlueprintAssignable)
 
 	static UClass* StaticClass()
@@ -40,6 +41,7 @@ public:
 	void GetLeaveActionText(struct FText* Text);
 	void DialogResult_1E39F47546648367BB2F218F69311220(const struct FName& ResultName);
 	void DialogResult_F5AF58094777CFEEC0BF28BEA620800C(const struct FName& ResultName);
+	void DialogResult_9CCFD7A449420648C97D57A200B3396D(const struct FName& ResultName);
 	void HandleTeamMemberRemoved(int PlayerIndex);
 	void HandleTeamMemberAdded(const struct FFortTeamMemberInfo& NewTeamMemberInfo);
 	void HandleLobbyEvents();

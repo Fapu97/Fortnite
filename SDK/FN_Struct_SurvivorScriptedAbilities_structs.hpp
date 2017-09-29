@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -17,6 +17,7 @@ namespace SDK
 struct FStruct_SurvivorScriptedAbilities
 {
 	float                                              SurvivorHelpReminderDuration_14_F54DDCC9447A56E42EEA23B2F26A82BF;// 0x0000(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) MISSED OFFSET
 	struct FGameplayTag                                NPC_Ability_NonAttack_CowerIndefiniteTrue_6_F917B44A44D629C4351341967FEDCE08;// 0x0008(0x0008) (CPF_Edit, CPF_BlueprintVisible)
 	struct FGameplayTag                                NPC_Ability_NonAttack_CowerIndefiniteFalse_7_E6F8C1C646C79DEF76809E829DCA289D;// 0x0010(0x0008) (CPF_Edit, CPF_BlueprintVisible)
 	struct FGameplayTag                                NPC_Ability_NonAttack_RescueTrue_9_6F9D8205427713C6B3C45D889DF83BE4;// 0x0018(0x0008) (CPF_Edit, CPF_BlueprintVisible)

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -62,11 +62,12 @@ public:
 	unsigned char                                      bDebugAcceptingMembers : 1;                               // 0x0168(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      UnknownData02[0x18];                                      // 0x0169(0x0018) MISSED OFFSET
 	unsigned char                                      bStayWithPartyOnDisconnect : 1;                           // 0x0181(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x6];                                       // 0x0182(0x0006) MISSED OFFSET
 	class UClass*                                      PartyMemberStateClass;                                    // 0x0188(0x0008) (CPF_ZeroConstructor, CPF_Transient, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData03[0x108];                                     // 0x0190(0x0108) MISSED OFFSET
+	unsigned char                                      UnknownData04[0x108];                                     // 0x0190(0x0108) MISSED OFFSET
 	class UClass*                                      ReservationBeaconClientClass;                             // 0x0298(0x0008) (CPF_ZeroConstructor, CPF_Transient, CPF_IsPlainOldData)
 	class APartyBeaconClient*                          ReservationBeaconClient;                                  // 0x02A0(0x0008) (CPF_ZeroConstructor, CPF_Transient, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData04[0x338];                                     // 0x02A8(0x0338) MISSED OFFSET
+	unsigned char                                      UnknownData05[0x338];                                     // 0x02A8(0x0338) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

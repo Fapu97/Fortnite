@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -45,14 +45,17 @@ public:
 	struct FScriptMulticastDelegate                    OnPlaybackResumed;                                        // 0x0080(0x0010) (CPF_ZeroConstructor, CPF_InstancedReference, CPF_BlueprintAssignable)
 	struct FScriptMulticastDelegate                    OnPlaybackSuspended;                                      // 0x0090(0x0010) (CPF_ZeroConstructor, CPF_InstancedReference, CPF_BlueprintAssignable)
 	unsigned char                                      PlayOnOpen : 1;                                           // 0x00A0(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x00A1(0x0003) MISSED OFFSET
 	unsigned char                                      Shuffle : 1;                                              // 0x00A4(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly)
 	unsigned char                                      Loop : 1;                                                 // 0x00A4(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly)
+	unsigned char                                      UnknownData02[0x3];                                       // 0x00A5(0x0003) MISSED OFFSET
 	class UMediaOverlays*                              Overlays;                                                 // 0x00A8(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UMediaPlaylist*                              Playlist;                                                 // 0x00B0(0x0008) (CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_Transient, CPF_IsPlainOldData)
 	int                                                PlaylistIndex;                                            // 0x00B8(0x0004) (CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x4];                                       // 0x00BC(0x0004) MISSED OFFSET
 	class UMediaSoundWave*                             SoundWave;                                                // 0x00C0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UMediaTexture*                               VideoTexture;                                             // 0x00C8(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData01[0x90];                                      // 0x00D0(0x0090) MISSED OFFSET
+	unsigned char                                      UnknownData04[0x90];                                      // 0x00D0(0x0090) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -140,8 +143,9 @@ class UMediaSoundWave : public USoundWave
 public:
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0268(0x0008) MISSED OFFSET
 	int                                                AudioTrackIndex;                                          // 0x0270(0x0004) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0274(0x0004) MISSED OFFSET
 	class UMediaPlayer*                                MediaPlayer;                                              // 0x0278(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData01[0xC0];                                      // 0x0280(0x00C0) MISSED OFFSET
+	unsigned char                                      UnknownData02[0xC0];                                      // 0x0280(0x00C0) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -243,10 +247,12 @@ public:
 	unsigned char                                      UnknownData00[0x8];                                       // 0x00C8(0x0008) MISSED OFFSET
 	TEnumAsByte<ETextureAddress>                       AddressX;                                                 // 0x00D0(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETextureAddress>                       AddressY;                                                 // 0x00D1(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x2];                                       // 0x00D2(0x0002) MISSED OFFSET
 	struct FLinearColor                                ClearColor;                                               // 0x00D4(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x00E4(0x0004) MISSED OFFSET
 	class UMediaPlayer*                                MediaPlayer;                                              // 0x00E8(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                VideoTrackIndex;                                          // 0x00F0(0x0004) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData01[0xBC];                                      // 0x00F4(0x00BC) MISSED OFFSET
+	unsigned char                                      UnknownData03[0xBC];                                      // 0x00F4(0x00BC) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

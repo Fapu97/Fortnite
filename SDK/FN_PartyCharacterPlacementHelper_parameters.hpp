@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,24 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function PartyCharacterPlacementHelper.PartyCharacterPlacementHelper_C.OnPartyDataChanged
+struct APartyCharacterPlacementHelper_C_OnPartyDataChanged_Params
+{
+	struct FFortTeamMemberInfo                         MemberInfo;                                               // (CPF_Parm, CPF_OutParm, CPF_ReferenceParm)
+};
+
+// Function PartyCharacterPlacementHelper.PartyCharacterPlacementHelper_C.CompletedQuestPrerequisites
+struct APartyCharacterPlacementHelper_C_CompletedQuestPrerequisites_Params
+{
+	bool                                               bCompleted;                                               // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function PartyCharacterPlacementHelper.PartyCharacterPlacementHelper_C.IsInLobby
+struct APartyCharacterPlacementHelper_C_IsInLobby_Params
+{
+	bool                                               IsInLobby;                                                // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
 
 // Function PartyCharacterPlacementHelper.PartyCharacterPlacementHelper_C.PlayLobbyAnimation
 struct APartyCharacterPlacementHelper_C_PlayLobbyAnimation_Params

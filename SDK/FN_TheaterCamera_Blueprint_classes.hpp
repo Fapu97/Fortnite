@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -22,12 +22,15 @@ public:
 	class USceneComponent*                             SceneInitializeFX;                                        // 0x08D0(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              FocusTimeline_Float_Curve_ADC98EA5D14E24EC78DD4F80C5102578;// 0x08D8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    FocusTimeline__Direction_ADC98EA5D14E24EC78DD4F80C5102578;// 0x08DC(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x08DD(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          FocusTimeline;                                            // 0x08E0(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              DEBUGFOVA_ggt443_69C3A05E440A88A12DB0BAA6A9375778;        // 0x08E8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    DEBUGFOVA__Direction_69C3A05E440A88A12DB0BAA6A9375778;    // 0x08EC(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x08ED(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          DEBUGFOVA;                                                // 0x08F0(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              InitializeFX_TL_FadeInitFX_21BA8C434B0965A323799DA5570E46CF;// 0x08F8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    InitializeFX_TL__Direction_21BA8C434B0965A323799DA5570E46CF;// 0x08FC(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x3];                                       // 0x08FD(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          InitializeFX_TL;                                          // 0x0900(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              DebugZoomTL_CameraRotLevelMax_41B63CEF445574B1F9D6F489004E4238;// 0x0908(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              DebugZoomTL_CameraRotLevelZero_41B63CEF445574B1F9D6F489004E4238;// 0x090C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -39,10 +42,12 @@ public:
 	float                                              DebugZoomTL_FOV_In_41B63CEF445574B1F9D6F489004E4238;      // 0x0924(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              DebugZoomTL_FOV_Out_41B63CEF445574B1F9D6F489004E4238;     // 0x0928(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    DebugZoomTL__Direction_41B63CEF445574B1F9D6F489004E4238;  // 0x092C(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x3];                                       // 0x092D(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          DebugZoomTL;                                              // 0x0930(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              WorldLocSnapSize;                                         // 0x0938(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              CameraZHeightLevelZero;                                   // 0x093C(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              CameraXOffsetLevelZero;                                   // 0x0940(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0944(0x0004) MISSED OFFSET
 	class AFortTheaterMapTile*                         TargetTile;                                               // 0x0948(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              CurrentZoomPercentage;                                    // 0x0950(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              NumberOfZoomLevels;                                       // 0x0954(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -50,6 +55,7 @@ public:
 	float                                              CurrentZoomLevel;                                         // 0x095C(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     FocusedTileLocWithOffset;                                 // 0x0960(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      MouseDown : 1;                                            // 0x096C(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData05[0x3];                                       // 0x096D(0x0003) MISSED OFFSET
 	float                                              CurrentOffsetAmountX;                                     // 0x0970(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              CameraXOffsetLevelMax;                                    // 0x0974(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	int                                                InitialZoomLevels;                                        // 0x0978(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -63,21 +69,26 @@ public:
 	float                                              CameraZHeightLevelMax;                                    // 0x09A8(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              ZoomDistanceUnitX;                                        // 0x09AC(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      DebugCameraZoom : 1;                                      // 0x09B0(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData06[0x3];                                       // 0x09B1(0x0003) MISSED OFFSET
 	float                                              CameraYRotationLevelMax;                                  // 0x09B4(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      DebugCameraVariables : 1;                                 // 0x09B8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      SnapCameraToFocusedTile : 1;                              // 0x09B9(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData07[0x6];                                       // 0x09BA(0x0006) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    MIDMeshScreenPlane;                                       // 0x09C0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TArray<struct FVector2D>                           CloudMaskLocations;                                       // 0x09C8(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 	float                                              CloudMaskScale;                                           // 0x09D8(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      ReadyForPings : 1;                                        // 0x09DC(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData08[0x3];                                       // 0x09DD(0x0003) MISSED OFFSET
 	class ATVPostProcessBP_C*                          TVPostProcess;                                            // 0x09E0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TArray<class ABP_Hex_PARENT_C*>                    AllHexesArray;                                            // 0x09E8(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance)
 	TArray<unsigned char>                              HexesPinged;                                              // 0x09F8(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 	unsigned char                                      AllHexesHavePingedOnce : 1;                               // 0x0A08(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      WaitForForceFocus : 1;                                    // 0x0A09(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      AQuestIsPinned : 1;                                       // 0x0A0A(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData09[0x5];                                       // 0x0A0B(0x0005) MISSED OFFSET
 	TArray<unsigned char>                              PinnedQuestsArray;                                        // 0x0A10(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 	unsigned char                                      WaitForPinned : 1;                                        // 0x0A20(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData10[0x3];                                       // 0x0A21(0x0003) MISSED OFFSET
 	struct FVector                                     HexWorldLocFromBP_Hex_PARENT;                             // 0x0A24(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              MaxCameraDistance;                                        // 0x0A30(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     CenterOfCameraBounds;                                     // 0x0A34(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -89,6 +100,7 @@ public:
 	struct FVector                                     AllHexesBoxExtent;                                        // 0x0A5C(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TArray<struct FVector2D>                           RoadMaskLocations;                                        // 0x0A68(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 	unsigned char                                      LightsBPSet : 1;                                          // 0x0A78(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData11[0x7];                                       // 0x0A79(0x0007) MISSED OFFSET
 	class AHexmapLevelSettings_Temperate01_C*          LightsBP;                                                 // 0x0A80(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              HexPlaneLayersBufferSize;                                 // 0x0A88(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              TotalWidthOfHexPlaneLayer;                                // 0x0A8C(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)

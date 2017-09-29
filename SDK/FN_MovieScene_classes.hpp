@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -42,6 +42,7 @@ public:
 	struct FFloatRange                                 SelectionRange;                                           // 0x00F8(0x0010)
 	struct FFloatRange                                 PlaybackRange;                                            // 0x0108(0x0010)
 	unsigned char                                      bForceFixedFrameIntervalPlayback : 1;                     // 0x0118(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0119(0x0003) MISSED OFFSET
 	float                                              FixedFrameInterval;                                       // 0x011C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              InTime;                                                   // 0x0120(0x0004) (CPF_ZeroConstructor, CPF_Deprecated, CPF_IsPlainOldData)
 	float                                              OutTime;                                                  // 0x0124(0x0004) (CPF_ZeroConstructor, CPF_Deprecated, CPF_IsPlainOldData)
@@ -137,14 +138,15 @@ public:
 	unsigned char                                      bIsPlaying : 1;                                           // 0x03B0(0x0001)
 	unsigned char                                      bReversePlayback : 1;                                     // 0x03B0(0x0001)
 	unsigned char                                      bPendingFirstUpdate : 1;                                  // 0x03B0(0x0001)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x03B1(0x0007) MISSED OFFSET
 	class UMovieSceneSequence*                         Sequence;                                                 // 0x03B8(0x0008) (CPF_ZeroConstructor, CPF_Transient, CPF_IsPlainOldData)
 	float                                              TimeCursorPosition;                                       // 0x03C0(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              StartTime;                                                // 0x03C4(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              EndTime;                                                  // 0x03C8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                CurrentNumLoops;                                          // 0x03CC(0x0004) (CPF_ZeroConstructor, CPF_Transient, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData01[0x10];                                      // 0x03D0(0x0010) MISSED OFFSET
+	unsigned char                                      UnknownData02[0x10];                                      // 0x03D0(0x0010) MISSED OFFSET
 	struct FMovieSceneSequencePlaybackSettings         PlaybackSettings;                                         // 0x03E0(0x0028)
-	unsigned char                                      UnknownData02[0x288];                                     // 0x0408(0x0288) MISSED OFFSET
+	unsigned char                                      UnknownData03[0x288];                                     // 0x0408(0x0288) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -178,6 +180,7 @@ class UMovieSceneSection : public UMovieSceneSignedObject
 {
 public:
 	struct FMovieSceneSectionEvalOptions               EvalOptions;                                              // 0x00B0(0x0002) (CPF_Edit)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x00B2(0x0002) MISSED OFFSET
 	float                                              StartTime;                                                // 0x00B4(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              EndTime;                                                  // 0x00B8(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                RowIndex;                                                 // 0x00BC(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -185,7 +188,7 @@ public:
 	unsigned char                                      bIsActive : 1;                                            // 0x00C4(0x0001) (CPF_Edit)
 	unsigned char                                      bIsLocked : 1;                                            // 0x00C4(0x0001) (CPF_Edit)
 	unsigned char                                      bIsInfinite : 1;                                          // 0x00C4(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData00[0xB];                                       // 0x00C5(0x000B) MISSED OFFSET
+	unsigned char                                      UnknownData01[0xB];                                       // 0x00C5(0x000B) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

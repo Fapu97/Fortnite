@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -27,6 +27,7 @@ public:
 	struct FDataTableRowHandle                         OpenUserListAction;                                       // 0x0440(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	struct FDataTableRowHandle                         CurrentUserListAction;                                    // 0x0450(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	unsigned char                                      bEnteringChat : 1;                                        // 0x0460(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0461(0x0007) MISSED OFFSET
 	struct FScriptMulticastDelegate                    AboutToEnterChat;                                         // 0x0468(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_BlueprintAssignable)
 
 	static UClass* StaticClass()

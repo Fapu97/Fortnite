@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,13 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function AthenaHUD.AthenaHUD_C.AddTeamMemberIndicator
+struct UAthenaHUD_C_AddTeamMemberIndicator_Params
+{
+	class AFortPlayerStateAthena*                      Player_State;                                             // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	int                                                Team_Member_Index;                                        // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
 
 // Function AthenaHUD.AthenaHUD_C.HandleAircraftModeChanged
 struct UAthenaHUD_C_HandleAircraftModeChanged_Params
@@ -36,6 +43,7 @@ struct UAthenaHUD_C_OnHUDElementVisibilityChanged_Params
 // Function AthenaHUD.AthenaHUD_C.PopContentWidgetInternal
 struct UAthenaHUD_C_PopContentWidgetInternal_Params
 {
+	struct FContentPushState*                          State;                                                    // (CPF_Parm)
 	class UWidget*                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm, CPF_IsPlainOldData)
 };
 
@@ -148,6 +156,11 @@ struct UAthenaHUD_C_OnConfirmed_13B571B74B3BBCF095CCFA8AED69EBED_Params
 {
 };
 
+// Function AthenaHUD.AthenaHUD_C.Construct
+struct UAthenaHUD_C_Construct_Params
+{
+};
+
 // Function AthenaHUD.AthenaHUD_C.OnEnterState
 struct UAthenaHUD_C_OnEnterState_Params
 {
@@ -159,15 +172,11 @@ struct UAthenaHUD_C_QuestsCompleted_Params
 	TArray<class UFortQuestItem*>                      Quests;                                                   // (CPF_ConstParm, CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReferenceParm)
 };
 
-// Function AthenaHUD.AthenaHUD_C.Construct
-struct UAthenaHUD_C_Construct_Params
-{
-};
-
 // Function AthenaHUD.AthenaHUD_C.PushContentWidgetInternal
 struct UAthenaHUD_C_PushContentWidgetInternal_Params
 {
 	class UWidget**                                    Widget;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	struct FContentPushState*                          State;                                                    // (CPF_Parm)
 };
 
 // Function AthenaHUD.AthenaHUD_C.Destruct
@@ -227,6 +236,16 @@ struct UAthenaHUD_C_OnUnableToPerformAction_Params
 {
 	struct FGameplayTagContainer                       FailedReason;                                             // (CPF_Parm)
 	struct FText                                       FailureText;                                              // (CPF_Parm)
+};
+
+// Function AthenaHUD.AthenaHUD_C.On Team Won
+struct UAthenaHUD_C_On_Team_Won_Params
+{
+};
+
+// Function AthenaHUD.AthenaHUD_C.TeamMembersChanged
+struct UAthenaHUD_C_TeamMembersChanged_Params
+{
 };
 
 // Function AthenaHUD.AthenaHUD_C.ExecuteUbergraph_AthenaHUD

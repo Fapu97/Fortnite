@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -44,9 +44,11 @@ public:
 	struct FSlateBrush                                 DemoImage;                                                // 0x0390(0x0090) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	unsigned char                                      bIncludeName : 1;                                         // 0x0420(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bIncludeDescription : 1;                                  // 0x0421(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x6];                                       // 0x0422(0x0006) MISSED OFFSET
 	class UTextBlock*                                  LevelText_1;                                              // 0x0428(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TEnumAsByte<EFortBrushSize>                        IconSize;                                                 // 0x0430(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bUseLargeFormatName : 1;                                  // 0x0431(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x6];                                       // 0x0432(0x0006) MISSED OFFSET
 	class UClass*                                      Locked_Text_Style;                                        // 0x0438(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UClass*                                      Locked_Description_Style;                                 // 0x0440(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FMargin                                     ListPadding;                                              // 0x0448(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)

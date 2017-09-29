@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -71,29 +71,35 @@ public:
 	float                                              TL_CCA_Reveal_Rotation_60E254DA405DE2144D4B80B13BE5E72D;  // 0x0514(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCA_Reveal_LerpWorldLoc_60E254DA405DE2144D4B80B13BE5E72D;// 0x0518(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CCA_Reveal__Direction_60E254DA405DE2144D4B80B13BE5E72D;// 0x051C(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x051D(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          TL_CCA_Reveal;                                            // 0x0520(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_Reveal_CC_Choices_DelayBeforeReveal_76B596B14DFB3698760215B8A10E5A7F;// 0x0528(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_Reveal_CC_Choices_FadeInChoiceCardPost_76B596B14DFB3698760215B8A10E5A7F;// 0x052C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_Reveal_CC_Choices_ChoiceCardScaleUp_76B596B14DFB3698760215B8A10E5A7F;// 0x0530(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_Reveal_CC_Choices__Direction_76B596B14DFB3698760215B8A10E5A7F;// 0x0534(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0535(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          TL_Reveal_CC_Choices;                                     // 0x0538(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CardMoveToScreen_PPBlend01_3798F2BC49D3B3B20C2AAC9734564E4B;// 0x0540(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CardMoveToScreen_Rotation_3798F2BC49D3B3B20C2AAC9734564E4B;// 0x0544(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CardMoveToScreen_LerpWorldLoc_3798F2BC49D3B3B20C2AAC9734564E4B;// 0x0548(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CardMoveToScreen__Direction_3798F2BC49D3B3B20C2AAC9734564E4B;// 0x054C(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x3];                                       // 0x054D(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          TL_CardMoveToScreen;                                      // 0x0550(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CardUpgradeFast_PushGlow_949EB8324B003C2943D50781B70022F4;// 0x0558(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CardUpgradeFast_RaysFader_949EB8324B003C2943D50781B70022F4;// 0x055C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CardUpgradeFast_NewTrack_0_949EB8324B003C2943D50781B70022F4;// 0x0560(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CardUpgradeFast__Direction_949EB8324B003C2943D50781B70022F4;// 0x0564(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x3];                                       // 0x0565(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          TL_CardUpgradeFast;                                       // 0x0568(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_ClearPostProcessDOFSettings_NewTrack_0_E9654CE64B23411962976AA13C3F7D8B;// 0x0570(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_ClearPostProcessDOFSettings__Direction_E9654CE64B23411962976AA13C3F7D8B;// 0x0574(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData04[0x3];                                       // 0x0575(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          TL_ClearPostProcessDOFSettings;                           // 0x0578(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CC_DataDiskBurns_InitialCCDelay_C4F384FF467C667ECC255EB28CDEAD75;// 0x0580(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CC_DataDiskBurns_DataDisk_DeathDirectOpacity_C4F384FF467C667ECC255EB28CDEAD75;// 0x0584(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CC_DataDiskBurns_DataDisk_DeathMaster_C4F384FF467C667ECC255EB28CDEAD75;// 0x0588(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CC_DataDiskBurns__Direction_C4F384FF467C667ECC255EB28CDEAD75;// 0x058C(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData05[0x3];                                       // 0x058D(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          TL_CC_DataDiskBurns;                                      // 0x0590(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_SelectedChoiceCardAnims_CCDeath_FadeOutSound_9A213FD2494AEED292654EA4FDDB8006;// 0x0598(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_SelectedChoiceCardAnims_InstallCCBb_9A213FD2494AEED292654EA4FDDB8006;// 0x059C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -108,54 +114,66 @@ public:
 	float                                              TL_SelectedChoiceCardAnims_FadeFlare_9A213FD2494AEED292654EA4FDDB8006;// 0x05C0(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_SelectedChoiceCardAnims_FlourishFlare_9A213FD2494AEED292654EA4FDDB8006;// 0x05C4(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_SelectedChoiceCardAnims__Direction_9A213FD2494AEED292654EA4FDDB8006;// 0x05C8(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData06[0x7];                                       // 0x05C9(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          TL_SelectedChoiceCardAnims;                               // 0x05D0(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCB_AmbientAnim_Noise3_E46E9F8349C15D0AD549D7BDBA85CD06;// 0x05D8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCB_AmbientAnim_Noise2_E46E9F8349C15D0AD549D7BDBA85CD06;// 0x05DC(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCB_AmbientAnim_Noise1_E46E9F8349C15D0AD549D7BDBA85CD06;// 0x05E0(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CCB_AmbientAnim__Direction_E46E9F8349C15D0AD549D7BDBA85CD06;// 0x05E4(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData07[0x3];                                       // 0x05E5(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          TL_CCB_AmbientAnim;                                       // 0x05E8(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCA_AmbientAnim_Noise3_D0F0F85F4E679E6EFE20D8B0C33E4C8F;// 0x05F0(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCA_AmbientAnim_Noise2_D0F0F85F4E679E6EFE20D8B0C33E4C8F;// 0x05F4(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCA_AmbientAnim_Noise1_D0F0F85F4E679E6EFE20D8B0C33E4C8F;// 0x05F8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CCA_AmbientAnim__Direction_D0F0F85F4E679E6EFE20D8B0C33E4C8F;// 0x05FC(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData08[0x3];                                       // 0x05FD(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          TL_CCA_AmbientAnim;                                       // 0x0600(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CC_FlareFX_NewTrack_2_FB393D144ADF530367DF8CA361F07C5B;// 0x0608(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CC_FlareFX__Direction_FB393D144ADF530367DF8CA361F07C5B;// 0x060C(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData09[0x3];                                       // 0x060D(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          TL_CC_FlareFX;                                            // 0x0610(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCB_Reveal_RevealRotation_E1D990B64CDA6EF98CA6C6B5EC7169B0;// 0x0618(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCB_Reveal_AddLocation_E1D990B64CDA6EF98CA6C6B5EC7169B0;// 0x061C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCB_Reveal_Rotation_E1D990B64CDA6EF98CA6C6B5EC7169B0;  // 0x0620(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CCB_Reveal_LerpWorldLoc_E1D990B64CDA6EF98CA6C6B5EC7169B0;// 0x0624(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CCB_Reveal__Direction_E1D990B64CDA6EF98CA6C6B5EC7169B0;// 0x0628(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData10[0x7];                                       // 0x0629(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          TL_CCB_Reveal;                                            // 0x0630(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_MouseoverCC_B_End_CCBMOEFres_37ACF54F4F98A4D3BC4A9693803AC75D;// 0x0638(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_MouseoverCC_B_End_NewTrack_0_37ACF54F4F98A4D3BC4A9693803AC75D;// 0x063C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_MouseoverCC_B_End__Direction_37ACF54F4F98A4D3BC4A9693803AC75D;// 0x0640(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData11[0x7];                                       // 0x0641(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          TL_MouseoverCC_B_End;                                     // 0x0648(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_MouseoverCC_A_End_CCaMOEFres_DBB7CB8C4047097B3D9B15ACE43DDA8D;// 0x0650(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_MouseoverCC_A_End_NewTrack_0_DBB7CB8C4047097B3D9B15ACE43DDA8D;// 0x0654(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_MouseoverCC_A_End__Direction_DBB7CB8C4047097B3D9B15ACE43DDA8D;// 0x0658(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData12[0x7];                                       // 0x0659(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          TL_MouseoverCC_A_End;                                     // 0x0660(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_MouseoverCC_B_CCBMOFres_679F468743296034690174823B6DA69D;// 0x0668(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_MouseoverCC_B_NewTrack_0_679F468743296034690174823B6DA69D;// 0x066C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_MouseoverCC_B__Direction_679F468743296034690174823B6DA69D;// 0x0670(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData13[0x7];                                       // 0x0671(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          TL_MouseoverCC_B;                                         // 0x0678(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_MouseoverCC_A_CCAMOFres_4E2719034FA877BA8DD27E8A8E9441E2;// 0x0680(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_MouseoverCC_A_CCAMOScale_4E2719034FA877BA8DD27E8A8E9441E2;// 0x0684(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_MouseoverCC_A__Direction_4E2719034FA877BA8DD27E8A8E9441E2;// 0x0688(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData14[0x7];                                       // 0x0689(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          TL_MouseoverCC_A;                                         // 0x0690(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CC_QuestionMarkAnim_SubtleyMoveOutMainCard_56814F494B67D1AD46CB869B2A81B132;// 0x0698(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CC_QuestionMarkAnim_FadeInSceneDarkenMaterial_56814F494B67D1AD46CB869B2A81B132;// 0x069C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CC_QuestionMarkAnim_Q_Opacity_Fade_56814F494B67D1AD46CB869B2A81B132;// 0x06A0(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CC_QuestionMarkAnim_FadeQInSlowly_56814F494B67D1AD46CB869B2A81B132;// 0x06A4(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CC_QuestionMarkAnim__Direction_56814F494B67D1AD46CB869B2A81B132;// 0x06A8(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData15[0x7];                                       // 0x06A9(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          TL_CC_QuestionMarkAnim;                                   // 0x06B0(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CardFlipToFront_NewTrack_6_8902A76E45F02B2EAFFF568387C58F2F;// 0x06B8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CardFlipToFront__Direction_8902A76E45F02B2EAFFF568387C58F2F;// 0x06BC(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData16[0x3];                                       // 0x06BD(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          TL_CardFlipToFront;                                       // 0x06C0(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CardExit_PPtoBGChange_5B7343EC450EC02002347D8C37622915;// 0x06C8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              TL_CardExit_BlendToExitLoc_5B7343EC450EC02002347D8C37622915;// 0x06CC(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    TL_CardExit__Direction_5B7343EC450EC02002347D8C37622915;  // 0x06D0(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData17[0x7];                                       // 0x06D1(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          TL_CardExit;                                              // 0x06D8(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FVector                                     MeleeWeaponEquipLoc;                                      // 0x06E0(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              EquipWeaponDelay;                                         // 0x06EC(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -166,8 +184,10 @@ public:
 	struct FVector                                     SKMeleeLocation;                                          // 0x0718(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FRotator                                    SKMeleeRotation;                                          // 0x0724(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      Stop : 1;                                                 // 0x0730(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData18[0x3];                                       // 0x0731(0x0003) MISSED OFFSET
 	struct FVector                                     MeleeWeaponDownLoc;                                       // 0x0734(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FRotator                                    MeleeWeaponEquipRot;                                      // 0x0740(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData19[0x4];                                       // 0x074C(0x0004) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    MID_PinataBase;                                           // 0x0750(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     LiveCardLocBeforeExit;                                    // 0x0758(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      PackIsUpgrade1 : 1;                                       // 0x0764(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -176,6 +196,7 @@ public:
 	unsigned char                                      HasAttacked1X : 1;                                        // 0x0767(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      HasAttacked2X : 1;                                        // 0x0768(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      HasAttacked3X : 1;                                        // 0x0769(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData20[0x2];                                       // 0x076A(0x0002) MISSED OFFSET
 	int                                                Random0_2;                                                // 0x076C(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     IconPanelMeshALoc;                                        // 0x0770(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FRotator                                    LiveCardRotBeforeExit;                                    // 0x077C(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -183,12 +204,15 @@ public:
 	unsigned char                                      AbleToAttack : 1;                                         // 0x078C(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      CanFastForward : 1;                                       // 0x078D(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      UserFF_Pressed : 1;                                       // 0x078E(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData21[0x1];                                       // 0x078F(0x0001) MISSED OFFSET
 	struct FRotator                                    PinataSwingStaticRot;                                     // 0x0790(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData22[0x4];                                       // 0x079C(0x0004) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    MID_PinataPackType;                                       // 0x07A0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      Debug_ : 1;                                               // 0x07A8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      DebugLevel0_ : 1;                                         // 0x07A9(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      DebugLevel1_ : 1;                                         // 0x07AA(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      DebugLevel2_ : 1;                                         // 0x07AB(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData23[0x4];                                       // 0x07AC(0x0004) MISSED OFFSET
 	class UMaterialInstance*                           CardPackUpgrades;                                         // 0x07B0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstance*                           CardPackUpgradesT;                                        // 0x07B8(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstance*                           CardPackCrew;                                             // 0x07C0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -218,19 +242,22 @@ public:
 	class UParticleSystem*                             Llama_Hit_Lvl_1;                                          // 0x0888(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UParticleSystem*                             Llama_Upgrade_Lvl_1;                                      // 0x0890(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UParticleSystem*                             Llama_Upgrade_Lvl_2;                                      // 0x0898(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x08A0(0x0001) UNKNOWN PROPERTY: EnumProperty StoreCardReveal_BP.StoreCardReveal_BP_C.CurrentRarity
-	unsigned char                                      UnknownData01[0x1];                                       // 0x08A1(0x0001) UNKNOWN PROPERTY: EnumProperty StoreCardReveal_BP.StoreCardReveal_BP_C.TargetRarity
+	unsigned char                                      UnknownData24[0x1];                                       // 0x08A0(0x0001) UNKNOWN PROPERTY: EnumProperty StoreCardReveal_BP.StoreCardReveal_BP_C.CurrentRarity
+	unsigned char                                      UnknownData25[0x1];                                       // 0x08A1(0x0001) UNKNOWN PROPERTY: EnumProperty StoreCardReveal_BP.StoreCardReveal_BP_C.TargetRarity
+	unsigned char                                      UnknownData26[0x6];                                       // 0x08A2(0x0006) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    MID_CardRarity;                                           // 0x08A8(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    MID_CardFoil;                                             // 0x08B0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     PinataSwingStaticLoc;                                     // 0x08B8(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FLinearColor                                Lvl1_Lightray_Color;                                      // 0x08C4(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FLinearColor                                Lvl2_Lightray_Color;                                      // 0x08D4(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData27[0x4];                                       // 0x08E4(0x0004) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    CardRaysMID;                                              // 0x08E8(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FLinearColor                                Card_Rays_Color;                                          // 0x08F0(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstance*                           ConfettiMID;                                              // 0x0900(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     PinataHeadGroundLocStart;                                 // 0x0908(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     PinataHeadGroundLocEnd;                                   // 0x0914(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     PinataHeadGroundLocEndOffset;                             // 0x0920(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData28[0x4];                                       // 0x092C(0x0004) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    MID_UpgradeNecklace;                                      // 0x0930(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     PinataHeadStartLoc;                                       // 0x0938(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FRotator                                    PinataHeadStartRot;                                       // 0x0944(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -239,16 +266,19 @@ public:
 	struct FVector                                     PinataHeadPreFallLoc;                                     // 0x0968(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              PinataDropHeight;                                         // 0x0974(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FRotator                                    PinataSwingStaticRotRelative;                             // 0x0978(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData29[0x4];                                       // 0x0984(0x0004) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    MID_PinataEyeLeft;                                        // 0x0988(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    MID_PinataEyeRight;                                       // 0x0990(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TArray<struct FVector>                             WeaponListOffsetLoc;                                      // 0x0998(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 	struct FVector                                     TestWepOffset;                                            // 0x09A8(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData30[0x4];                                       // 0x09B4(0x0004) MISSED OFFSET
 	class USkeletalMesh*                               TestWeapon;                                               // 0x09B8(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TArray<struct FRotator>                            WeaponListOffsetRot;                                      // 0x09C0(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 	TArray<struct FVector>                             WeaponListOffsetScale;                                    // 0x09D0(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 	struct FRotator                                    TestWepRot;                                               // 0x09E0(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_IsPlainOldData)
 	struct FVector                                     TestWepScale;                                             // 0x09EC(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_IsPlainOldData)
 	int                                                RandomWeaponNumber;                                       // 0x09F8(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData31[0x4];                                       // 0x09FC(0x0004) MISSED OFFSET
 	class USoundBase*                                  Sound_CardFlip;                                           // 0x0A00(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class USoundBase*                                  Dialog_Llama_Greet_Current;                               // 0x0A08(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class USoundBase*                                  Dialog_Llama_OpenNormal_Current;                          // 0x0A10(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -271,6 +301,7 @@ public:
 	TArray<class USoundBase*>                          Dialog_Llama_Greet_Array_Current;                         // 0x0AA8(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 	unsigned char                                      KillHover : 1;                                            // 0x0AB8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      GettingReadyToStrike : 1;                                 // 0x0AB9(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData32[0x6];                                       // 0x0ABA(0x0006) MISSED OFFSET
 	class USoundBase*                                  Dialog_Llama_PreHit_Current;                              // 0x0AC0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    MID_CardGlow;                                             // 0x0AC8(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              TimeHeldDown;                                             // 0x0AD0(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -280,27 +311,31 @@ public:
 	unsigned char                                      RareCard : 1;                                             // 0x0AF9(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      NewCard : 1;                                              // 0x0AFA(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      NewAndRareCard : 1;                                       // 0x0AFB(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData33[0x4];                                       // 0x0AFC(0x0004) MISSED OFFSET
 	class ATVPostProcessBP_C*                          TVPPEffect;                                               // 0x0B00(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      FastForwardIsON : 1;                                      // 0x0B08(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      DEBUGRandomUpgradePause : 1;                              // 0x0B09(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      EnableUserToFF : 1;                                       // 0x0B0A(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      DisableMouseInput_1 : 1;                                  // 0x0B0B(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      IsChoicePack_ : 1;                                        // 0x0B0C(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData34[0x3];                                       // 0x0B0D(0x0003) MISSED OFFSET
 	TArray<class UFortAccountItemDefinition*>          ChoiceCardsArray;                                         // 0x0B10(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 	class UFortAccountItemDefinition*                  ChoiceCard_0;                                             // 0x0B20(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UFortAccountItemDefinition*                  ChoiceCard_1;                                             // 0x0B28(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              ChoiceNumber;                                             // 0x0B30(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      DebugChoicePacks : 1;                                     // 0x0B34(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData35[0x3];                                       // 0x0B35(0x0003) MISSED OFFSET
 	int                                                DebugRarityInt;                                           // 0x0B38(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      DEBUGConsecutiveUpgrade : 1;                              // 0x0B3C(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      RevealChoicePack : 1;                                     // 0x0B3D(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData36[0x2];                                       // 0x0B3E(0x0002) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    MID_ChoiceASticker;                                       // 0x0B40(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    MID_ChoiceBSticker;                                       // 0x0B48(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class AStoreCamera_Blueprint_C*                    StoreCamera;                                              // 0x0B50(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    MID_SceneDarken;                                          // 0x0B58(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     ChoiceCardAScale;                                         // 0x0B60(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     ChoiceCardBScale;                                         // 0x0B6C(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData02[0x8];                                       // 0x0B78(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData37[0x8];                                       // 0x0B78(0x0008) MISSED OFFSET
 	struct FTransform                                  ChoiceCardATransform;                                     // 0x0B80(0x0030) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FTransform                                  ChoiceCardBTransform;                                     // 0x0BB0(0x0030) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     ChoiceARandomLoc01;                                       // 0x0BE0(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -310,6 +345,7 @@ public:
 	struct FVector                                     Destination;                                              // 0x0C10(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     SpeedVariable;                                            // 0x0C1C(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      CC_A_Selected : 1;                                        // 0x0C28(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData38[0x7];                                       // 0x0C29(0x0007) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    ChoiceB_BGFX_MID;                                         // 0x0C30(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    ChoiceA_BGFX_MID;                                         // 0x0C38(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    MID_CardIconScreen;                                       // 0x0C40(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -317,6 +353,7 @@ public:
 	class UMaterialInstanceDynamic*                    MID_CardGlowBasic;                                        // 0x0C50(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FLinearColor                                ChoiceCardRarityColor;                                    // 0x0C58(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      CC_ReadyForSelection : 1;                                 // 0x0C68(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData39[0x7];                                       // 0x0C69(0x0007) MISSED OFFSET
 	class USoundBase*                                  Sound_HoverSelect;                                        // 0x0C70(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class USoundBase*                                  Sound_HoverDeselect;                                      // 0x0C78(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class USoundBase*                                  NewUpgradeSound;                                          // 0x0C80(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -325,16 +362,18 @@ public:
 	class UMaterialInstanceDynamic*                    MID_ChoiceA;                                              // 0x0C98(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    MID_ChoiceB;                                              // 0x0CA0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      DEBUGComponentVisibility : 1;                             // 0x0CA8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData40[0x7];                                       // 0x0CA9(0x0007) MISSED OFFSET
 	struct FTransform                                  SelectedCCTransform;                                      // 0x0CB0(0x0030) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      PreHover_CC_A : 1;                                        // 0x0CE0(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      PreHover_CC_B : 1;                                        // 0x0CE1(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData03[0xE];                                       // 0x0CE2(0x000E) MISSED OFFSET
+	unsigned char                                      UnknownData41[0xE];                                       // 0x0CE2(0x000E) MISSED OFFSET
 	struct FTransform                                  Un_SelectedCCTransform;                                   // 0x0CF0(0x0030) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class USoundBase*                                  Sound_ChoiceCardDestroy;                                  // 0x0D20(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    MID_DataCardFrontSticker;                                 // 0x0D28(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    MID_DataCard;                                             // 0x0D30(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class USoundBase*                                  Sound_ChoiceCardInsert;                                   // 0x0D38(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      DebugCardRevealInLevel : 1;                               // 0x0D40(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData42[0x7];                                       // 0x0D41(0x0007) MISSED OFFSET
 	class UClass*                                      CardFrontWidgetClass;                                     // 0x0D48(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      OpenAllPacks : 1;                                         // 0x0D50(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      SlomoPinata : 1;                                          // 0x0D51(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)

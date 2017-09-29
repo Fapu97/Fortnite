@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -35,6 +35,7 @@ public:
 	struct FScriptMulticastDelegate                    BuyItem;                                                  // 0x02B0(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_BlueprintAssignable)
 	struct FMtxPackage                                 Package;                                                  // 0x02C0(0x00A0) (CPF_Edit, CPF_BlueprintVisible)
 	int                                                BaseOfferAmount;                                          // 0x0360(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0364(0x0004) MISSED OFFSET
 	struct FScriptMulticastDelegate                    MtxOfferMouseEnter_EventDispatcher;                       // 0x0368(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_BlueprintAssignable)
 	struct FScriptMulticastDelegate                    MtxOfferMouseLeave_EventDispatcher;                       // 0x0378(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_BlueprintAssignable)
 	TArray<class UTexture2D*>                          CoinCollection;                                           // 0x0388(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor)

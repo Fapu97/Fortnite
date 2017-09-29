@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -62,6 +62,12 @@ struct ULeaveButton_C_DialogResult_1E39F47546648367BB2F218F69311220_Params
 
 // Function LeaveButton.LeaveButton_C.DialogResult_F5AF58094777CFEEC0BF28BEA620800C
 struct ULeaveButton_C_DialogResult_F5AF58094777CFEEC0BF28BEA620800C_Params
+{
+	struct FName                                       ResultName;                                               // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function LeaveButton.LeaveButton_C.DialogResult_9CCFD7A449420648C97D57A200B3396D
+struct ULeaveButton_C_DialogResult_9CCFD7A449420648C97D57A200B3396D_Params
 {
 	struct FName                                       ResultName;                                               // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };

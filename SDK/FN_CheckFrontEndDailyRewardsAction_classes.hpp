@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,13 +13,14 @@ namespace SDK
 //---------------------------------------------------------------------------
 
 // BlueprintGeneratedClass CheckFrontEndDailyRewardsAction.CheckFrontEndDailyRewardsAction_C
-// 0x0011 (0x03F9 - 0x03E8)
+// 0x0012 (0x03FA - 0x03E8)
 class ACheckFrontEndDailyRewardsAction_C : public AFortScriptedAction
 {
 public:
 	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x03E8(0x0008) (CPF_Transient, CPF_DuplicateTransient)
 	class USceneComponent*                             DefaultSceneRoot;                                         // 0x03F0(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bLastStateWasLoginScreen : 1;                             // 0x03F8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x1];                                       // 0x03F9(0x0001) UNKNOWN PROPERTY: EnumProperty CheckFrontEndDailyRewardsAction.CheckFrontEndDailyRewardsAction_C.NewVar_1
 
 	static UClass* StaticClass()
 	{

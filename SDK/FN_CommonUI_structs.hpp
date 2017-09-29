@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -108,6 +108,7 @@ enum class ECommonSwitcherTransition
 struct FCommonRegisteredTabInfo
 {
 	int                                                TabIndex;                                                 // 0x0000(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) MISSED OFFSET
 	class UCommonButton*                               TabButton;                                                // 0x0008(0x0008) (CPF_ExportObject, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
 	class UWidget*                                     ContentInstance;                                          // 0x0010(0x0008) (CPF_ExportObject, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
 };
@@ -118,6 +119,7 @@ struct FCommonNumberFormattingOptions
 {
 	TEnumAsByte<ERoundingMode>                         RoundingMode;                                             // 0x0000(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      UseGrouping : 1;                                          // 0x0001(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0002(0x0002) MISSED OFFSET
 	int                                                MinimumIntegralDigits;                                    // 0x0004(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                MaximumIntegralDigits;                                    // 0x0008(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                MinimumFractionalDigits;                                  // 0x000C(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -129,6 +131,7 @@ struct FCommonNumberFormattingOptions
 struct FOperation
 {
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) UNKNOWN PROPERTY: EnumProperty CommonUI.Operation.Operation
+	unsigned char                                      UnknownData01[0x7];                                       // 0x0001(0x0007) MISSED OFFSET
 	class UCommonActivatablePanel*                     Panel;                                                    // 0x0008(0x0008) (CPF_ExportObject, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
 	unsigned char                                      bIntroPanel : 1;                                          // 0x0010(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bOutroPanelBelow : 1;                                     // 0x0011(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -164,8 +167,10 @@ struct FCommonInputActionData : public FTableRowBase
 	struct FText                                       DisplayName;                                              // 0x0008(0x0018) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly)
 	struct FKey                                        PlatformSpecificKeys[0x4];                                // 0x0020(0x0018) (CPF_Edit)
 	unsigned char                                      UnknownData00[0x4];                                       // 0x0080(0x0004) UNKNOWN PROPERTY: EnumProperty CommonUI.CommonInputActionData.OverrrideStateForInputType
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0084(0x0004) MISSED OFFSET
 	struct FSlateBrush                                 InputTypeOverrideBrush[0x4];                              // 0x0088(0x0090) (CPF_Edit)
 	unsigned char                                      bActionRequiresHold : 1;                                  // 0x02C8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x3];                                       // 0x02C9(0x0003) MISSED OFFSET
 	float                                              HoldTime;                                                 // 0x02CC(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 

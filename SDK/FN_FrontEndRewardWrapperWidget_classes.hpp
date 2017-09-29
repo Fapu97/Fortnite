@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -25,6 +25,7 @@ public:
 	class ULegacyItem_DO_NOT_USE_C*                    Reward;                                                   // 0x0268(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0270(0x0001) UNKNOWN PROPERTY: EnumProperty FrontEndRewardWrapperWidget.FrontEndRewardWrapperWidget_C.StackCounterDefaultVisibility
 	TEnumAsByte<EItemDisplayStyle>                     DefaultDisplayStyle;                                      // 0x0271(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x6];                                       // 0x0272(0x0006) MISSED OFFSET
 	struct FScriptMulticastDelegate                    EventDispatcher_Go_Trigger;                               // 0x0278(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_BlueprintAssignable)
 	unsigned char                                      ShowText : 1;                                             // 0x0288(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 

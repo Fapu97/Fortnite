@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -34,6 +34,7 @@ public:
 	void SetStatusText(const struct FText& Status);
 	void SetTitleText(const struct FText& TitleText);
 	void Construct();
+	void Destruct();
 	void ExecuteUbergraph_StatusWidget(int EntryPoint);
 };
 

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,11 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function FrontEndRewards_Widget.FrontEndRewards_Widget_C.HandleOnMissionRewardsClaimFailed
+struct UFrontEndRewards_Widget_C_HandleOnMissionRewardsClaimFailed_Params
+{
+};
 
 // Function FrontEndRewards_Widget.FrontEndRewards_Widget_C.DebugPrintChoiceReward
 struct UFrontEndRewards_Widget_C_DebugPrintChoiceReward_Params

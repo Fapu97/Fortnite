@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -27,6 +27,7 @@ public:
 	float                                              Timeline_0_Morph_4CFA454F41B86B7BE42429BB2A905B1E;        // 0x03B8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              Timeline_0_Glow_4CFA454F41B86B7BE42429BB2A905B1E;         // 0x03BC(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    Timeline_0__Direction_4CFA454F41B86B7BE42429BB2A905B1E;   // 0x03C0(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x03C1(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          Timeline_1;                                               // 0x03C8(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    Mid;                                                      // 0x03D0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	int                                                IntCounter;                                               // 0x03D8(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)

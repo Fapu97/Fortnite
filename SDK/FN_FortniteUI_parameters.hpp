@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -28,10 +28,22 @@ struct UAthenaHUDContext_HandleUIGameplayCue_Params
 	struct FGameplayCueParameters                      Parameters;                                               // (CPF_ConstParm, CPF_Parm, CPF_OutParm, CPF_ReferenceParm)
 };
 
+// Function FortniteUI.AthenaHUDContext.HandleLocalPlayerDBNOStateChanged
+struct UAthenaHUDContext_HandleLocalPlayerDBNOStateChanged_Params
+{
+	bool                                               bIsDBNO;                                                  // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
 // Function FortniteUI.AthenaHUDContext.GetSelectedInventoryItem
 struct UAthenaHUDContext_GetSelectedInventoryItem_Params
 {
 	class UFortItem*                                   ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm, CPF_IsPlainOldData)
+};
+
+// Function FortniteUI.FortHUDElementWidget.HandleOnHUDElementVisibilityChanged
+struct UFortHUDElementWidget_HandleOnHUDElementVisibilityChanged_Params
+{
+	struct FGameplayTagContainer                       HiddenHUDElementTags;                                     // (CPF_ConstParm, CPF_Parm, CPF_OutParm, CPF_ReferenceParm)
 };
 
 // Function FortniteUI.FortTabButtonInterface.SetTabLabelInfo
@@ -102,6 +114,12 @@ struct UAthenaInventoryPanelBase_RequestEquip_Params
 struct UAthenaInventoryPanelBase_OnInventoryItemSelected_Params
 {
 	class UFortItem*                                   Item;                                                     // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function FortniteUI.AthenaInventoryPanelBase.HandleResourceItemDoubleClicked
+struct UAthenaInventoryPanelBase_HandleResourceItemDoubleClicked_Params
+{
+	class UObject*                                     Item;                                                     // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
 // Function FortniteUI.AthenaInventoryPanelBase.HandleQuickBarChangedBP
@@ -980,9 +998,27 @@ struct UFortAthenaMatchmakingWidget_SetPlayButtonState_Params
 	bool                                               bCanMatchmake;                                            // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
+// Function FortniteUI.FortAthenaMatchmakingWidget.SetCancelButtonState
+struct UFortAthenaMatchmakingWidget_SetCancelButtonState_Params
+{
+	bool                                               bIsMatchmaking;                                           // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function FortniteUI.FortAthenaMatchmakingWidget.OnPlaylistRotatorChanged
+struct UFortAthenaMatchmakingWidget_OnPlaylistRotatorChanged_Params
+{
+	int                                                PlaylistIndex;                                            // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
 // Function FortniteUI.FortAthenaMatchmakingWidget.OnPlayButtonPressed
 struct UFortAthenaMatchmakingWidget_OnPlayButtonPressed_Params
 {
+};
+
+// Function FortniteUI.FortAthenaMatchmakingWidget.OnChangeTeamFillChanged
+struct UFortAthenaMatchmakingWidget_OnChangeTeamFillChanged_Params
+{
+	bool                                               bFill;                                                    // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
 // Function FortniteUI.FortAthenaMatchmakingWidget.OnCancelButtonPressed
@@ -994,6 +1030,8 @@ struct UFortAthenaMatchmakingWidget_OnCancelButtonPressed_Params
 struct UFortAthenaNewsWidget_GetText_Params
 {
 	struct FText                                       Title;                                                    // (CPF_Parm, CPF_OutParm)
+	struct FText                                       PlatformBody;                                             // (CPF_Parm, CPF_OutParm)
+	struct FText                                       RegionBody;                                               // (CPF_Parm, CPF_OutParm)
 	struct FText                                       Body;                                                     // (CPF_Parm, CPF_OutParm)
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm, CPF_IsPlainOldData)
 };
@@ -1349,6 +1387,12 @@ struct UFortGlobalUIContext_IsSubgameSelectionAvailable_Params
 	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm, CPF_IsPlainOldData)
 };
 
+// Function FortniteUI.FortGlobalUIContext.IsPendingLogout
+struct UFortGlobalUIContext_IsPendingLogout_Params
+{
+	bool                                               ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm, CPF_IsPlainOldData)
+};
+
 // Function FortniteUI.FortGlobalUIContext.IsMobileApp
 struct UFortGlobalUIContext_IsMobileApp_Params
 {
@@ -1576,6 +1620,12 @@ struct UFortGlobalUIContext_GetCollectionBookManager_Params
 
 // Function FortniteUI.FortGlobalUIContext.GetBackendName
 struct UFortGlobalUIContext_GetBackendName_Params
+{
+	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm)
+};
+
+// Function FortniteUI.FortGlobalUIContext.GetAthenaCodeOfConductURL
+struct UFortGlobalUIContext_GetAthenaCodeOfConductURL_Params
 {
 	struct FString                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm)
 };
@@ -3114,6 +3164,12 @@ struct UFortKeybindWidget_StartHoldProgress_Params
 	float                                              HoldDuration;                                             // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
+// Function FortniteUI.FortKeybindWidget.SetShowProgressCountDown
+struct UFortKeybindWidget_SetShowProgressCountDown_Params
+{
+	bool                                               bShow;                                                    // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
 // Function FortniteUI.FortKeybindWidget.SetForcedHoldKeybindStatus
 struct UFortKeybindWidget_SetForcedHoldKeybindStatus_Params
 {
@@ -3373,6 +3429,7 @@ struct UFortFrontEndContext_PushContentWidget_Adv_Params
 	class UWidget*                                     Widget;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
 	bool                                               bHideHeader;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	bool                                               bHideFooter;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	bool                                               bHideChatWidget;                                          // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
 // Function FortniteUI.FortFrontEndContext.PlayLevelUpEffect
@@ -4727,12 +4784,6 @@ struct UFortHUDContext_AddPointOfInterest_Params
 	class AActor*                                      PointOfInterest;                                          // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FText                                       DisplayText;                                              // (CPF_Parm)
 	class UTexture2D*                                  DisplayImage;                                             // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
-};
-
-// Function FortniteUI.FortHUDElementWidget.HandleOnHUDElementVisibilityChanged
-struct UFortHUDElementWidget_HandleOnHUDElementVisibilityChanged_Params
-{
-	struct FGameplayTagContainer                       HiddenHUDElementTags;                                     // (CPF_ConstParm, CPF_Parm, CPF_OutParm, CPF_ReferenceParm)
 };
 
 // Function FortniteUI.AthenaHUDGamePhaseChangingBase.UpdateMessaging
@@ -6656,6 +6707,12 @@ struct UFortMicIndicatorWidget_OnPlayerTalkingChanged_Params
 struct UFortMicIndicatorWidget_OnPlayerMuted_Params
 {
 	bool                                               bIsMuted;                                                 // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function FortniteUI.FortMicIndicatorWidget.OnPlayerMicAvailable
+struct UFortMicIndicatorWidget_OnPlayerMicAvailable_Params
+{
+	bool                                               bIsTalking;                                               // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
 // Function FortniteUI.FortMissionSelect.NavigateMissionTiles
@@ -9795,6 +9852,15 @@ struct UFortUIManagerWidget_NUI_QueueActionPanelIntoModalLayer_Params
 	TEnumAsByte<EVerticalAlignment>                    VerticalAlignment;                                        // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
+// Function FortniteUI.FortUIManagerWidget_NUI.PushContentWidgetAdvanced
+struct UFortUIManagerWidget_NUI_PushContentWidgetAdvanced_Params
+{
+	class UWidget*                                     Widget;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
+	bool                                               bHideHeader;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	bool                                               bHideFooter;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	bool                                               bHideChatWidget;                                          // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
 // Function FortniteUI.FortUIManagerWidget_NUI.PushContentWidget
 struct UFortUIManagerWidget_NUI_PushContentWidget_Params
 {
@@ -10178,6 +10244,16 @@ struct UFortUIStateTrigger_EvalBP_Params
 struct UFortUIStateWidget_NUI_PushContentWidgetInternal_Params
 {
 	class UWidget*                                     Widget;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
+	struct FContentPushState                           State;                                                    // (CPF_Parm)
+};
+
+// Function FortniteUI.FortUIStateWidget_NUI.PushContentWidgetAdvanced
+struct UFortUIStateWidget_NUI_PushContentWidgetAdvanced_Params
+{
+	class UWidget*                                     Widget;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
+	bool                                               bHideHeader;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	bool                                               bHideFooter;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	bool                                               bHideChatWidget;                                          // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
 // Function FortniteUI.FortUIStateWidget_NUI.PushContentWidget
@@ -10189,6 +10265,7 @@ struct UFortUIStateWidget_NUI_PushContentWidget_Params
 // Function FortniteUI.FortUIStateWidget_NUI.PopContentWidgetInternal
 struct UFortUIStateWidget_NUI_PopContentWidgetInternal_Params
 {
+	struct FContentPushState                           State;                                                    // (CPF_Parm)
 	class UWidget*                                     ReturnValue;                                              // (CPF_ExportObject, CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm, CPF_InstancedReference, CPF_IsPlainOldData)
 };
 
@@ -10208,12 +10285,9 @@ struct UFortUIStateWidget_NUI_OnEnterState_Params
 {
 };
 
-// Function FortniteUI.FortUIStateWidget_Frontend.PushContentWidget_Adv
-struct UFortUIStateWidget_Frontend_PushContentWidget_Adv_Params
+// Function FortniteUI.AthenaHUDBase.TeamMembersChanged
+struct UAthenaHUDBase_TeamMembersChanged_Params
 {
-	class UWidget*                                     Widget;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
-	bool                                               bHideHeader;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
-	bool                                               bHideFooter;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
 // Function FortniteUI.FortUIStateWidget_Login.StartUpdateCheck

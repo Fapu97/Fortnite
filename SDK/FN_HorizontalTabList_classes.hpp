@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -42,9 +42,9 @@ public:
 	void ChangeInputBindings(const struct FDataTableRowHandle& NextBinding, const struct FDataTableRowHandle& PreviousBinding);
 	void Construct();
 	void Handle_OnInputMethodChanged(bool bUsingGamepad);
-	void HandleTabCreated(struct FName* TabNameID, class UCommonButton** TabButton);
 	void PreConstruct(bool* IsDesignTime);
 	void Previous_Visibility();
+	void HandleTabCreated(struct FName* TabNameID, class UCommonButton** TabButton);
 	void CustomEvent_1(const struct FName& TabId);
 	void ExecuteUbergraph_HorizontalTabList(int EntryPoint);
 };

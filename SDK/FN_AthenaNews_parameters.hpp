@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,16 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function AthenaNews.AthenaNews_C.Get_RegionNews_Visibility
+struct UAthenaNews_C_Get_RegionNews_Visibility_Params
+{
+};
+
+// Function AthenaNews.AthenaNews_C.Get_PlatformNews_Visibility
+struct UAthenaNews_C_Get_PlatformNews_Visibility_Params
+{
+};
 
 // Function AthenaNews.AthenaNews_C.Construct
 struct UAthenaNews_C_Construct_Params

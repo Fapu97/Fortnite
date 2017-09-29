@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,53 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function AthenaLobby.AthenaLobby_C.OnInputFillChangeGamepad
+struct UAthenaLobby_C_OnInputFillChangeGamepad_Params
+{
+	bool                                               bCommited;                                                // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnInputPlaylistChangeGamepad
+struct UAthenaLobby_C_OnInputPlaylistChangeGamepad_Params
+{
+	bool                                               bCommited;                                                // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.IsLocalPlayer
+struct UAthenaLobby_C_IsLocalPlayer_Params
+{
+	int                                                PlayerIndex;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	bool                                               IsLocalPlayer;                                            // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnSelect
+struct UAthenaLobby_C_OnSelect_Params
+{
+	int                                                PlayerIndex;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.CanNavigatePlayers
+struct UAthenaLobby_C_CanNavigatePlayers_Params
+{
+	bool                                               bCanNavigatePlayers;                                      // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.SetHoveredPlayer
+struct UAthenaLobby_C_SetHoveredPlayer_Params
+{
+	int                                                PlayerIndex;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.HoverNextPlayer
+struct UAthenaLobby_C_HoverNextPlayer_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.HoverPreviousPlayer
+struct UAthenaLobby_C_HoverPreviousPlayer_Params
+{
+};
 
 // Function AthenaLobby.AthenaLobby_C.StartMusic
 struct UAthenaLobby_C_StartMusic_Params
@@ -150,16 +197,6 @@ struct UAthenaLobby_C_DialogResult_156754AE468EF93DCA2009A412591BA7_Params
 	struct FName                                       ResultName;                                               // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
-// Function AthenaLobby.AthenaLobby_C.Event Abandon
-struct UAthenaLobby_C_Event_Abandon_Params
-{
-};
-
-// Function AthenaLobby.AthenaLobby_C.Construct
-struct UAthenaLobby_C_Construct_Params
-{
-};
-
 // Function AthenaLobby.AthenaLobby_C.BndEvt__SwitcherDetails_K2Node_ComponentBoundEvent_0_OnActiveWidgetChanged__DelegateSignature
 struct UAthenaLobby_C_BndEvt__SwitcherDetails_K2Node_ComponentBoundEvent_0_OnActiveWidgetChanged__DelegateSignature_Params
 {
@@ -167,8 +204,8 @@ struct UAthenaLobby_C_BndEvt__SwitcherDetails_K2Node_ComponentBoundEvent_0_OnAct
 	int                                                ActiveWidgetIndex;                                        // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
-// Function AthenaLobby.AthenaLobby_C.OnActivated
-struct UAthenaLobby_C_OnActivated_Params
+// Function AthenaLobby.AthenaLobby_C.Event Abandon
+struct UAthenaLobby_C_Event_Abandon_Params
 {
 };
 
@@ -176,6 +213,49 @@ struct UAthenaLobby_C_OnActivated_Params
 struct UAthenaLobby_C_OnEndCursorOverPlayer_Params
 {
 	int*                                               PlayerIndex;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnNavigationLeft
+struct UAthenaLobby_C_OnNavigationLeft_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnNavigationRight
+struct UAthenaLobby_C_OnNavigationRight_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.BndEvt__ButtonTMPTEST_K2Node_ComponentBoundEvent_198_CommonButtonClicked__DelegateSignature
+struct UAthenaLobby_C_BndEvt__ButtonTMPTEST_K2Node_ComponentBoundEvent_198_CommonButtonClicked__DelegateSignature_Params
+{
+	class UCommonButton*                               Button;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.Construct
+struct UAthenaLobby_C_Construct_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnActivated
+struct UAthenaLobby_C_OnActivated_Params
+{
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnPlayerClicked
+struct UAthenaLobby_C_OnPlayerClicked_Params
+{
+	int*                                               PlayerIndex;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.OnBeginCursorOverPlayer
+struct UAthenaLobby_C_OnBeginCursorOverPlayer_Params
+{
+	int*                                               PlayerIndex;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaLobby.AthenaLobby_C.BndEvt__PlayerPanel_K2Node_ComponentBoundEvent_308_OnClosed__DelegateSignature
+struct UAthenaLobby_C_BndEvt__PlayerPanel_K2Node_ComponentBoundEvent_308_OnClosed__DelegateSignature_Params
+{
 };
 
 // Function AthenaLobby.AthenaLobby_C.ExecuteUbergraph_AthenaLobby

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -31,6 +31,7 @@ public:
 	class UFortMiniMapComponent*                       MiniMapLoc;                                               // 0x1008(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              VerticalMovementTimeline_Z_Offset_E77B23F44312E9BD5DA6EF9ACE127DE4;// 0x1010(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    VerticalMovementTimeline__Direction_E77B23F44312E9BD5DA6EF9ACE127DE4;// 0x1014(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x1015(0x0003) MISSED OFFSET
 	class UTimelineComponent*                          VerticalMovementTimeline;                                 // 0x1018(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FGameplayTagContainer                       TC_HasFragmentAbility;                                    // 0x1020(0x0020) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	struct FGameplayTagContainer                       TC_LlamaFragment;                                         // 0x1040(0x0020) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_SaveGame)
@@ -39,8 +40,10 @@ public:
 	struct FGameplayTag                                Event_FragmentCollected;                                  // 0x10A0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	struct FGameplayEventData                          SentFragment;                                             // 0x10A8(0x00A8) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	TEnumAsByte<E_OutlanderFragmentTypes>              FragmentType;                                             // 0x1150(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_Net, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_SaveGame, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x1151(0x0003) MISSED OFFSET
 	struct FLinearColor                                ChargeFragmentColor;                                      // 0x1154(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_SaveGame, CPF_IsPlainOldData)
 	struct FLinearColor                                LlamaFragmentColor;                                       // 0x1164(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_SaveGame, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x1174(0x0004) MISSED OFFSET
 	class UFortAmmoItemDefinition*                     FragmentAmmoData;                                         // 0x1178(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class AActor*                                      Current_Outlander;                                        // 0x1180(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class AFortPlayerPawn*                             InteractingPlayerPawn;                                    // 0x1188(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -61,6 +64,7 @@ public:
 	unsigned char                                      IsOpen : 1;                                               // 0x11CC(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_Net, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      bIsUP : 1;                                                // 0x11CD(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      IsOn : 1;                                                 // 0x11CE(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_Net, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x1];                                       // 0x11CF(0x0001) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    Container_Base_Mat;                                       // 0x11D0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    Container_Screen_mat;                                     // 0x11D8(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    Container_Light_mat;                                      // 0x11E0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -77,6 +81,7 @@ public:
 	struct FText                                       PickupChargeFragment;                                     // 0x1278(0x0018) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	class UAudioComponent*                             OrbAudioComponent;                                        // 0x1290(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	unsigned char                                      IsOrbTaken : 1;                                           // 0x1298(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_Net, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData04[0x7];                                       // 0x1299(0x0007) MISSED OFFSET
 	struct FText                                       FailedOutlanderOnlyOneLlama;                              // 0x12A0(0x0018) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	struct FText                                       FailedOutlanderMaxFragHeldDefault;                        // 0x12B8(0x0018) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	struct FText                                       FailedOutlanderActivatedButDoesNotYetPossessFragmentAbility;// 0x12D0(0x0018) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)

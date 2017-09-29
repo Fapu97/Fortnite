@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -43,6 +43,7 @@ struct FMcpLootEntry
 	struct FString                                     ItemType;                                                 // 0x0000(0x0010) (CPF_ZeroConstructor)
 	struct FString                                     ItemGuid;                                                 // 0x0010(0x0010) (CPF_ZeroConstructor)
 	int                                                Quantity;                                                 // 0x0020(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0024(0x0004) MISSED OFFSET
 	struct FJsonObjectWrapper                          Attributes;                                               // 0x0028(0x0020)
 	struct FString                                     ItemProfile;                                              // 0x0048(0x0010) (CPF_ZeroConstructor)
 };
@@ -62,6 +63,7 @@ struct FProfileUpdateNotification
 	TArray<struct FJsonObjectWrapper>                  Changes;                                                  // 0x0000(0x0010) (CPF_ZeroConstructor)
 	struct FDateTime                                   LockExpiration;                                           // 0x0010(0x0008)
 	int                                                CommandRevision;                                          // 0x0018(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x001C(0x0004) MISSED OFFSET
 	int64_t                                            Revision;                                                 // 0x0020(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
@@ -83,9 +85,10 @@ struct FProfileUpdateSingle
 struct FProfileUpdate : public FProfileUpdateSingle
 {
 	int                                                ResponseVersion;                                          // 0x0050(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0054(0x0004) MISSED OFFSET
 	struct FDateTime                                   ServerTime;                                               // 0x0058(0x0008)
 	TArray<struct FProfileUpdateSingle>                MultiUpdate;                                              // 0x0060(0x0010) (CPF_ZeroConstructor)
-	unsigned char                                      UnknownData00[0xD0];                                      // 0x0070(0x00D0) MISSED OFFSET
+	unsigned char                                      UnknownData01[0xD0];                                      // 0x0070(0x00D0) MISSED OFFSET
 };
 
 // ScriptStruct McpProfileSys.BaseUrlContext
@@ -123,6 +126,7 @@ struct FMcpAddItemRequest
 	struct FString                                     ItemId;                                                   // 0x0000(0x0010) (CPF_ZeroConstructor)
 	struct FString                                     TemplateId;                                               // 0x0010(0x0010) (CPF_ZeroConstructor)
 	int                                                Quantity;                                                 // 0x0020(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0024(0x0004) MISSED OFFSET
 	struct FJsonObjectWrapper                          Attributes;                                               // 0x0028(0x0020)
 };
 
@@ -154,6 +158,7 @@ struct FMcpChangeAttributesRequest
 struct FMcpProfileChangeRequest
 {
 	int                                                BaseCommandRevision;                                      // 0x0000(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) MISSED OFFSET
 	TArray<struct FMcpAddItemRequest>                  AddRequests;                                              // 0x0008(0x0010) (CPF_ZeroConstructor)
 	TArray<struct FMcpRemoveItemRequest>               RemoveRequests;                                           // 0x0018(0x0010) (CPF_ZeroConstructor)
 	TArray<struct FMcpChangeQuantityRequest>           ChangeQuantityRequests;                                   // 0x0028(0x0010) (CPF_ZeroConstructor)

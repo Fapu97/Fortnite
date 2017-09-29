@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -36,10 +36,12 @@ public:
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0400(0x0001) UNKNOWN PROPERTY: EnumProperty Tooltip-DisplayAttribute.Tooltip-DisplayAttribute_C.Display Type
 	unsigned char                                      UnknownData01[0x1];                                       // 0x0401(0x0001) UNKNOWN PROPERTY: EnumProperty Tooltip-DisplayAttribute.Tooltip-DisplayAttribute_C.Buff State
 	unsigned char                                      UnknownData02[0x1];                                       // 0x0402(0x0001) UNKNOWN PROPERTY: EnumProperty Tooltip-DisplayAttribute.Tooltip-DisplayAttribute_C.Comparison Type
+	unsigned char                                      UnknownData03[0x1];                                       // 0x0403(0x0001) MISSED OFFSET
 	struct FLinearColor                                Blank;                                                    // 0x0404(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FLinearColor                                Base_Color;                                               // 0x0414(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FLinearColor                                Buff_Color;                                               // 0x0424(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FLinearColor                                Default_White;                                            // 0x0434(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData04[0x4];                                       // 0x0444(0x0004) MISSED OFFSET
 	struct FFortUIStylesheet                           Stylesheet;                                               // 0x0448(0x0BB0) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 
 	static UClass* StaticClass()

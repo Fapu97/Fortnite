@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -356,6 +356,7 @@ struct FPredictionKey
 {
 	int16_t                                            Current;                                                  // 0x0000(0x0002) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int16_t                                            Base;                                                     // 0x0002(0x0002) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) MISSED OFFSET
 	class UPackageMap*                                 PredictiveConnection;                                     // 0x0008(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData, CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	unsigned char                                      bIsStale : 1;                                             // 0x0010(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData, CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	unsigned char                                      bIsServerInitiated : 1;                                   // 0x0011(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -367,6 +368,7 @@ struct FGameplayAbilityActivationInfo
 {
 	TEnumAsByte<EGameplayAbilityActivationMode>        ActivationMode;                                           // 0x0000(0x0001) (CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bCanBeEndedByOtherInstance : 1;                           // 0x0001(0x0001)
+	unsigned char                                      UnknownData00[0x6];                                       // 0x0002(0x0006) MISSED OFFSET
 	struct FPredictionKey                              PredictionKeyWhenActivated;                               // 0x0008(0x0018)
 };
 
@@ -397,6 +399,7 @@ struct FGameplayEventData
 	struct FGameplayTagContainer                       InstigatorTags;                                           // 0x0040(0x0020) (CPF_Edit, CPF_BlueprintVisible)
 	struct FGameplayTagContainer                       TargetTags;                                               // 0x0060(0x0020) (CPF_Edit, CPF_BlueprintVisible)
 	float                                              EventMagnitude;                                           // 0x0080(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0084(0x0004) MISSED OFFSET
 	struct FGameplayAbilityTargetDataHandle            TargetData;                                               // 0x0088(0x0020) (CPF_Edit, CPF_BlueprintVisible)
 };
 
@@ -444,6 +447,7 @@ struct FGameplayAbilitySpec : public FFastArraySerializerItem
 	unsigned char                                      InputPressed : 1;                                         // 0x0029(0x0001) (CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	unsigned char                                      RemoveAfterActivation : 1;                                // 0x0029(0x0001) (CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	unsigned char                                      PendingRemove : 1;                                        // 0x0029(0x0001) (CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
+	unsigned char                                      UnknownData00[0x6];                                       // 0x002A(0x0006) MISSED OFFSET
 	struct FGameplayAbilityActivationInfo              ActivationInfo;                                           // 0x0030(0x0020) (CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	TArray<class UGameplayAbility*>                    NonReplicatedInstances;                                   // 0x0050(0x0010) (CPF_ZeroConstructor, CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	TArray<class UGameplayAbility*>                    ReplicatedInstances;                                      // 0x0060(0x0010) (CPF_ZeroConstructor)
@@ -470,6 +474,7 @@ struct FGameplayAbilityRepAnimMontage
 	unsigned char                                      IsStopped : 1;                                            // 0x0015(0x0001)
 	unsigned char                                      ForcePlayBit : 1;                                         // 0x0015(0x0001)
 	unsigned char                                      SkipPositionCorrection : 1;                               // 0x0015(0x0001)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0016(0x0002) MISSED OFFSET
 	struct FPredictionKey                              PredictionKey;                                            // 0x0018(0x0018)
 };
 
@@ -479,6 +484,7 @@ struct FGameplayAbilityLocalAnimMontage
 {
 	class UAnimMontage*                                AnimMontage;                                              // 0x0000(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      PlayBit : 1;                                              // 0x0008(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0009(0x0007) MISSED OFFSET
 	struct FPredictionKey                              PredictionKey;                                            // 0x0010(0x0018)
 	class UGameplayAbility*                            AnimatingAbility;                                         // 0x0028(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
@@ -548,8 +554,9 @@ struct FModifierSpec
 struct FScalableFloat
 {
 	float                                              Value;                                                    // 0x0000(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) MISSED OFFSET
 	struct FCurveTableRowHandle                        Curve;                                                    // 0x0008(0x0010) (CPF_Edit)
-	unsigned char                                      UnknownData00[0x10];                                      // 0x0018(0x0010) MISSED OFFSET
+	unsigned char                                      UnknownData01[0x10];                                      // 0x0018(0x0010) MISSED OFFSET
 };
 
 // ScriptStruct GameplayAbilities.GameplayAbilitySpecDef
@@ -558,9 +565,11 @@ struct FGameplayAbilitySpecDef
 {
 	class UClass*                                      Ability;                                                  // 0x0000(0x0008) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData, CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	int                                                Level;                                                    // 0x0008(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData, CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) MISSED OFFSET
 	struct FScalableFloat                              LevelScalableFloat;                                       // 0x0010(0x0028) (CPF_Edit, CPF_DisableEditOnInstance, CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	int                                                InputID;                                                  // 0x0038(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData, CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x003C(0x0001) UNKNOWN PROPERTY: EnumProperty GameplayAbilities.GameplayAbilitySpecDef.RemovalPolicy
+	unsigned char                                      UnknownData01[0x1];                                       // 0x003C(0x0001) UNKNOWN PROPERTY: EnumProperty GameplayAbilities.GameplayAbilitySpecDef.RemovalPolicy
+	unsigned char                                      UnknownData02[0x3];                                       // 0x003D(0x0003) MISSED OFFSET
 	class UObject*                                     SourceObject;                                             // 0x0040(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData, CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	struct FGameplayAbilitySpecHandle                  AssignedHandle;                                           // 0x0048(0x0004)
 };
@@ -576,6 +585,7 @@ struct FGameplayEffectSpec
 	float                                              Duration;                                                 // 0x0050(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              Period;                                                   // 0x0054(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              ChanceToApplyToTarget;                                    // 0x0058(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x005C(0x0004) MISSED OFFSET
 	struct FTagContainerAggregator                     CapturedSourceTags;                                       // 0x0060(0x0088) (CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	struct FTagContainerAggregator                     CapturedTargetTags;                                       // 0x00E8(0x0088) (CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	struct FGameplayTagContainer                       DynamicGrantedTags;                                       // 0x0170(0x0020)
@@ -585,8 +595,9 @@ struct FGameplayEffectSpec
 	unsigned char                                      bCompletedSourceAttributeCapture : 1;                     // 0x01C4(0x0001) (CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	unsigned char                                      bCompletedTargetAttributeCapture : 1;                     // 0x01C4(0x0001) (CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
 	unsigned char                                      bDurationLocked : 1;                                      // 0x01C4(0x0001) (CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
+	unsigned char                                      UnknownData02[0x3];                                       // 0x01C5(0x0003) MISSED OFFSET
 	TArray<struct FGameplayAbilitySpecDef>             GrantedAbilitySpecs;                                      // 0x01C8(0x0010) (CPF_ZeroConstructor)
-	unsigned char                                      UnknownData01[0x50];                                      // 0x01D8(0x0050) MISSED OFFSET
+	unsigned char                                      UnknownData03[0x50];                                      // 0x01D8(0x0050) MISSED OFFSET
 	struct FGameplayEffectContextHandle                EffectContext;                                            // 0x0228(0x0018)
 	float                                              Level;                                                    // 0x0240(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
@@ -642,6 +653,7 @@ struct FGameplayCueParameters
 // 0x00E4 (0x00F0 - 0x000C)
 struct FActiveGameplayCue : public FFastArraySerializerItem
 {
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) MISSED OFFSET
 	struct FGameplayTag                                GameplayCueTag;                                           // 0x0010(0x0008)
 	struct FPredictionKey                              PredictionKey;                                            // 0x0018(0x0018)
 	struct FGameplayCueParameters                      Parameters;                                               // 0x0030(0x00B8)
@@ -670,6 +682,7 @@ struct FMinimalReplicationTagCountMap
 // 0x001C (0x0028 - 0x000C)
 struct FReplicatedPredictionKeyItem : public FFastArraySerializerItem
 {
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) MISSED OFFSET
 	struct FPredictionKey                              PredictionKey;                                            // 0x0010(0x0018)
 };
 
@@ -688,12 +701,14 @@ struct FGameplayCueObjectLibrary
 	unsigned char                                      UnknownData00[0x80];                                      // 0x0010(0x0080) MISSED OFFSET
 	class UObjectLibrary*                              ActorObjectLibrary;                                       // 0x0090(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UObjectLibrary*                              StaticObjectLibrary;                                      // 0x0098(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x00A0(0x0004) MISSED OFFSET
 	unsigned char                                      bShouldSyncScan : 1;                                      // 0x00A4(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bShouldAsyncLoad : 1;                                     // 0x00A5(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bShouldSyncLoad : 1;                                      // 0x00A6(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x1];                                       // 0x00A7(0x0001) MISSED OFFSET
 	class UGameplayCueSet*                             CueSet;                                                   // 0x00A8(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bHasBeenInitialized : 1;                                  // 0x00B0(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData01[0xF];                                       // 0x00B1(0x000F) MISSED OFFSET
+	unsigned char                                      UnknownData03[0xF];                                       // 0x00B1(0x000F) MISSED OFFSET
 };
 
 // ScriptStruct GameplayAbilities.GameplayEffectSpecForRPC
@@ -716,6 +731,7 @@ struct FGameplayCuePendingExecute
 	unsigned char                                      UnknownData00[0x18];                                      // 0x0000(0x0018) MISSED OFFSET
 	struct FPredictionKey                              PredictionKey;                                            // 0x0018(0x0018)
 	unsigned char                                      UnknownData01[0x1];                                       // 0x0030(0x0001) UNKNOWN PROPERTY: EnumProperty GameplayAbilities.GameplayCuePendingExecute.PayloadType
+	unsigned char                                      UnknownData02[0x7];                                       // 0x0031(0x0007) MISSED OFFSET
 	class UAbilitySystemComponent*                     OwningComponent;                                          // 0x0038(0x0008) (CPF_ExportObject, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
 	struct FGameplayEffectSpecForRPC                   FromSpec;                                                 // 0x0040(0x0078)
 	struct FGameplayCueParameters                      CueParameters;                                            // 0x00B8(0x00B8)
@@ -741,6 +757,7 @@ struct FAttributeBasedFloat
 	struct FCurveTableRowHandle                        AttributeCurve;                                           // 0x00A0(0x0010) (CPF_Edit, CPF_DisableEditOnInstance)
 	unsigned char                                      UnknownData00[0x1];                                       // 0x00B0(0x0001) UNKNOWN PROPERTY: EnumProperty GameplayAbilities.AttributeBasedFloat.AttributeCalculationType
 	unsigned char                                      UnknownData01[0x1];                                       // 0x00B1(0x0001) UNKNOWN PROPERTY: EnumProperty GameplayAbilities.AttributeBasedFloat.FinalChannel
+	unsigned char                                      UnknownData02[0x6];                                       // 0x00B2(0x0006) MISSED OFFSET
 	struct FGameplayTagContainer                       SourceTagFilter;                                          // 0x00B8(0x0020) (CPF_Edit, CPF_DisableEditOnInstance)
 	struct FGameplayTagContainer                       TargetTagFilter;                                          // 0x00D8(0x0020) (CPF_Edit, CPF_DisableEditOnInstance)
 };
@@ -767,6 +784,7 @@ struct FSetByCallerFloat
 struct FGameplayEffectModifierMagnitude
 {
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) UNKNOWN PROPERTY: EnumProperty GameplayAbilities.GameplayEffectModifierMagnitude.MagnitudeCalculationType
+	unsigned char                                      UnknownData01[0x7];                                       // 0x0001(0x0007) MISSED OFFSET
 	struct FScalableFloat                              ScalableFloatMagnitude;                                   // 0x0008(0x0028) (CPF_Edit, CPF_DisableEditOnInstance)
 	struct FAttributeBasedFloat                        AttributeBasedMagnitude;                                  // 0x0030(0x00F8) (CPF_Edit, CPF_DisableEditOnInstance)
 	struct FCustomCalculationBasedFloat                CustomMagnitude;                                          // 0x0128(0x0080) (CPF_Edit, CPF_DisableEditOnInstance)
@@ -794,9 +812,11 @@ struct FGameplayModifierInfo
 {
 	struct FGameplayAttribute                          Attribute;                                                // 0x0000(0x0020) (CPF_Edit, CPF_DisableEditOnInstance)
 	TEnumAsByte<EGameplayModOp>                        ModifierOp;                                               // 0x0020(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0021(0x0007) MISSED OFFSET
 	struct FScalableFloat                              Magnitude;                                                // 0x0028(0x0028)
 	struct FGameplayEffectModifierMagnitude            ModifierMagnitude;                                        // 0x0050(0x01B0) (CPF_Edit, CPF_DisableEditOnInstance)
 	struct FGameplayModEvaluationChannelSettings       EvaluationChannelSettings;                                // 0x0200(0x0001) (CPF_Edit, CPF_DisableEditOnInstance)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x0201(0x0007) MISSED OFFSET
 	struct FGameplayTagRequirements                    SourceTags;                                               // 0x0208(0x0040) (CPF_Edit, CPF_DisableEditOnInstance)
 	struct FGameplayTagRequirements                    TargetTags;                                               // 0x0248(0x0040) (CPF_Edit, CPF_DisableEditOnInstance)
 };
@@ -807,8 +827,10 @@ struct FGameplayEffectExecutionScopedModifierInfo
 {
 	struct FGameplayEffectAttributeCaptureDefinition   CapturedAttribute;                                        // 0x0000(0x0028) (CPF_Edit, CPF_DisableEditOnInstance, CPF_EditConst)
 	TEnumAsByte<EGameplayModOp>                        ModifierOp;                                               // 0x0028(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0029(0x0007) MISSED OFFSET
 	struct FGameplayEffectModifierMagnitude            ModifierMagnitude;                                        // 0x0030(0x01B0) (CPF_Edit, CPF_DisableEditOnInstance)
 	struct FGameplayModEvaluationChannelSettings       EvaluationChannelSettings;                                // 0x01E0(0x0001) (CPF_Edit, CPF_DisableEditOnInstance)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x01E1(0x0007) MISSED OFFSET
 	struct FGameplayTagRequirements                    SourceTags;                                               // 0x01E8(0x0040) (CPF_Edit, CPF_DisableEditOnInstance)
 	struct FGameplayTagRequirements                    TargetTags;                                               // 0x0228(0x0040) (CPF_Edit, CPF_DisableEditOnInstance)
 };
@@ -856,14 +878,15 @@ struct FInheritedTagContainer
 struct FGameplayEffectQuery
 {
 	unsigned char                                      UnknownData00[0x40];                                      // 0x0000(0x0040) MISSED OFFSET
-	struct FScriptDelegate                             CustomMatchDelegate_BP;                                   // 0x0040(0x0014) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_InstancedReference)
+	struct FScriptDelegate                             CustomMatchDelegate_BP;                                   // 0x0040(0x000A) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_InstancedReference)
+	unsigned char                                      UnknownData01[0x6];                                       // 0x0000(0x0006) FIX WRONG TYPE SIZE OF PREVIUS PROPERTY
 	struct FGameplayTagQuery                           OwningTagQuery;                                           // 0x0050(0x0048) (CPF_Edit, CPF_BlueprintVisible)
 	struct FGameplayTagQuery                           EffectTagQuery;                                           // 0x0098(0x0048) (CPF_Edit, CPF_BlueprintVisible)
 	struct FGameplayTagQuery                           SourceTagQuery;                                           // 0x00E0(0x0048) (CPF_Edit, CPF_BlueprintVisible)
 	struct FGameplayAttribute                          ModifyingAttribute;                                       // 0x0128(0x0020) (CPF_Edit, CPF_BlueprintVisible)
 	class UObject*                                     EffectSource;                                             // 0x0148(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UClass*                                      EffectDefinition;                                         // 0x0150(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData01[0x18];                                      // 0x0158(0x0018) MISSED OFFSET
+	unsigned char                                      UnknownData02[0x18];                                      // 0x0158(0x0018) MISSED OFFSET
 };
 
 // ScriptStruct GameplayAbilities.WorldReticleParameters
@@ -899,6 +922,7 @@ struct FGameplayTargetDataFilterHandle
 struct FGameplayAbilityBindInfo
 {
 	TEnumAsByte<EGameplayAbilityInputBinds>            Command;                                                  // 0x0000(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0001(0x0007) MISSED OFFSET
 	class UClass*                                      GameplayAbilityClass;                                     // 0x0008(0x0008) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
@@ -942,6 +966,7 @@ struct FGameplayEffectSpecHandle
 struct FGameplayAbilities_FServerAbilityRPCBatch
 {
 	struct FGameplayAbilitySpecHandle                  AbilitySpecHandle;                                        // 0x0000(0x0004)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) MISSED OFFSET
 	struct FPredictionKey                              PredictionKey;                                            // 0x0008(0x0018)
 	struct FGameplayAbilityTargetDataHandle            TargetData;                                               // 0x0020(0x0020)
 	unsigned char                                      InputPressed : 1;                                         // 0x0040(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -983,8 +1008,9 @@ struct FGameplayEffectContext
 	int                                                AbilityLevel;                                             // 0x0020(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TWeakObjectPtr<class UObject>                      SourceObject;                                             // 0x0024(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TWeakObjectPtr<class UAbilitySystemComponent>      InstigatorAbilitySystemComponent;                         // 0x002C(0x0008) (CPF_ExportObject, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData, CPF_RepSkip, CPF_RepNotify, CPF_Interp, CPF_NonTransactional, CPF_EditorOnly, CPF_NoDestructor, CPF_AutoWeak, CPF_ContainsInstancedReference, CPF_AssetRegistrySearchable, CPF_SimpleDisplay, CPF_AdvancedDisplay, CPF_Protected, CPF_BlueprintCallable, CPF_BlueprintAuthorityOnly, CPF_TextExportTransient, CPF_NonPIEDuplicateTransient, CPF_ExposeOnSpawn, CPF_PersistentInstance, CPF_UObjectWrapper, CPF_HasGetValueTypeHash, CPF_NativeAccessSpecifierPublic, CPF_NativeAccessSpecifierProtected, CPF_NativeAccessSpecifierPrivate)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0034(0x0004) MISSED OFFSET
 	TArray<TWeakObjectPtr<class AActor>>               Actors;                                                   // 0x0038(0x0010) (CPF_ZeroConstructor)
-	unsigned char                                      UnknownData01[0x10];                                      // 0x0048(0x0010) MISSED OFFSET
+	unsigned char                                      UnknownData02[0x10];                                      // 0x0048(0x0010) MISSED OFFSET
 	struct FVector                                     WorldOrigin;                                              // 0x0058(0x000C) (CPF_IsPlainOldData)
 	unsigned char                                      bHasWorldOrigin : 1;                                      // 0x0064(0x0001)
 	unsigned char                                      bReplicateSourceObject : 1;                               // 0x0064(0x0001)
@@ -997,6 +1023,7 @@ struct FAttributeMetaData : public FTableRowBase
 	float                                              BaseValue;                                                // 0x0008(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              MinValue;                                                 // 0x000C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              MaxValue;                                                 // 0x0010(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0014(0x0004) MISSED OFFSET
 	struct FString                                     DerivedAttributeInfo;                                     // 0x0018(0x0010) (CPF_ZeroConstructor)
 	unsigned char                                      bCanStack : 1;                                            // 0x0028(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
@@ -1014,6 +1041,7 @@ struct FGameplayModifierEvaluatedData
 {
 	struct FGameplayAttribute                          Attribute;                                                // 0x0000(0x0020)
 	TEnumAsByte<EGameplayModOp>                        ModifierOp;                                               // 0x0020(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0021(0x0003) MISSED OFFSET
 	float                                              Magnitude;                                                // 0x0024(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FActiveGameplayEffectHandle                 Handle;                                                   // 0x0028(0x0008)
 	unsigned char                                      IsValid : 1;                                              // 0x0030(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -1081,6 +1109,7 @@ struct FGameplayTargetDataFilter
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) MISSED OFFSET
 	class AActor*                                      SelfActor;                                                // 0x0008(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETargetDataFilterSelf>                 SelfFilter;                                               // 0x0010(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x0011(0x0007) MISSED OFFSET
 	class UClass*                                      RequiredActorClass;                                       // 0x0018(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bReverseFilter : 1;                                       // 0x0020(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
@@ -1113,9 +1142,10 @@ struct FGameplayCueTranslatorNode
 {
 	TArray<struct FGameplayCueTranslationLink>         Links;                                                    // 0x0000(0x0010) (CPF_ZeroConstructor)
 	struct FGameplayCueTranslatorNodeIndex             CachedIndex;                                              // 0x0010(0x0004)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0014(0x0004) MISSED OFFSET
 	struct FGameplayTag                                CachedGameplayTag;                                        // 0x0018(0x0008)
 	struct FName                                       CachedGameplayTagName;                                    // 0x0020(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData00[0x50];                                      // 0x0028(0x0050) MISSED OFFSET
+	unsigned char                                      UnknownData01[0x50];                                      // 0x0028(0x0050) MISSED OFFSET
 };
 
 // ScriptStruct GameplayAbilities.GameplayCueTranslationManager

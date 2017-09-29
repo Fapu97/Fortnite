@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,16 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function ConfirmationWindow.ConfirmationWindow_C.TriggerCameraMode
+struct UConfirmationWindow_C_TriggerCameraMode_Params
+{
+};
+
+// Function ConfirmationWindow.ConfirmationWindow_C.TriggerCursorMode
+struct UConfirmationWindow_C_TriggerCursorMode_Params
+{
+};
 
 // Function ConfirmationWindow.ConfirmationWindow_C.CloseConfirmation
 struct UConfirmationWindow_C_CloseConfirmation_Params
@@ -192,6 +202,11 @@ struct UConfirmationWindow_C_PreConstruct_Params
 
 // Function ConfirmationWindow.ConfirmationWindow_C.OnActivated
 struct UConfirmationWindow_C_OnActivated_Params
+{
+};
+
+// Function ConfirmationWindow.ConfirmationWindow_C.Destruct
+struct UConfirmationWindow_C_Destruct_Params
 {
 };
 

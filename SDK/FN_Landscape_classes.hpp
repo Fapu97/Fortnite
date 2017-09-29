@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -37,6 +37,7 @@ public:
 	int                                                ComponentSizeQuads;                                       // 0x0678(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                SubsectionSizeQuads;                                      // 0x067C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                NumSubsections;                                           // 0x0680(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0684(0x0004) MISSED OFFSET
 	class UMaterialInterface*                          OverrideMaterial;                                         // 0x0688(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UMaterialInterface*                          OverrideHoleMaterial;                                     // 0x0690(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TArray<class UMaterialInstanceConstant*>           MaterialInstances;                                        // 0x0698(0x0010) (CPF_ZeroConstructor)
@@ -45,7 +46,7 @@ public:
 	class UTexture2D*                                  XYOffsetmapTexture;                                       // 0x06C8(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FVector4                                    WeightmapScaleBias;                                       // 0x06D0(0x0010) (CPF_IsPlainOldData)
 	float                                              WeightmapSubsectionOffset;                                // 0x06E0(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData00[0xC];                                       // 0x06E4(0x000C) MISSED OFFSET
+	unsigned char                                      UnknownData01[0xC];                                       // 0x06E4(0x000C) MISSED OFFSET
 	struct FVector4                                    HeightmapScaleBias;                                       // 0x06F0(0x0010) (CPF_IsPlainOldData)
 	class UTexture2D*                                  HeightmapTexture;                                         // 0x0700(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FBox                                        CachedLocalBox;                                           // 0x0708(0x001C) (CPF_IsPlainOldData)
@@ -61,11 +62,13 @@ public:
 	int                                                LODBias;                                                  // 0x0778(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FGuid                                       StateId;                                                  // 0x077C(0x0010) (CPF_IsPlainOldData)
 	struct FGuid                                       BakedTextureMaterialGuid;                                 // 0x078C(0x0010) (CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x079C(0x0004) MISSED OFFSET
 	class UTexture2D*                                  GIBakedBaseColorTexture;                                  // 0x07A0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_EditConst, CPF_IsPlainOldData)
 	unsigned char                                      MobileBlendableLayerMask;                                 // 0x07A8(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x7];                                       // 0x07A9(0x0007) MISSED OFFSET
 	class UMaterialInterface*                          MobileMaterialInterface;                                  // 0x07B0(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UTexture2D*                                  MobileWeightNormalmapTexture;                             // 0x07B8(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData01[0x20];                                      // 0x07C0(0x0020) MISSED OFFSET
+	unsigned char                                      UnknownData04[0x20];                                      // 0x07C0(0x0020) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -156,13 +159,14 @@ public:
 	int                                                CollisionSizeQuads;                                       // 0x0688(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              CollisionScale;                                           // 0x068C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                SimpleCollisionSizeQuads;                                 // 0x0690(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0694(0x0004) MISSED OFFSET
 	TArray<unsigned char>                              CollisionQuadFlags;                                       // 0x0698(0x0010) (CPF_ZeroConstructor)
 	struct FGuid                                       HeightfieldGuid;                                          // 0x06A8(0x0010) (CPF_IsPlainOldData)
 	struct FBox                                        CachedLocalBox;                                           // 0x06B8(0x001C) (CPF_IsPlainOldData)
 	TLazyObjectPtr<class ULandscapeComponent>          RenderComponent;                                          // 0x06D4(0x001C) (CPF_ExportObject, CPF_InstancedReference, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData00[0x10];                                      // 0x06F0(0x0010) MISSED OFFSET
+	unsigned char                                      UnknownData01[0x10];                                      // 0x06F0(0x0010) MISSED OFFSET
 	TArray<class UPhysicalMaterial*>                   CookedPhysicalMaterials;                                  // 0x0700(0x0010) (CPF_ZeroConstructor)
-	unsigned char                                      UnknownData01[0x40];                                      // 0x0710(0x0040) MISSED OFFSET
+	unsigned char                                      UnknownData02[0x40];                                      // 0x0710(0x0040) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -312,9 +316,11 @@ public:
 	int                                                MaxLODLevel;                                              // 0x03A8(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              LODDistanceFactor;                                        // 0x03AC(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ELandscapeLODFalloff>                  LODFalloff;                                               // 0x03B0(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x03B1(0x0003) MISSED OFFSET
 	int                                                StaticLightingLOD;                                        // 0x03B4(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UPhysicalMaterial*                           DefaultPhysMaterial;                                      // 0x03B8(0x0008) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              StreamingDistanceMultiplier;                              // 0x03C0(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x03C4(0x0004) MISSED OFFSET
 	class UMaterialInterface*                          LandscapeMaterial;                                        // 0x03C8(0x0008) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UMaterialInterface*                          LandscapeHoleMaterial;                                    // 0x03D0(0x0008) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              NegativeZBoundsExtension;                                 // 0x03D8(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -322,30 +328,37 @@ public:
 	TArray<class ULandscapeComponent*>                 LandscapeComponents;                                      // 0x03E0(0x0010) (CPF_ExportObject, CPF_ZeroConstructor)
 	TArray<class ULandscapeHeightfieldCollisionComponent*> CollisionComponents;                                      // 0x03F0(0x0010) (CPF_ExportObject, CPF_ZeroConstructor)
 	TArray<class UHierarchicalInstancedStaticMeshComponent*> FoliageComponents;                                        // 0x0400(0x0010) (CPF_ExportObject, CPF_ZeroConstructor, CPF_Transient, CPF_DuplicateTransient)
-	unsigned char                                      UnknownData00[0x60];                                      // 0x0410(0x0060) MISSED OFFSET
+	unsigned char                                      UnknownData02[0x60];                                      // 0x0410(0x0060) MISSED OFFSET
 	unsigned char                                      bHasLandscapeGrass : 1;                                   // 0x0470(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x3];                                       // 0x0471(0x0003) MISSED OFFSET
 	float                                              StaticLightingResolution;                                 // 0x0474(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bCastStaticShadow : 1;                                    // 0x0478(0x0001) (CPF_Edit)
 	unsigned char                                      bCastShadowAsTwoSided : 1;                                // 0x0478(0x0001) (CPF_Edit)
 	unsigned char                                      bCastFarShadow : 1;                                       // 0x0478(0x0001) (CPF_Edit)
+	unsigned char                                      UnknownData04[0x3];                                       // 0x0479(0x0003) MISSED OFFSET
 	struct FLightingChannels                           LightingChannels;                                         // 0x047C(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly)
+	unsigned char                                      UnknownData05[0x3];                                       // 0x047D(0x0003) MISSED OFFSET
 	unsigned char                                      bUseMaterialPositionOffsetInStaticLighting : 1;           // 0x0480(0x0001) (CPF_Edit)
 	unsigned char                                      bRenderCustomDepth : 1;                                   // 0x0480(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly)
+	unsigned char                                      UnknownData06[0x3];                                       // 0x0481(0x0003) MISSED OFFSET
 	int                                                CustomDepthStencilValue;                                  // 0x0484(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FLightmassPrimitiveSettings                 LightmassSettings;                                        // 0x0488(0x0018) (CPF_Edit)
 	int                                                CollisionMipLevel;                                        // 0x04A0(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                SimpleCollisionMipLevel;                                  // 0x04A4(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              CollisionThickness;                                       // 0x04A8(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData07[0x4];                                       // 0x04AC(0x0004) MISSED OFFSET
 	struct FBodyInstance                               BodyInstance;                                             // 0x04B0(0x0220) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly)
 	unsigned char                                      bGenerateOverlapEvents : 1;                               // 0x06D0(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly)
 	unsigned char                                      bBakeMaterialPositionOffsetIntoCollision : 1;             // 0x06D0(0x0001) (CPF_Edit)
+	unsigned char                                      UnknownData08[0x3];                                       // 0x06D1(0x0003) MISSED OFFSET
 	int                                                ComponentSizeQuads;                                       // 0x06D4(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                SubsectionSizeQuads;                                      // 0x06D8(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                NumSubsections;                                           // 0x06DC(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bUsedForNavigation : 1;                                   // 0x06E0(0x0001) (CPF_Edit)
-	unsigned char                                      UnknownData01[0x1];                                       // 0x06E1(0x0001) UNKNOWN PROPERTY: EnumProperty Landscape.LandscapeProxy.NavigationGeometryGatheringMode
+	unsigned char                                      UnknownData09[0x3];                                       // 0x06E1(0x0003) MISSED OFFSET
+	unsigned char                                      UnknownData10[0x1];                                       // 0x06E1(0x0001) UNKNOWN PROPERTY: EnumProperty Landscape.LandscapeProxy.NavigationGeometryGatheringMode
 	unsigned char                                      bUseLandscapeForCullingInvisibleHLODVertices : 1;         // 0x06E5(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData02[0xAA];                                      // 0x06E6(0x00AA) MISSED OFFSET
+	unsigned char                                      UnknownData11[0xAA];                                      // 0x06E6(0x00AA) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -417,6 +430,7 @@ public:
 	struct FInterpCurveVector                          SplineInfo;                                               // 0x0058(0x0018)
 	TArray<struct FLandscapeSplineInterpPoint>         Points;                                                   // 0x0070(0x0010) (CPF_ZeroConstructor)
 	struct FBox                                        Bounds;                                                   // 0x0080(0x001C) (CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x009C(0x0004) MISSED OFFSET
 	TArray<class USplineMeshComponent*>                LocalMeshComponents;                                      // 0x00A0(0x0010) (CPF_ExportObject, CPF_ZeroConstructor)
 
 	static UClass* StaticClass()
@@ -438,9 +452,11 @@ public:
 	float                                              Width;                                                    // 0x0040(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              SideFalloff;                                              // 0x0044(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              EndFalloff;                                               // 0x0048(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x004C(0x0004) MISSED OFFSET
 	TArray<struct FLandscapeSplineConnection>          ConnectedSegments;                                        // 0x0050(0x0010) (CPF_ZeroConstructor)
 	TArray<struct FLandscapeSplineInterpPoint>         Points;                                                   // 0x0060(0x0010) (CPF_ZeroConstructor)
 	struct FBox                                        Bounds;                                                   // 0x0070(0x001C) (CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x008C(0x0004) MISSED OFFSET
 	class UControlPointMeshComponent*                  LocalMeshComponent;                                       // 0x0090(0x0008) (CPF_ExportObject, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
 
 	static UClass* StaticClass()
@@ -492,6 +508,7 @@ class UMaterialExpressionLandscapeLayerCoords : public UMaterialExpression
 public:
 	TEnumAsByte<ETerrainCoordMappingType>              MappingType;                                              // 0x0060(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ELandscapeCustomizedCoordType>         CustomUVType;                                             // 0x0061(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0062(0x0002) MISSED OFFSET
 	float                                              MappingScale;                                             // 0x0064(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              MappingRotation;                                          // 0x0068(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              MappingPanU;                                              // 0x006C(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -533,6 +550,7 @@ public:
 	struct FExpressionInput                            LayerNotUsed;                                             // 0x0098(0x0038)
 	struct FName                                       ParameterName;                                            // 0x00D0(0x0008) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      PreviewUsed : 1;                                          // 0x00D8(0x0001) (CPF_Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x00D9(0x0003) MISSED OFFSET
 	struct FGuid                                       ExpressionGUID;                                           // 0x00DC(0x0010) (CPF_IsPlainOldData)
 
 	static UClass* StaticClass()

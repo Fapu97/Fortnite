@@ -1,10 +1,12 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
 #endif
+
+//#include "FN_OnlineSubsystem_structs.hpp"
 
 namespace SDK
 {
@@ -102,8 +104,9 @@ class AOnlineBeaconHost : public AOnlineBeacon
 {
 public:
 	int                                                ListenPort;                                               // 0x03B0(0x0004) (CPF_ZeroConstructor, CPF_Config, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x03B4(0x0004) MISSED OFFSET
 	TArray<class AOnlineBeaconClient*>                 ClientActors;                                             // 0x03B8(0x0010) (CPF_ZeroConstructor)
-	unsigned char                                      UnknownData00[0xA0];                                      // 0x03C8(0x00A0) MISSED OFFSET
+	unsigned char                                      UnknownData01[0xA0];                                      // 0x03C8(0x00A0) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -171,6 +174,7 @@ public:
 	class UPartyBeaconState*                           State;                                                    // 0x03B0(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      UnknownData00[0x148];                                     // 0x03B8(0x0148) MISSED OFFSET
 	unsigned char                                      bLogoutOnSessionTimeout : 1;                              // 0x0500(0x0001) (CPF_ZeroConstructor, CPF_Config, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0501(0x0003) MISSED OFFSET
 	float                                              SessionTimeoutSecs;                                       // 0x0504(0x0004) (CPF_ZeroConstructor, CPF_Transient, CPF_Config, CPF_IsPlainOldData)
 	float                                              TravelSessionTimeoutSecs;                                 // 0x0508(0x0004) (CPF_ZeroConstructor, CPF_Transient, CPF_Config, CPF_IsPlainOldData)
 
@@ -318,7 +322,7 @@ public:
 	}
 
 
-	class UEndMatchCallbackProxy* STATIC_EndMatch(class UObject* WorldContextObject, class APlayerController* PlayerController, const TScriptInterface<class UTurnBasedMatchInterface>& MatchActor, const struct FString& MatchID, TEnumAsByte<EMPMatchOutcome> LocalPlayerOutcome, TEnumAsByte<EMPMatchOutcome> OtherPlayersOutcome);
+	//class UEndMatchCallbackProxy* STATIC_EndMatch(class UObject* WorldContextObject, class APlayerController* PlayerController, const TScriptInterface<class UTurnBasedMatchInterface>& MatchActor, const struct FString& MatchID, TEnumAsByte<EMPMatchOutcome> LocalPlayerOutcome, TEnumAsByte<EMPMatchOutcome> OtherPlayersOutcome);
 };
 
 
@@ -469,8 +473,9 @@ class UIpNetDriver : public UNetDriver
 public:
 	unsigned char                                      LogPortUnreach : 1;                                       // 0x0408(0x0001) (CPF_Config)
 	unsigned char                                      AllowPlayerPortUnreach : 1;                               // 0x0408(0x0001) (CPF_Config)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0409(0x0003) MISSED OFFSET
 	uint32_t                                           MaxPortCountToTry;                                        // 0x040C(0x0004) (CPF_ZeroConstructor, CPF_Config, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData00[0x18];                                      // 0x0410(0x0018) MISSED OFFSET
+	unsigned char                                      UnknownData01[0x18];                                      // 0x0410(0x0018) MISSED OFFSET
 	uint32_t                                           ServerDesiredSocketReceiveBufferBytes;                    // 0x0428(0x0004) (CPF_ZeroConstructor, CPF_Config, CPF_IsPlainOldData)
 	uint32_t                                           ServerDesiredSocketSendBufferBytes;                       // 0x042C(0x0004) (CPF_ZeroConstructor, CPF_Config, CPF_IsPlainOldData)
 	uint32_t                                           ClientDesiredSocketReceiveBufferBytes;                    // 0x0430(0x0004) (CPF_ZeroConstructor, CPF_Config, CPF_IsPlainOldData)
@@ -638,6 +643,7 @@ class UOnlinePIESettings : public UDeveloperSettings
 {
 public:
 	unsigned char                                      bOnlinePIEEnabled : 1;                                    // 0x0038(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_Config, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0039(0x0007) MISSED OFFSET
 	TArray<struct FPIELoginSettingsInternal>           Logins;                                                   // 0x0040(0x0010) (CPF_Edit, CPF_ZeroConstructor, CPF_Config)
 
 	static UClass* StaticClass()
@@ -665,7 +671,7 @@ public:
 	}
 
 
-	class UQuitMatchCallbackProxy* STATIC_QuitMatch(class UObject* WorldContextObject, class APlayerController* PlayerController, const struct FString& MatchID, TEnumAsByte<EMPMatchOutcome> Outcome, int TurnTimeoutInSeconds);
+	//class UQuitMatchCallbackProxy* STATIC_QuitMatch(class UObject* WorldContextObject, class APlayerController* PlayerController, const struct FString& MatchID, TEnumAsByte<EMPMatchOutcome> Outcome, int TurnTimeoutInSeconds);
 };
 
 

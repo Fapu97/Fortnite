@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -52,6 +52,7 @@ struct ULoginScreen_C_RollbackToSplashScreen_Params
 // Function LoginScreen.LoginScreen_C.PopContentWidgetInternal
 struct ULoginScreen_C_PopContentWidgetInternal_Params
 {
+	struct FContentPushState*                          State;                                                    // (CPF_Parm)
 	class UWidget*                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm, CPF_IsPlainOldData)
 };
 
@@ -256,6 +257,7 @@ struct ULoginScreen_C_OnSplashScreenClosed_Params
 struct ULoginScreen_C_PushContentWidgetInternal_Params
 {
 	class UWidget**                                    Widget;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	struct FContentPushState*                          State;                                                    // (CPF_Parm)
 };
 
 // Function LoginScreen.LoginScreen_C.OnLogoutComplete

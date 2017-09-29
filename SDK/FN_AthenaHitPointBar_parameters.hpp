@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,17 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function AthenaHitPointBar.AthenaHitPointBar_C.UpdateDBNOState
+struct UAthenaHitPointBar_C_UpdateDBNOState_Params
+{
+	bool                                               bIsDBNO;                                                  // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AthenaHitPointBar.AthenaHitPointBar_C.UpdateHealthType
+struct UAthenaHitPointBar_C_UpdateHealthType_Params
+{
+};
 
 // Function AthenaHitPointBar.AthenaHitPointBar_C.UpdateVolatileForUpdate
 struct UAthenaHitPointBar_C_UpdateVolatileForUpdate_Params

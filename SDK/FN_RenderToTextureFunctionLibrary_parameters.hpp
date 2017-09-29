@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -30,7 +30,7 @@ struct URenderToTextureFunctionLibrary_C_Array_to_HLSL_Int_Array_Params
 {
 	TEnumAsByte<EIntTypes>                             Type;                                                     // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FString                                     Variable_Name;                                            // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReferenceParm)
-	TArray<int>                                        int;                                                      // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReferenceParm)
+	TArray<int>                                        int1;                                                      // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReferenceParm)
 	TArray<struct FVector2D>                           int2;                                                     // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReferenceParm)
 	TArray<struct FVector>                             int3;                                                     // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReferenceParm)
 	TArray<struct FLinearColor>                        int4;                                                     // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReferenceParm)

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -99,11 +99,13 @@ struct FCatalogKeyValue
 struct FCatalogItemPrice
 {
 	TEnumAsByte<EStoreCurrencyType>                    CurrencyType;                                             // 0x0000(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0001(0x0007) MISSED OFFSET
 	struct FString                                     CurrencySubType;                                          // 0x0008(0x0010) (CPF_Edit, CPF_ZeroConstructor)
 	int                                                RegularPrice;                                             // 0x0018(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                FinalPrice;                                               // 0x001C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FText                                       PriceTextOverride;                                        // 0x0020(0x0018)
 	TEnumAsByte<ECatalogSaleType>                      SaleType;                                                 // 0x0038(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x0039(0x0007) MISSED OFFSET
 	struct FDateTime                                   SaleExpiration;                                           // 0x0040(0x0008)
 };
 
@@ -113,6 +115,7 @@ struct FItemQuantity
 {
 	struct FString                                     TemplateId;                                               // 0x0000(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor)
 	int                                                Quantity;                                                 // 0x0010(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0014(0x0004) MISSED OFFSET
 	struct FJsonObjectWrapper                          Attributes;                                               // 0x0018(0x0020) (CPF_Edit, CPF_BlueprintVisible, CPF_BlueprintReadOnly)
 };
 
@@ -122,6 +125,7 @@ struct FCatalogDynamicBundleItem
 {
 	struct FItemQuantity                               Item;                                                     // 0x0000(0x0038) (CPF_Edit, CPF_DisableEditOnInstance)
 	unsigned char                                      bCanOwnMultiple : 1;                                      // 0x0038(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0039(0x0003) MISSED OFFSET
 	int                                                RegularPrice;                                             // 0x003C(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	int                                                DiscountedPrice;                                          // 0x0040(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	int                                                AlreadyOwnedPriceReduction;                               // 0x0044(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
@@ -135,8 +139,10 @@ struct FCatalogDynamicBundle
 {
 	int                                                BasePrice;                                                // 0x0000(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	TEnumAsByte<EStoreCurrencyType>                    CurrencyType;                                             // 0x0004(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
 	struct FString                                     CurrencySubType;                                          // 0x0008(0x0010) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 	TEnumAsByte<ECatalogSaleType>                      DisplayType;                                              // 0x0018(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x0019(0x0007) MISSED OFFSET
 	TArray<struct FCatalogDynamicBundleItem>           BundleItems;                                              // 0x0020(0x0010) (CPF_Edit, CPF_ZeroConstructor, CPF_DisableEditOnInstance)
 };
 
@@ -153,6 +159,7 @@ struct FCatalogMetaAssetInfo
 struct FCatalogOfferRequirement
 {
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) UNKNOWN PROPERTY: EnumProperty GameSubCatalog.CatalogOfferRequirement.RequirementType
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
 	int                                                MinQuantity;                                              // 0x0004(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FString                                     RequiredId;                                               // 0x0008(0x0010) (CPF_ZeroConstructor)
 };
@@ -164,6 +171,7 @@ struct FCatalogOffer
 	struct FString                                     OfferId;                                                  // 0x0000(0x0010) (CPF_Edit, CPF_ZeroConstructor, CPF_EditConst)
 	TArray<struct FCatalogKeyValue>                    MetaInfo;                                                 // 0x0010(0x0010) (CPF_Edit, CPF_ZeroConstructor)
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0020(0x0001) UNKNOWN PROPERTY: EnumProperty GameSubCatalog.CatalogOffer.OfferType
+	unsigned char                                      UnknownData01[0x7];                                       // 0x0021(0x0007) MISSED OFFSET
 	TArray<struct FCatalogItemPrice>                   Prices;                                                   // 0x0028(0x0010) (CPF_Edit, CPF_ZeroConstructor)
 	struct FCatalogDynamicBundle                       DynamicBundleInfo;                                        // 0x0038(0x0030) (CPF_Edit)
 	int                                                DailyLimit;                                               // 0x0068(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -207,6 +215,7 @@ struct FCatalogItemSalePrice
 {
 	int                                                SalePrice;                                                // 0x0000(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ECatalogSaleType>                      SaleType;                                                 // 0x0004(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0005(0x0003) MISSED OFFSET
 	struct FDateTime                                   StartTime;                                                // 0x0008(0x0008) (CPF_Edit)
 	struct FDateTime                                   EndTime;                                                  // 0x0010(0x0008) (CPF_Edit)
 };
@@ -218,6 +227,7 @@ struct FCatalogPurchaseInfo
 	struct FString                                     OfferId;                                                  // 0x0000(0x0010) (CPF_ZeroConstructor)
 	int                                                PurchaseQuantity;                                         // 0x0010(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<EStoreCurrencyType>                    Currency;                                                 // 0x0014(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0015(0x0003) MISSED OFFSET
 	struct FString                                     CurrencySubType;                                          // 0x0018(0x0010) (CPF_ZeroConstructor)
 	int                                                ExpectedPrice;                                            // 0x0028(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
@@ -227,6 +237,7 @@ struct FCatalogPurchaseInfo
 struct FCatalogReceiptInfo
 {
 	TEnumAsByte<EAppStore>                             AppStore;                                                 // 0x0000(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0001(0x0007) MISSED OFFSET
 	struct FString                                     AppStoreId;                                               // 0x0008(0x0010) (CPF_ZeroConstructor)
 	struct FString                                     ReceiptId;                                                // 0x0018(0x0010) (CPF_ZeroConstructor)
 	struct FString                                     ReceiptInfo;                                              // 0x0028(0x0010) (CPF_ZeroConstructor)

@@ -1,4 +1,4 @@
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -20161,6 +20161,24 @@ void APlayerState::OnRep_PlayerName()
 }
 
 
+// Function Engine.PlayerState.OnRep_PlayerId
+// (FUNC_Native, FUNC_Public)
+
+void APlayerState::OnRep_PlayerId()
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.PlayerState.OnRep_PlayerId");
+
+	APlayerState_OnRep_PlayerId_Params params;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
 // Function Engine.PlayerState.OnRep_bIsInactive
 // (FUNC_Native, FUNC_Public)
 
@@ -28074,6 +28092,48 @@ void UAudioComponent::SetPaused(bool bPause)
 
 	UAudioComponent_SetPaused_Params params;
 	params.bPause = bPause;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.AudioComponent.SetLowPassFilterFrequency
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_BlueprintCallable)
+// Parameters:
+// float                          InLowPassFilterFrequency       (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+
+void UAudioComponent::SetLowPassFilterFrequency(float InLowPassFilterFrequency)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.AudioComponent.SetLowPassFilterFrequency");
+
+	UAudioComponent_SetLowPassFilterFrequency_Params params;
+	params.InLowPassFilterFrequency = InLowPassFilterFrequency;
+
+	auto flags = fn->FunctionFlags;
+	fn->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(fn, &params);
+
+	fn->FunctionFlags = flags;
+}
+
+
+// Function Engine.AudioComponent.SetLowPassFilterEnabled
+// (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_BlueprintCallable)
+// Parameters:
+// bool                           InLowPassFilterEnabled         (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+
+void UAudioComponent::SetLowPassFilterEnabled(bool InLowPassFilterEnabled)
+{
+	static auto fn = UObject::FindObject<UFunction>("Function Engine.AudioComponent.SetLowPassFilterEnabled");
+
+	UAudioComponent_SetLowPassFilterEnabled_Params params;
+	params.InLowPassFilterEnabled = InLowPassFilterEnabled;
 
 	auto flags = fn->FunctionFlags;
 	fn->FunctionFlags |= 0x400;

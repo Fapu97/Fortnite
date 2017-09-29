@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -37,9 +37,11 @@ public:
 	float                                              Current_HP_Value;                                         // 0x02C0(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              Max_HP_Value;                                             // 0x02C4(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              Last_HP_Value;                                            // 0x02C8(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x02CC(0x0004) MISSED OFFSET
 	struct FTimerHandle                                HP_FadeTimer;                                             // 0x02D0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	float                                              HP_FadeUpdateRate;                                        // 0x02D8(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData00[0x1];                                       // 0x02DC(0x0001) UNKNOWN PROPERTY: EnumProperty BuildingBar.BuildingBar_C.DisplayMode
+	unsigned char                                      UnknownData01[0x1];                                       // 0x02DC(0x0001) UNKNOWN PROPERTY: EnumProperty BuildingBar.BuildingBar_C.DisplayMode
+	unsigned char                                      UnknownData02[0x3];                                       // 0x02DD(0x0003) MISSED OFFSET
 	int                                                Max_Durability_Value;                                     // 0x02E0(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	int                                                Current_Durability_Value;                                 // 0x02E4(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FLinearColor                                Default_Baseplate_Color;                                  // 0x02E8(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_IsPlainOldData)
@@ -51,6 +53,7 @@ public:
 	struct FLinearColor                                Alternate_HP_Color_B;                                     // 0x0348(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_IsPlainOldData)
 	struct FLinearColor                                Alternate_HP_Color_C;                                     // 0x0358(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_IsPlainOldData)
 	unsigned char                                      Show_Trap_Durability_Text : 1;                            // 0x0368(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x7];                                       // 0x0369(0x0007) MISSED OFFSET
 	class UFortItem*                                   TemporaryTrapInstance;                                    // 0x0370(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 
 	static UClass* StaticClass()

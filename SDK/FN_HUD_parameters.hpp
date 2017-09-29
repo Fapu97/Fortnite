@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -37,6 +37,7 @@ struct UHUD_C_OnManagementTabSelected_Params
 // Function HUD.HUD_C.PopContentWidgetInternal
 struct UHUD_C_PopContentWidgetInternal_Params
 {
+	struct FContentPushState*                          State;                                                    // (CPF_Parm)
 	class UWidget*                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm, CPF_IsPlainOldData)
 };
 
@@ -206,6 +207,7 @@ struct UHUD_C_EndOfDayRecapEnded_Params
 struct UHUD_C_PushContentWidgetInternal_Params
 {
 	class UWidget**                                    Widget;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	struct FContentPushState*                          State;                                                    // (CPF_Parm)
 };
 
 // Function HUD.HUD_C.Destruct

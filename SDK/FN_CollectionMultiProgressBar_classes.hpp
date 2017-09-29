@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -28,10 +28,12 @@ public:
 	TArray<struct FCollectionMissionBadgeDisplayInfo>  BarInfos;                                                 // 0x0278(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor)
 	struct FProgressBarStyle                           ProgressBarsStyle;                                        // 0x0288(0x01B8) (CPF_Edit, CPF_BlueprintVisible)
 	unsigned char                                      bOnlyShowBarWithCountInRange : 1;                         // 0x0440(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0441(0x0007) MISSED OFFSET
 	struct FSlateBrush                                 IconBrush;                                                // 0x0448(0x0090) (CPF_Edit, CPF_BlueprintVisible)
 	TEnumAsByte<EFortBrushSize>                        IconSize;                                                 // 0x04D8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bShowBarTopIcons : 1;                                     // 0x04D9(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bShowBarSideIcons : 1;                                    // 0x04DA(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x1];                                       // 0x04DB(0x0001) MISSED OFFSET
 	struct FMargin                                     BarsMargin;                                               // 0x04DC(0x0010) (CPF_Edit, CPF_BlueprintVisible)
 	struct FMargin                                     BarsIconMargin;                                           // 0x04EC(0x0010) (CPF_Edit, CPF_BlueprintVisible)
 	float                                              BarHeightFactor;                                          // 0x04FC(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)

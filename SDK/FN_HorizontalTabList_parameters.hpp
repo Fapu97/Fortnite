@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -39,13 +39,6 @@ struct UHorizontalTabList_C_Handle_OnInputMethodChanged_Params
 	bool                                               bUsingGamepad;                                            // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
-// Function HorizontalTabList.HorizontalTabList_C.HandleTabCreated
-struct UHorizontalTabList_C_HandleTabCreated_Params
-{
-	struct FName*                                      TabNameID;                                                // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
-	class UCommonButton**                              TabButton;                                                // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
-};
-
 // Function HorizontalTabList.HorizontalTabList_C.PreConstruct
 struct UHorizontalTabList_C_PreConstruct_Params
 {
@@ -55,6 +48,13 @@ struct UHorizontalTabList_C_PreConstruct_Params
 // Function HorizontalTabList.HorizontalTabList_C.Previous Visibility
 struct UHorizontalTabList_C_Previous_Visibility_Params
 {
+};
+
+// Function HorizontalTabList.HorizontalTabList_C.HandleTabCreated
+struct UHorizontalTabList_C_HandleTabCreated_Params
+{
+	struct FName*                                      TabNameID;                                                // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	class UCommonButton**                              TabButton;                                                // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
 // Function HorizontalTabList.HorizontalTabList_C.CustomEvent_1

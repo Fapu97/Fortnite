@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -78,6 +78,7 @@ struct FMovieSceneCameraShakeSectionData
 	class UClass*                                      ShakeClass;                                               // 0x0000(0x0008) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              PlayScale;                                                // 0x0008(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ECameraAnimPlaySpace>                  PlaySpace;                                                // 0x000C(0x0001) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x000D(0x0003) MISSED OFFSET
 	struct FRotator                                    UserDefinedPlaySpace;                                     // 0x0010(0x000C) (CPF_Edit, CPF_IsPlainOldData)
 };
 
@@ -110,6 +111,7 @@ struct FScalarParameterNameAndCurve
 {
 	struct FName                                       ParameterName;                                            // 0x0000(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                Index;                                                    // 0x0008(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) MISSED OFFSET
 	struct FRichCurve                                  ParameterCurve;                                           // 0x0010(0x0070)
 };
 
@@ -119,6 +121,7 @@ struct FVectorParameterNameAndCurves
 {
 	struct FName                                       ParameterName;                                            // 0x0000(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                Index;                                                    // 0x0008(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) MISSED OFFSET
 	struct FRichCurve                                  XCurve;                                                   // 0x0010(0x0070)
 	struct FRichCurve                                  YCurve;                                                   // 0x0080(0x0070)
 	struct FRichCurve                                  ZCurve;                                                   // 0x00F0(0x0070)
@@ -130,6 +133,7 @@ struct FColorParameterNameAndCurves
 {
 	struct FName                                       ParameterName;                                            // 0x0000(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                Index;                                                    // 0x0008(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x000C(0x0004) MISSED OFFSET
 	struct FRichCurve                                  RedCurve;                                                 // 0x0010(0x0070)
 	struct FRichCurve                                  GreenCurve;                                               // 0x0080(0x0070)
 	struct FRichCurve                                  BlueCurve;                                                // 0x00F0(0x0070)
@@ -145,6 +149,7 @@ struct FMovieSceneSkeletalAnimationParams
 	float                                              EndOffset;                                                // 0x000C(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              PlayRate;                                                 // 0x0010(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bReverse : 1;                                             // 0x0014(0x0001) (CPF_Edit)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0015(0x0003) MISSED OFFSET
 	struct FName                                       SlotName;                                                 // 0x0018(0x0008) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FRichCurve                                  Weight;                                                   // 0x0020(0x0070) (CPF_Edit)
 };
@@ -260,6 +265,7 @@ struct FMovieScene3DPathSectionTemplate : public FMovieSceneEvalTemplate
 	struct FRichCurve                                  TimingCurve;                                              // 0x0028(0x0070)
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0098(0x0001) UNKNOWN PROPERTY: EnumProperty MovieSceneTracks.MovieScene3DPathSectionTemplate.FrontAxisEnum
 	unsigned char                                      UnknownData01[0x1];                                       // 0x0099(0x0001) UNKNOWN PROPERTY: EnumProperty MovieSceneTracks.MovieScene3DPathSectionTemplate.UpAxisEnum
+	unsigned char                                      UnknownData02[0x2];                                       // 0x009A(0x0002) MISSED OFFSET
 	unsigned char                                      bFollow : 1;                                              // 0x009C(0x0001)
 	unsigned char                                      bReverse : 1;                                             // 0x009C(0x0001)
 	unsigned char                                      bForceUpright : 1;                                        // 0x009C(0x0001)
@@ -290,6 +296,7 @@ struct FMovieSceneAudioSectionTemplateData
 	class USoundBase*                                  Sound;                                                    // 0x0000(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              AudioStartOffset;                                         // 0x0008(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FFloatRange                                 AudioRange;                                               // 0x000C(0x0010)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x001C(0x0004) MISSED OFFSET
 	struct FRichCurve                                  AudioPitchMultiplierCurve;                                // 0x0020(0x0070)
 	struct FRichCurve                                  AudioVolumeCurve;                                         // 0x0090(0x0070)
 	int                                                RowIndex;                                                 // 0x0100(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -378,6 +385,7 @@ struct FMovieSceneLevelVisibilitySharedTrack : public FMovieSceneEvalTemplate
 struct FMovieSceneLevelVisibilitySectionTemplate : public FMovieSceneEvalTemplate
 {
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0018(0x0001) UNKNOWN PROPERTY: EnumProperty MovieSceneTracks.MovieSceneLevelVisibilitySectionTemplate.Visibility
+	unsigned char                                      UnknownData01[0x7];                                       // 0x0019(0x0007) MISSED OFFSET
 	TArray<struct FName>                               LevelNames;                                               // 0x0020(0x0010) (CPF_ZeroConstructor)
 };
 

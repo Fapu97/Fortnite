@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -56,11 +56,12 @@ class UGeometryCacheComponent : public UMeshComponent
 public:
 	unsigned char                                      bRunning : 1;                                             // 0x0780(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bLooping : 1;                                             // 0x0781(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x2];                                       // 0x0782(0x0002) MISSED OFFSET
 	float                                              StartTimeOffset;                                          // 0x0784(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              PlaybackSpeed;                                            // 0x0788(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                NumTracks;                                                // 0x078C(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_EditConst, CPF_IsPlainOldData)
 	float                                              ElapsedTime;                                              // 0x0790(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_EditConst, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData00[0x5C];                                      // 0x0794(0x005C) MISSED OFFSET
+	unsigned char                                      UnknownData01[0x5C];                                      // 0x0794(0x005C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

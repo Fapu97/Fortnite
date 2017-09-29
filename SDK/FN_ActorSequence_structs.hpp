@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -32,7 +32,9 @@ enum class EActorSequenceObjectReferenceType
 struct FActorSequenceObjectReference
 {
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) UNKNOWN PROPERTY: EnumProperty ActorSequence.ActorSequenceObjectReference.Type
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0001(0x0003) MISSED OFFSET
 	struct FGuid                                       ActorId;                                                  // 0x0004(0x0010) (CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0014(0x0004) MISSED OFFSET
 	struct FString                                     PathToComponent;                                          // 0x0018(0x0010) (CPF_ZeroConstructor)
 };
 

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -53,6 +53,7 @@ struct UCinematic_C_ClearMovieSlot_Params
 // Function Cinematic.Cinematic_C.PopContentWidgetInternal
 struct UCinematic_C_PopContentWidgetInternal_Params
 {
+	struct FContentPushState*                          State;                                                    // (CPF_Parm)
 	class UWidget*                                     ReturnValue;                                              // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_ReturnParm, CPF_IsPlainOldData)
 };
 
@@ -110,6 +111,7 @@ struct UCinematic_C_HandleClientEvent_SkipCinematic_Params
 struct UCinematic_C_PushContentWidgetInternal_Params
 {
 	class UWidget**                                    Widget;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	struct FContentPushState*                          State;                                                    // (CPF_Parm)
 };
 
 // Function Cinematic.Cinematic_C.OnEnterState

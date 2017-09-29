@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -5940,6 +5940,11 @@ struct APlayerState_OnRep_PlayerName_Params
 {
 };
 
+// Function Engine.PlayerState.OnRep_PlayerId
+struct APlayerState_OnRep_PlayerId_Params
+{
+};
+
 // Function Engine.PlayerState.OnRep_bIsInactive
 struct APlayerState_OnRep_bIsInactive_Params
 {
@@ -8302,6 +8307,18 @@ struct UAudioComponent_SetPitchMultiplier_Params
 struct UAudioComponent_SetPaused_Params
 {
 	bool                                               bPause;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function Engine.AudioComponent.SetLowPassFilterFrequency
+struct UAudioComponent_SetLowPassFilterFrequency_Params
+{
+	float                                              InLowPassFilterFrequency;                                 // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function Engine.AudioComponent.SetLowPassFilterEnabled
+struct UAudioComponent_SetLowPassFilterEnabled_Params
+{
+	bool                                               InLowPassFilterEnabled;                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
 // Function Engine.AudioComponent.SetIntParameter

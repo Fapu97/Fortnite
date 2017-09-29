@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -44,9 +44,10 @@ public:
 	int                                                FullProfileQueryQueued;                                   // 0x0110(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bShouldCreateInstances : 1;                               // 0x0114(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bProfileWriteLocked : 1;                                  // 0x0115(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x2];                                       // 0x0116(0x0002) MISSED OFFSET
 	struct FDateTime                                   ProfileWriteLockExpireTime;                               // 0x0118(0x0008)
 	int                                                CommandRevision;                                          // 0x0120(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData02[0x18C];                                     // 0x0124(0x018C) MISSED OFFSET
+	unsigned char                                      UnknownData03[0x18C];                                     // 0x0124(0x018C) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{
@@ -85,24 +86,28 @@ class UMcpProfileGroup : public UObject
 public:
 	unsigned char                                      UnknownData00[0x50];                                      // 0x0028(0x0050) MISSED OFFSET
 	int                                                DelayMcpResults;                                          // 0x0078(0x0004) (CPF_ZeroConstructor, CPF_Config, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x007C(0x0004) MISSED OFFSET
 	TArray<struct FProfileEntry>                       ProfileList;                                              // 0x0080(0x0010) (CPF_ZeroConstructor)
 	unsigned char                                      bIsInitialized : 1;                                       // 0x0090(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x7];                                       // 0x0091(0x0007) MISSED OFFSET
 	struct FString                                     PlayerName;                                               // 0x0098(0x0010) (CPF_ZeroConstructor)
 	unsigned char                                      bIsServer : 1;                                            // 0x00A8(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x7];                                       // 0x00A9(0x0007) MISSED OFFSET
 	struct FString                                     ProfileNotificationsStompTopic;                           // 0x00B0(0x0010) (CPF_ZeroConstructor, CPF_Config)
-	unsigned char                                      UnknownData01[0x40];                                      // 0x00C0(0x0040) MISSED OFFSET
+	unsigned char                                      UnknownData04[0x40];                                      // 0x00C0(0x0040) MISSED OFFSET
 	struct FString                                     LastMcpVersion;                                           // 0x0100(0x0010) (CPF_ZeroConstructor)
 	struct FString                                     LastContentVersion;                                       // 0x0110(0x0010) (CPF_ZeroConstructor)
 	struct FTimespan                                   LocalTimeOffset;                                          // 0x0120(0x0008)
 	TArray<struct FProfileHttpRequest>                 PendingRequests;                                          // 0x0128(0x0010) (CPF_ZeroConstructor)
-	unsigned char                                      UnknownData02[0x10];                                      // 0x0138(0x0010) MISSED OFFSET
+	unsigned char                                      UnknownData05[0x10];                                      // 0x0138(0x0010) MISSED OFFSET
 	unsigned char                                      bIsProcessingRequestGenerator : 1;                        // 0x0148(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData06[0x7];                                       // 0x0149(0x0007) MISSED OFFSET
 	struct FString                                     LockCode;                                                 // 0x0150(0x0010) (CPF_ZeroConstructor)
 	TArray<class UMcpProfile*>                         LockedProfiles;                                           // 0x0160(0x0010) (CPF_ZeroConstructor)
 	struct FString                                     LockedProfilesString;                                     // 0x0170(0x0010) (CPF_ZeroConstructor)
 	int                                                ProfileWriteLockTimeoutSecs;                              // 0x0180(0x0004) (CPF_ZeroConstructor, CPF_Config, CPF_IsPlainOldData)
 	unsigned char                                      bSubscribedToNotifications : 1;                           // 0x0184(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData03[0xB];                                       // 0x0185(0x000B) MISSED OFFSET
+	unsigned char                                      UnknownData07[0xB];                                       // 0x0185(0x000B) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

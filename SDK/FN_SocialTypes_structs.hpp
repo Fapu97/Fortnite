@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -102,6 +102,7 @@ struct FChatStyle
 	struct FSlateBrush                                 MessageNotificationBrush;                                 // 0x1328(0x0090) (CPF_Edit)
 	struct FMargin                                     ChatEntryPadding;                                         // 0x13B8(0x0010) (CPF_Edit)
 	float                                              ChatEntryHeight;                                          // 0x13C8(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x13CC(0x0004) MISSED OFFSET
 	struct FSlateBrush                                 ChatMenuBackgroundBrush;                                  // 0x13D0(0x0090) (CPF_Edit)
 	struct FMargin                                     FriendActionPadding;                                      // 0x1460(0x0010) (CPF_Edit)
 	struct FMargin                                     FriendActionHeaderPadding;                                // 0x1470(0x0010) (CPF_Edit)
@@ -243,6 +244,7 @@ struct FSocialStyle
 	struct FChatChromeStyle                            ChatChromeStyle;                                          // 0x5E20(0x0850) (CPF_Edit)
 	struct FChatChromeMargins                          ChatChromeMargins;                                        // 0x6670(0x0064) (CPF_Edit)
 	struct FChatChromeColorScheme                      ChatChromeColorScheme;                                    // 0x66D4(0x0050) (CPF_Edit)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x6724(0x0004) MISSED OFFSET
 	struct FChatMarkupStyle                            ChatMarkupStyle;                                          // 0x6728(0x0670) (CPF_Edit)
 	struct FSocialSoundSchema                          SoundSchema;                                              // 0x6D98(0x0048) (CPF_Edit)
 };

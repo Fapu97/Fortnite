@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -37,6 +37,11 @@ struct UAthenaGameOverScreen_C_Construct_Params
 
 // Function AthenaGameOverScreen.AthenaGameOverScreen_C.Clear GameOver Screen
 struct UAthenaGameOverScreen_C_Clear_GameOver_Screen_Params
+{
+};
+
+// Function AthenaGameOverScreen.AthenaGameOverScreen_C.On Team Won
+struct UAthenaGameOverScreen_C_On_Team_Won_Params
 {
 };
 

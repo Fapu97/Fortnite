@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -34,6 +34,11 @@ struct UStatusWidget_C_SetTitleText_Params
 
 // Function StatusWidget.StatusWidget_C.Construct
 struct UStatusWidget_C_Construct_Params
+{
+};
+
+// Function StatusWidget.StatusWidget_C.Destruct
+struct UStatusWidget_C_Destruct_Params
 {
 };
 

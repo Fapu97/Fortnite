@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -25,6 +25,7 @@ public:
 	struct FFortMultiSizeFont                          MultiSizeFont;                                            // 0x05B8(0x0270) (CPF_Edit, CPF_BlueprintVisible)
 	struct FFortMultiSizeMargin                        MultiSizeMargin;                                          // 0x0828(0x0060) (CPF_Edit, CPF_BlueprintVisible)
 	TEnumAsByte<EFortBrushSize>                        Brush_Size;                                               // 0x0888(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0889(0x0003) MISSED OFFSET
 	int                                                Count;                                                    // 0x088C(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      AlwaysVisible : 1;                                        // 0x0890(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      TruncateValue : 1;                                        // 0x0891(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)

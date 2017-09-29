@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -57,12 +57,6 @@ public:
 	static UClass* FindClass(const std::string& name)
 	{
 		return FindObject<UClass>(name);
-	}
-
-	template<typename T>
-	static T* GetObjectCasted(std::size_t index)
-	{
-		return static_cast<T*>(GetGlobalObjects().GetByIndex(index));
 	}
 
 	bool IsA(UClass* cmp) const;

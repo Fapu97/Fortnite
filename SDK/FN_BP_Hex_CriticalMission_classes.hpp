@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -17,6 +17,7 @@ namespace SDK
 class ABP_Hex_CriticalMission_C : public ABP_Hex_PARENT_C
 {
 public:
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0724(0x0004) MISSED OFFSET
 	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x0728(0x0008) (CPF_Transient, CPF_DuplicateTransient)
 	class UParticleSystemComponent*                    P_QuickplaySmoke;                                         // 0x0730(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UParticleSystemComponent*                    Particle03;                                               // 0x0738(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -34,10 +35,12 @@ public:
 	float                                              Rotate_MPCRotation_0011687F41B08479D913F5901B8B4F9D;      // 0x0798(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	float                                              Rotate_MeshRotation_0011687F41B08479D913F5901B8B4F9D;     // 0x079C(0x0004) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ETimelineDirection>                    Rotate__Direction_0011687F41B08479D913F5901B8B4F9D;       // 0x07A0(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x7];                                       // 0x07A1(0x0007) MISSED OFFSET
 	class UTimelineComponent*                          Rotate;                                                   // 0x07A8(0x0008) (CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TArray<class ABP_Hex_PARENT_C*>                    ActiveTilesArray;                                         // 0x07B0(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnTemplate, CPF_DisableEditOnInstance)
 	class UMaterialInstanceDynamic*                    RadarWireMID;                                             // 0x07C0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	float                                              CloudHeightZ;                                             // 0x07C8(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x07CC(0x0004) MISSED OFFSET
 	class UMaterialInstanceDynamic*                    DM_Cloud01;                                               // 0x07D0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	class UMaterialInstanceDynamic*                    DM_Cloud02;                                               // 0x07D8(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FVector                                     CloudLightVector;                                         // 0x07E0(0x000C) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)

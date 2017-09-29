@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -39,6 +39,7 @@ public:
 	struct FSlateBrush                                 StatIcon;                                                 // 0x03C8(0x0090) (CPF_Edit, CPF_BlueprintVisible)
 	struct FSlateBrush                                 NormalBorderStyle;                                        // 0x0458(0x0090) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	unsigned char                                      Indent : 1;                                               // 0x04E8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x04E9(0x0007) MISSED OFFSET
 	struct FText                                       OverrideStateName;                                        // 0x04F0(0x0018) (CPF_Edit, CPF_BlueprintVisible)
 
 	static UClass* StaticClass()

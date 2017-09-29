@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,12 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function AmbientControllerComponent_Athena.AmbientControllerComponent_Athena_C.SetTargetLPFFreq
+struct UAmbientControllerComponent_Athena_C_SetTargetLPFFreq_Params
+{
+	float                                              Target;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
 
 // Function AmbientControllerComponent_Athena.AmbientControllerComponent_Athena_C.SetIndoorMixEnabled
 struct UAmbientControllerComponent_Athena_C_SetIndoorMixEnabled_Params
@@ -66,6 +72,28 @@ struct UAmbientControllerComponent_Athena_C_On_Day_Phase_Change_Params
 	TEnumAsByte<EFortDayPhase>                         CurrentDayPhase;                                          // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<EFortDayPhase>                         PreviousDayPhase;                                         // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	bool                                               bAtCreation;                                              // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AmbientControllerComponent_Athena.AmbientControllerComponent_Athena_C.ReceiveTick
+struct UAmbientControllerComponent_Athena_C_ReceiveTick_Params
+{
+	float*                                             DeltaSeconds;                                             // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function AmbientControllerComponent_Athena.AmbientControllerComponent_Athena_C.On Game Phase Change
+struct UAmbientControllerComponent_Athena_C_On_Game_Phase_Change_Params
+{
+};
+
+// Function AmbientControllerComponent_Athena.AmbientControllerComponent_Athena_C.On Game Phase Step Change
+struct UAmbientControllerComponent_Athena_C_On_Game_Phase_Step_Change_Params
+{
+};
+
+// Function AmbientControllerComponent_Athena.AmbientControllerComponent_Athena_C.Set Storm Amb Layer Enabled
+struct UAmbientControllerComponent_Athena_C_Set_Storm_Amb_Layer_Enabled_Params
+{
+	bool                                               Enabled;                                                  // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
 // Function AmbientControllerComponent_Athena.AmbientControllerComponent_Athena_C.ExecuteUbergraph_AmbientControllerComponent_Athena

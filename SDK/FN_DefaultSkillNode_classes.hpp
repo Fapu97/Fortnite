@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -26,6 +26,7 @@ public:
 	struct FTimerHandle                                SelectionGlowTimerHandle;                                 // 0x08F0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	struct FSkillTreePageColors                        PageColors;                                               // 0x08F8(0x00C0) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	TEnumAsByte<ESkillTreePages>                       Pages;                                                    // 0x09B8(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x09B9(0x0003) MISSED OFFSET
 	struct FSkillTreeGroupColors                       GroupColors;                                              // 0x09BC(0x0054) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance)
 	TEnumAsByte<ESkillTreeGroups>                      Groups;                                                   // 0x0A10(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 

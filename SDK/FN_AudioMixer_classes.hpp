@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -101,14 +101,15 @@ public:
 	unsigned char                                      bStopWhenOwnerDestroyed : 1;                              // 0x0290(0x0001)
 	unsigned char                                      bAllowSpatialization : 1;                                 // 0x0290(0x0001) (CPF_Edit, CPF_BlueprintVisible)
 	unsigned char                                      bOverrideAttenuation : 1;                                 // 0x0290(0x0001) (CPF_Edit, CPF_BlueprintVisible)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0291(0x0007) MISSED OFFSET
 	class USoundAttenuation*                           AttenuationSettings;                                      // 0x0298(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FSoundAttenuationSettings                   AttenuationOverrides;                                     // 0x02A0(0x0120) (CPF_Edit, CPF_BlueprintVisible)
 	class USoundConcurrency*                           ConcurrencySettings;                                      // 0x03C0(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class USoundClass*                                 SoundClass;                                               // 0x03C8(0x0008) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData00[0x8];                                       // 0x03D0(0x0008) MISSED OFFSET
+	unsigned char                                      UnknownData01[0x8];                                       // 0x03D0(0x0008) MISSED OFFSET
 	class USynthSound*                                 Synth;                                                    // 0x03D8(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	class UAudioComponent*                             AudioComponent;                                           // 0x03E0(0x0008) (CPF_ExportObject, CPF_ZeroConstructor, CPF_InstancedReference, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData01[0x38];                                      // 0x03E8(0x0038) MISSED OFFSET
+	unsigned char                                      UnknownData02[0x38];                                      // 0x03E8(0x0038) MISSED OFFSET
 
 	static UClass* StaticClass()
 	{

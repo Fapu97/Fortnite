@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -339,16 +339,20 @@ struct FSlateBrush
 	unsigned char                                      UnknownData00[0x8];                                       // 0x0000(0x0008) MISSED OFFSET
 	struct FVector2D                                   ImageSize;                                                // 0x0008(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_IsPlainOldData)
 	TEnumAsByte<ESlateBrushDrawType>                   DrawAs;                                                   // 0x0010(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x3];                                       // 0x0011(0x0003) MISSED OFFSET
 	struct FMargin                                     Margin;                                                   // 0x0014(0x0010) (CPF_Edit, CPF_BlueprintVisible)
 	struct FLinearColor                                Tint;                                                     // 0x0024(0x0010) (CPF_Deprecated, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData02[0x4];                                       // 0x0034(0x0004) MISSED OFFSET
 	struct FSlateColor                                 TintColor;                                                // 0x0038(0x0028) (CPF_Edit, CPF_BlueprintVisible)
 	TEnumAsByte<ESlateBrushTileType>                   Tiling;                                                   // 0x0060(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ESlateBrushMirrorType>                 Mirroring;                                                // 0x0061(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	TEnumAsByte<ESlateBrushImageType>                  ImageType;                                                // 0x0062(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData03[0x5];                                       // 0x0063(0x0005) MISSED OFFSET
 	class UObject*                                     ResourceObject;                                           // 0x0068(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FName                                       ResourceName;                                             // 0x0070(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bIsDynamicallyLoaded : 1;                                 // 0x0078(0x0001) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 	unsigned char                                      bHasUObject : 1;                                          // 0x0079(0x0001) (CPF_ZeroConstructor, CPF_Deprecated, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData04[0x2];                                       // 0x007A(0x0002) MISSED OFFSET
 	struct FBox2D                                      UVRegion;                                                 // 0x007C(0x0014)
 };
 
@@ -378,6 +382,7 @@ struct FPointerEvent : public FInputEvent
 struct FFontOutlineSettings
 {
 	int                                                OutlineSize;                                              // 0x0000(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x0004(0x0004) MISSED OFFSET
 	class UObject*                                     OutlineMaterial;                                          // 0x0008(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FLinearColor                                OutlineColor;                                             // 0x0010(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_IsPlainOldData)
 	unsigned char                                      bSeparateFillAlpha : 1;                                   // 0x0020(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
@@ -393,8 +398,9 @@ struct FSlateFontInfo
 	unsigned char                                      UnknownData00[0x10];                                      // 0x0038(0x0010) MISSED OFFSET
 	struct FName                                       TypefaceFontName;                                         // 0x0048(0x0008) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	int                                                Size;                                                     // 0x0050(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData01[0x4];                                       // 0x0054(0x0004) MISSED OFFSET
 	struct FName                                       FontName;                                                 // 0x0058(0x0008) (CPF_ZeroConstructor, CPF_Deprecated, CPF_IsPlainOldData)
-	unsigned char                                      UnknownData01[0x1];                                       // 0x0060(0x0001) UNKNOWN PROPERTY: EnumProperty SlateCore.SlateFontInfo.Hinting
+	unsigned char                                      UnknownData02[0x1];                                       // 0x0060(0x0001) UNKNOWN PROPERTY: EnumProperty SlateCore.SlateFontInfo.Hinting
 };
 
 // ScriptStruct SlateCore.SlateWidgetStyle
@@ -589,6 +595,7 @@ struct FFontData
 	struct FString                                     FontFilename;                                             // 0x0000(0x0010) (CPF_ZeroConstructor)
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0010(0x0001) UNKNOWN PROPERTY: EnumProperty SlateCore.FontData.Hinting
 	unsigned char                                      UnknownData01[0x1];                                       // 0x0011(0x0001) UNKNOWN PROPERTY: EnumProperty SlateCore.FontData.LoadingPolicy
+	unsigned char                                      UnknownData02[0x6];                                       // 0x0012(0x0006) MISSED OFFSET
 	class UObject*                                     FontFaceAsset;                                            // 0x0018(0x0008) (CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
@@ -676,6 +683,7 @@ struct FDockTabStyle : public FSlateWidgetStyle
 	struct FSlateBrush                                 TabWellBrush;                                             // 0x0610(0x0090) (CPF_Edit)
 	struct FMargin                                     TabPadding;                                               // 0x06A0(0x0010) (CPF_Edit)
 	float                                              OverlapWidth;                                             // 0x06B0(0x0004) (CPF_Edit, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x4];                                       // 0x06B4(0x0004) MISSED OFFSET
 	struct FSlateColor                                 FlashColor;                                               // 0x06B8(0x0028) (CPF_Edit)
 };
 
@@ -798,6 +806,7 @@ struct FHyperlinkStyle : public FSlateWidgetStyle
 struct FCheckBoxStyle : public FSlateWidgetStyle
 {
 	TEnumAsByte<ESlateCheckBoxType>                    CheckBoxType;                                             // 0x0008(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x7];                                       // 0x0009(0x0007) MISSED OFFSET
 	struct FSlateBrush                                 UncheckedImage;                                           // 0x0010(0x0090) (CPF_Edit, CPF_BlueprintVisible)
 	struct FSlateBrush                                 UncheckedHoveredImage;                                    // 0x00A0(0x0090) (CPF_Edit, CPF_BlueprintVisible)
 	struct FSlateBrush                                 UncheckedPressedImage;                                    // 0x0130(0x0090) (CPF_Edit, CPF_BlueprintVisible)

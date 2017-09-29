@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -22,6 +22,12 @@ struct AAthena_PlayerController_C_UserConstructionScript_Params
 // Function Athena_PlayerController.Athena_PlayerController_C.ReceiveBeginPlay
 struct AAthena_PlayerController_C_ReceiveBeginPlay_Params
 {
+};
+
+// Function Athena_PlayerController.Athena_PlayerController_C.ReceiveTick
+struct AAthena_PlayerController_C_ReceiveTick_Params
+{
+	float*                                             DeltaSeconds;                                             // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };
 
 // Function Athena_PlayerController.Athena_PlayerController_C.PlayWinEffects

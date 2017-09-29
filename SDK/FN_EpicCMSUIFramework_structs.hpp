@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -50,6 +50,7 @@ struct FTileDefinition
 	struct FString                                     GroupID;                                                  // 0x0050(0x0010) (CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor)
 	struct FDateTime                                   Countdown;                                                // 0x0060(0x0008) (CPF_BlueprintVisible, CPF_BlueprintReadOnly)
 	unsigned char                                      UnknownData00[0x1];                                       // 0x0068(0x0001) UNKNOWN PROPERTY: EnumProperty EpicCMSUIFramework.TileDefinition.CountdownType
+	unsigned char                                      UnknownData01[0x7];                                       // 0x0069(0x0007) MISSED OFFSET
 	struct FString                                     MediaUrl;                                                 // 0x0070(0x0010) (CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor)
 	unsigned char                                      IsVisible : 1;                                            // 0x0080(0x0001) (CPF_BlueprintVisible, CPF_BlueprintReadOnly, CPF_ZeroConstructor, CPF_IsPlainOldData)
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -34,6 +34,7 @@ public:
 	void HandleRevived();
 	void Construct();
 	void Clear_GameOver_Screen();
+	void On_Team_Won();
 	void ExecuteUbergraph_AthenaGameOverScreen(int EntryPoint);
 };
 

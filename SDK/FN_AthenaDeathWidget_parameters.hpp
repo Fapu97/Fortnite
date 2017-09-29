@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,13 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function AthenaDeathWidget.AthenaDeathWidget_C.AnyTeamMembersStillAlive
+struct UAthenaDeathWidget_C_AnyTeamMembersStillAlive_Params
+{
+	class AFortPlayerControllerAthena*                 PlayerController;                                         // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	bool                                               AnyAlive;                                                 // (CPF_Parm, CPF_OutParm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
 
 // Function AthenaDeathWidget.AthenaDeathWidget_C.OnWinnerAnnounced
 struct UAthenaDeathWidget_C_OnWinnerAnnounced_Params
@@ -41,15 +48,25 @@ struct UAthenaDeathWidget_C_OnPawnDied_Params
 	struct FFortPlayerDeathReport                      DeathReport;                                              // (CPF_Parm, CPF_OutParm, CPF_ReferenceParm)
 };
 
+// Function AthenaDeathWidget.AthenaDeathWidget_C.OnActivated
+struct UAthenaDeathWidget_C_OnActivated_Params
+{
+};
+
+// Function AthenaDeathWidget.AthenaDeathWidget_C.Construct
+struct UAthenaDeathWidget_C_Construct_Params
+{
+};
+
+// Function AthenaDeathWidget.AthenaDeathWidget_C.On Kill Feed Updated
+struct UAthenaDeathWidget_C_On_Kill_Feed_Updated_Params
+{
+};
+
 // Function AthenaDeathWidget.AthenaDeathWidget_C.BndEvt__LeaveButton_K2Node_ComponentBoundEvent_76_CommonButtonClicked__DelegateSignature
 struct UAthenaDeathWidget_C_BndEvt__LeaveButton_K2Node_ComponentBoundEvent_76_CommonButtonClicked__DelegateSignature_Params
 {
 	class UCommonButton*                               Button;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
-};
-
-// Function AthenaDeathWidget.AthenaDeathWidget_C.OnActivated
-struct UAthenaDeathWidget_C_OnActivated_Params
-{
 };
 
 // Function AthenaDeathWidget.AthenaDeathWidget_C.ExecuteUbergraph_AthenaDeathWidget

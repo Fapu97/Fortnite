@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -25,6 +25,7 @@ public:
 	struct FText                                       ButtonText;                                               // 0x08C8(0x0018) (CPF_Edit, CPF_BlueprintVisible)
 	struct FSlateBrush                                 IconBrush;                                                // 0x08E0(0x0090) (CPF_Edit, CPF_BlueprintVisible)
 	unsigned char                                      UseText : 1;                                              // 0x0970(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0971(0x0003) MISSED OFFSET
 	struct FLinearColor                                SelectedIconTint;                                         // 0x0974(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FLinearColor                                DeselectedIconTint;                                       // 0x0984(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)
 	struct FLinearColor                                HoveredIconTint;                                          // 0x0994(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_DisableEditOnInstance, CPF_IsPlainOldData)

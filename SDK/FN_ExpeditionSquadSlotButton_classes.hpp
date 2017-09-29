@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -19,6 +19,7 @@ class UExpeditionSquadSlotButton_C : public UFortSquadSlotSelectorButton
 public:
 	struct FPointerToUberGraphFrame                    UberGraphFrame;                                           // 0x08F8(0x0008) (CPF_Transient, CPF_DuplicateTransient)
 	TEnumAsByte<EFortBrushSize>                        SlottedItemCardSize;                                      // 0x0900(0x0001) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
+	unsigned char                                      UnknownData00[0x3];                                       // 0x0901(0x0003) MISSED OFFSET
 	int                                                SquadSlotIndex;                                           // 0x0904(0x0004) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_IsPlainOldData)
 	struct FScriptMulticastDelegate                    OnSquadSlotSelected;                                      // 0x0908(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_BlueprintAssignable)
 	struct FScriptMulticastDelegate                    OnSquadSlotUpdated;                                       // 0x0918(0x0010) (CPF_Edit, CPF_BlueprintVisible, CPF_ZeroConstructor, CPF_DisableEditOnInstance, CPF_BlueprintAssignable)

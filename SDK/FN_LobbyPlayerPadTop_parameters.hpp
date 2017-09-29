@@ -1,6 +1,6 @@
 #pragma once
 
-// Fortnite (Alpha) SDK
+// Fortnite SDK
 
 #ifdef _MSC_VER
 	#pragma pack(push, 0x8)
@@ -13,6 +13,19 @@ namespace SDK
 //---------------------------------------------------------------------------
 //Parameters
 //---------------------------------------------------------------------------
+
+// Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.RefreshReadyState
+struct ULobbyPlayerPadTop_C_RefreshReadyState_Params
+{
+	bool                                               bReady;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
+
+// Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.OnAthenaReadyStateChanged
+struct ULobbyPlayerPadTop_C_OnAthenaReadyStateChanged_Params
+{
+	struct FUniqueNetIdRepl                            MemberId;                                                 // (CPF_Parm, CPF_OutParm, CPF_ReferenceParm)
+	bool                                               bReady;                                                   // (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
+};
 
 // Function LobbyPlayerPadTop.LobbyPlayerPadTop_C.OnLobbyPlayerUnhovered
 struct ULobbyPlayerPadTop_C_OnLobbyPlayerUnhovered_Params
