@@ -62,7 +62,7 @@ DWORD WINAPI UpdateThread(LPVOID)
 	try
 	{
 		BaseAddress = (DWORD_PTR)GetModuleHandle(NULL);
-		m_UWorld = reinterpret_cast<SDK::UWorld*>(BaseAddress + 0x65DAB00);
+		m_UWorld = *reinterpret_cast<SDK::UWorld**>(BaseAddress + 0x65DAB00);
 		m_persistentLevel = m_UWorld->PersistentLevel;
 		m_owningGameInstance = m_UWorld->OwningGameInstance;
 		LocalPlayers = m_owningGameInstance->LocalPlayers;
