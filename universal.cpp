@@ -62,32 +62,29 @@ DWORD WINAPI UpdateThread(LPVOID)
 	try
 	{
 		BaseAddress = (DWORD_PTR)GetModuleHandle(NULL);
-		m_UWorld = reinterpret_cast<SDK::UWorld*>(BaseAddress + 0x65DAB00);
-		m_OwningGameInstance = m_UWorld->OwningGameInstance;
-		m_LocalPlayers = m_OwningGameInstance->LocalPlayers;
+		m_UWorld = reinterpret_cast<UWorld*>(BaseAddress + 0x65DAB00);
+		m_cUWorld = m_UWorld->m_UWorld;
+		m_persistentLevel = m_cUWorld->m_persistentLevel;
+		m_owningGameInstance = m_cUWorld->m_owningGameInstance;
+		LocalPlayers = m_owningGameInstance->localPlayers;
+		m_LocalPlayer = LocalPlayers[0];
+		m_Actors = &m_persistentLevel->actors;
+
+		SDK::APlayerCameraManager
 
 		wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
-		wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_OwningGameInstance);
-		wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&m_LocalPlayers);
-		m_LocalPlayer = m_LocalPlayers[0];
+		wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_owningGameInstance);
+		wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&LocalPlayers);
 
 		//isInitialized = true;
 
 		while (true)
 		{
-			wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
+			/*wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
 			wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_OwningGameInstance);
-			wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&m_LocalPlayers);
+			wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&m_LocalPlayers);*/
 			wmemset(ptrBuf4, '\0', 1000);
-			/*if (m_LocalPlayers.IsValidIndex(0))
-			{
-				m_LocalPlayer = m_LocalPlayers[0];
-				wsprintfW(ptrBuf4, ptrData4, (DWORD_PTR)m_LocalPlayer);
-			}
-			else*/
-			{
-				wsprintfW(ptrBuf4, ptrData4, m_LocalPlayers.Num());
-			}
+			wsprintfW(ptrBuf4, ptrData4, (*m_Actors).Num());
 			//printf("m_UWorld: 0x%016X\n", (DWORD_PTR)m_UWorld);
 			//printf("m_OwningGameInstance: 0x%016X\n", (DWORD_PTR)m_OwningGameInstance);
 			//printf("m_LocalPlayers: 0x%016X\n", (DWORD_PTR)&m_LocalPlayers);
