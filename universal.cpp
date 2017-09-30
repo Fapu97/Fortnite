@@ -53,6 +53,7 @@ IFW1FontWrapper *pFontWrapper = NULL;
 
 #include "main.h" //helper funcs
 #include "FindPattern.h"
+#include <Psapi.h>
 
 
 //==========================================================================================================================
@@ -63,7 +64,12 @@ DWORD WINAPI UpdateThread(LPVOID)
 	try
 	{
 		BaseAddress = (DWORD_PTR)GetModuleHandle(NULL);
-		m_UWorld = *reinterpret_cast<SDK::UWorld**>((DWORD_PTR)GetModuleHandle(NULL) + 0x65D9770);
+		MODULEINFO info;
+		GetModuleInformation(GetCurrentProcess(), (HMODULE)BaseAddress, &info, sizeof(info));
+		auto btAddrUWorld = Utils::Pattern::FindPattern((PBYTE)BaseAddress, info.SizeOfImage, (PBYTE)"\x48\x8B\x1D\x00\x00\x00\x00\x00\x00\x00\x10\x4C\x8D\x4D\x00\x4C", "xxx???????xxxx?x", 0);
+		auto btOffUWorld = *reinterpret_cast< uint32_t* >(btAddrUWorld + 3);
+		SDK::UWorld* m_UWorld = *reinterpret_cast< SDK::UWorld** >(btAddrUWorld + 7 + btOffUWorld);
+
 		m_persistentLevel = m_UWorld->PersistentLevel;
 		m_owningGameInstance = m_UWorld->OwningGameInstance;
 		LocalPlayers = m_owningGameInstance->LocalPlayers;
