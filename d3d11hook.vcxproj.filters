@@ -102,6 +102,9 @@
     <ClInclude Include="variables.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FindPattern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="universal.cpp">

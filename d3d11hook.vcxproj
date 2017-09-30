@@ -167,6 +167,7 @@
     <ClInclude Include="MinHook\src\hde\table64.h" />
     <ClInclude Include="MinHook\src\trampoline.h" />
     <ClInclude Include="SDK.hpp" />
+    <ClInclude Include="FindPattern.h" />
     <ClInclude Include="variables.h" />
   </ItemGroup>
   <ItemGroup>

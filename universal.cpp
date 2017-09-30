@@ -52,6 +52,7 @@ IFW1FontWrapper *pFontWrapper = NULL;
 
 
 #include "main.h" //helper funcs
+#include "FindPattern.h"
 
 
 //==========================================================================================================================
@@ -62,12 +63,14 @@ DWORD WINAPI UpdateThread(LPVOID)
 	try
 	{
 		BaseAddress = (DWORD_PTR)GetModuleHandle(NULL);
-		m_UWorld = *reinterpret_cast<SDK::UWorld**>(BaseAddress + 0x65DAB00);
+		m_UWorld = *reinterpret_cast<SDK::UWorld**>((DWORD_PTR)GetModuleHandle(NULL) + 0x65D9770);
 		m_persistentLevel = m_UWorld->PersistentLevel;
 		m_owningGameInstance = m_UWorld->OwningGameInstance;
 		LocalPlayers = m_owningGameInstance->LocalPlayers;
 		m_LocalPlayer = LocalPlayers[0];
 		m_Actors = &m_persistentLevel->AActors;
+		SDK::APlayerController* m_PlayerController = m_LocalPlayer->PlayerController;
+		SDK::FRotator m_ViewAngles = m_LocalPlayer->PlayerController->ControlRotation;
 
 		wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
 		wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_owningGameInstance);
@@ -81,15 +84,19 @@ DWORD WINAPI UpdateThread(LPVOID)
 			wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_OwningGameInstance);
 			wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&m_LocalPlayers);*/
 			wmemset(ptrBuf4, '\0', 1000);
-			wsprintfW(ptrBuf4, ptrData4, (DWORD_PTR)&m_LocalPlayer);
-			//m_LocalPlayer->0x30->0x390->830->A88 = 0.0f;
-			//m_LocalPlayer->0x30->0x390->830->A8C = 0.0f;
-			//printf("m_UWorld: 0x%016X\n", (DWORD_PTR)m_UWorld);
-			//printf("m_OwningGameInstance: 0x%016X\n", (DWORD_PTR)m_OwningGameInstance);
-			//printf("m_LocalPlayers: 0x%016X\n", (DWORD_PTR)&m_LocalPlayers);
-			//printf("m_LocalPlayer: 0x%016X\n", (DWORD_PTR)m_LocalPlayer);
+			m_PlayerController = m_LocalPlayer->PlayerController;
+			if (m_PlayerController != nullptr)
+			{
+				m_ViewAngles = m_PlayerController->ControlRotation;
+				wsprintfW(ptrBuf4, ptrData4, (int)(m_ViewAngles.Pitch * 100), (int)(m_ViewAngles.Yaw * 100), (int)(m_ViewAngles.Roll * 100));
+			}
+			else
+			{
+				wsprintfW(ptrBuf4, ptrData4_);
+			}
+
 			isInitialized = true;
-			Sleep(1000);
+			Sleep(1);
 		}
 	}
 	catch (...)
