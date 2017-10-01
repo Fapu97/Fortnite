@@ -70,6 +70,18 @@ DWORD WINAPI UpdateThread(LPVOID)
 		auto btOffUWorld = *reinterpret_cast< uint32_t* >(btAddrUWorld + 3);
 		m_UWorld = *reinterpret_cast< SDK::UWorld** >(btAddrUWorld + 7 + btOffUWorld);
 
+		auto btAddrGObj = Utils::Pattern::FindPattern((PBYTE)BaseAddress, info.SizeOfImage, (PBYTE)"\x48\x8D\x0D\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\x48\x8B\xD6", "xxx????x????x????x????xxx", 0);
+		auto btOffGObj = *reinterpret_cast< uint32_t* >(btAddrGObj + 3);
+		SDK::UObject::GObjects = reinterpret_cast< SDK::FUObjectArray* >(btAddrGObj + 7 + btOffGObj);
+
+		auto btAddrGName = Utils::Pattern::FindPattern((PBYTE)BaseAddress, info.SizeOfImage, (PBYTE)"\x48\x8B\x05\x00\x00\x00\x00\x48\x85\xC0\x75\x50\xB9\x00\x00\x00\x00\x48\x89\x5C\x24", "xxx????xxxxxx????xxxx", 0);
+		auto btOffGName = *reinterpret_cast< uint32_t* >(btAddrGName + 3);
+		SDK::FName::GNames = *reinterpret_cast< SDK::TNameEntryArray** >(btAddrGName + 7 + btOffGName);
+
+		//SDK::FName::GNames = *reinterpret_cast<SDK::TNameEntryArray**>(BaseAddress + 0x64E5448);
+
+		//SDK::UObject::GObjects = reinterpret_cast<SDK::FUObjectArray*>(BaseAddress + 0x64EDFF0);
+
 		m_persistentLevel = m_UWorld->PersistentLevel;
 		m_owningGameInstance = m_UWorld->OwningGameInstance;
 		LocalPlayers = m_owningGameInstance->LocalPlayers;
