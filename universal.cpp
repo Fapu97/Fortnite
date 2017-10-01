@@ -68,7 +68,7 @@ DWORD WINAPI UpdateThread(LPVOID)
 		GetModuleInformation(GetCurrentProcess(), (HMODULE)BaseAddress, &info, sizeof(info));
 		auto btAddrUWorld = Utils::Pattern::FindPattern((PBYTE)BaseAddress, info.SizeOfImage, (PBYTE)"\x48\x8B\x1D\x00\x00\x00\x00\x00\x00\x00\x10\x4C\x8D\x4D\x00\x4C", "xxx???????xxxx?x", 0);
 		auto btOffUWorld = *reinterpret_cast< uint32_t* >(btAddrUWorld + 3);
-		SDK::UWorld* m_UWorld = *reinterpret_cast< SDK::UWorld** >(btAddrUWorld + 7 + btOffUWorld);
+		m_UWorld = *reinterpret_cast< SDK::UWorld** >(btAddrUWorld + 7 + btOffUWorld);
 
 		m_persistentLevel = m_UWorld->PersistentLevel;
 		m_owningGameInstance = m_UWorld->OwningGameInstance;
@@ -95,6 +95,23 @@ DWORD WINAPI UpdateThread(LPVOID)
 			{
 				m_ViewAngles = m_PlayerController->ControlRotation;
 				wsprintfW(ptrBuf4, ptrData4, (int)(m_ViewAngles.Pitch * 100), (int)(m_ViewAngles.Yaw * 100), (int)(m_ViewAngles.Roll * 100));
+				if (m_PlayerController->AcknowledgedPawn != nullptr)
+				{
+					if (m_PlayerController->AcknowledgedPawn->IsA(SDK::AFortPawn::StaticClass()))
+					{
+						SDK::AFortPawn* m_LocalPawn = static_cast<SDK::AFortPawn*>(m_PlayerController->AcknowledgedPawn);
+						if (m_LocalPawn->CurrentWeapon != nullptr)
+						{
+							if (m_LocalPawn->CurrentWeapon->IsA(SDK::AFortWeaponRanged::StaticClass()))
+							{
+								SDK::AFortWeaponRanged* m_CurWeapon = static_cast<SDK::AFortWeaponRanged*>(m_LocalPawn->CurrentWeapon);
+								m_CurWeapon->CurrentReticleSpread = 0.0f;
+								m_CurWeapon->CurrentReticleSpreadMultiplier = 0.0f;
+								m_CurWeapon->CurrentStandingStillSpreadMultiplier = 0.0f;
+							}
+						}
+					}
+				}
 			}
 			else
 			{
@@ -231,9 +248,16 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 			pFontWrapper->DrawString(pContext, ptrBuf2, 14, 16.0f, 48.0f, 0xff0000ff, FW1_RESTORESTATE);
 			pFontWrapper->DrawString(pContext, ptrBuf3, 14, 16.0f, 64.0f, 0xff0000ff, FW1_RESTORESTATE);
 			pFontWrapper->DrawString(pContext, ptrBuf4, 14, 16.0f, 80.0f, 0xff0000ff, FW1_RESTORESTATE);
+
+
+			wchar_t reportValue[256];
+			swprintf_s(reportValue, L"(Keys:-O P+ I=Log) countnum = %d", countnum);
+			pFontWrapper->DrawString(pContext, reportValue, 20.0f, 220.0f, 100.0f, 0xff0000ff, FW1_RESTORESTATE);
 		}
 
 	}
+
+
 
 	//show target amount 
 	//wchar_t reportValueS[256];
@@ -281,6 +305,11 @@ void __stdcall hookD3D11DrawIndexed(ID3D11DeviceContext* pContext, UINT IndexCou
 		SetDepthStencilState(READ_NO_WRITE);
 	}
 	
+	if (GetAsyncKeyState(VK_OEM_4) & 1) //-
+		countnum--;
+	if (GetAsyncKeyState(VK_OEM_6) & 1) //+
+		countnum++;
+
     return phookD3D11DrawIndexed(pContext, IndexCount, StartIndexLocation, BaseVertexLocation);
 }
 

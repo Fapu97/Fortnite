@@ -16741,7 +16741,7 @@ void UGameUserSettings::SetResolutionScaleNormalized(float NewScaleNormalized)
 }
 
 
-// Function Engine.GameUserSettings.SetPostProcessingQuality
+// Function Engine.GameUserSettings.SetProcessingQuality
 // (FUNC_Final, FUNC_Native, FUNC_Public, FUNC_BlueprintCallable)
 // Parameters:
 // int                            Value                          (CPF_Parm, CPF_ZeroConstructor, CPF_IsPlainOldData)
