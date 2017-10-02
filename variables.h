@@ -1,18 +1,22 @@
 #pragma once
 #include <Windows.h>
+#include <Psapi.h>
 #include "SDK.hpp"
 
-HANDLE mainThread									= NULL;
+namespace Variables
+{
+	bool isInitialized = false;
 
-bool isInitialized									= false;
+	DWORD_PTR BaseAddress;
+	MODULEINFO info;
+	SDK::UWorld* m_UWorld;
+	SDK::ULevel* m_persistentLevel;
+	SDK::UGameInstance* m_owningGameInstance;
+	SDK::TArray<SDK::ULocalPlayer*> LocalPlayers;
+	SDK::ULocalPlayer* m_LocalPlayer;
+	SDK::TArray<SDK::AActor*>* m_Actors;
+}
 
-DWORD_PTR BaseAddress								;
-SDK::UWorld* m_UWorld								;
-SDK::ULevel* m_persistentLevel						;
-SDK::UGameInstance* m_owningGameInstance			;
-SDK::TArray<SDK::ULocalPlayer*> LocalPlayers		;
-SDK::ULocalPlayer* m_LocalPlayer					;
-SDK::TArray<SDK::AActor*>* m_Actors					;
 
 
 WCHAR ptrBuf[1000];

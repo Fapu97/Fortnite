@@ -52,8 +52,7 @@ IFW1FontWrapper *pFontWrapper = NULL;
 
 
 #include "main.h" //helper funcs
-#include "FindPattern.h"
-#include <Psapi.h>
+#include "Utils.h"
 
 
 //==========================================================================================================================
@@ -63,50 +62,66 @@ DWORD WINAPI UpdateThread(LPVOID)
 {
 	try
 	{
-		BaseAddress = (DWORD_PTR)GetModuleHandle(NULL);
-		MODULEINFO info;
-		GetModuleInformation(GetCurrentProcess(), (HMODULE)BaseAddress, &info, sizeof(info));
-		auto btAddrUWorld = Utils::Pattern::FindPattern((PBYTE)BaseAddress, info.SizeOfImage, (PBYTE)"\x48\x8B\x1D\x00\x00\x00\x00\x00\x00\x00\x10\x4C\x8D\x4D\x00\x4C", "xxx???????xxxx?x", 0);
+		Variables::BaseAddress = (DWORD_PTR)GetModuleHandle(NULL);
+		GetModuleInformation(GetCurrentProcess(), (HMODULE)Variables::BaseAddress, &Variables::info, sizeof(Variables::info));
+		auto btAddrUWorld = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8B\x1D\x00\x00\x00\x00\x00\x00\x00\x10\x4C\x8D\x4D\x00\x4C", "xxx???????xxxx?x", 0);
 		auto btOffUWorld = *reinterpret_cast< uint32_t* >(btAddrUWorld + 3);
-		m_UWorld = *reinterpret_cast< SDK::UWorld** >(btAddrUWorld + 7 + btOffUWorld);
+		Variables::m_UWorld = *reinterpret_cast< SDK::UWorld** >(btAddrUWorld + 7 + btOffUWorld);
 
-		auto btAddrGObj = Utils::Pattern::FindPattern((PBYTE)BaseAddress, info.SizeOfImage, (PBYTE)"\x48\x8D\x0D\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\x48\x8B\xD6", "xxx????x????x????x????xxx", 0);
+		auto btAddrGObj = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8D\x0D\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\x48\x8B\xD6", "xxx????x????x????x????xxx", 0);
 		auto btOffGObj = *reinterpret_cast< uint32_t* >(btAddrGObj + 3);
 		SDK::UObject::GObjects = reinterpret_cast< SDK::FUObjectArray* >(btAddrGObj + 7 + btOffGObj);
 
-		auto btAddrGName = Utils::Pattern::FindPattern((PBYTE)BaseAddress, info.SizeOfImage, (PBYTE)"\x48\x8B\x05\x00\x00\x00\x00\x48\x85\xC0\x75\x50\xB9\x00\x00\x00\x00\x48\x89\x5C\x24", "xxx????xxxxxx????xxxx", 0);
+		auto btAddrGName = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8B\x05\x00\x00\x00\x00\x48\x85\xC0\x75\x50\xB9\x00\x00\x00\x00\x48\x89\x5C\x24", "xxx????xxxxxx????xxxx", 0);
 		auto btOffGName = *reinterpret_cast< uint32_t* >(btAddrGName + 3);
 		SDK::FName::GNames = *reinterpret_cast< SDK::TNameEntryArray** >(btAddrGName + 7 + btOffGName);
 
+		Utils::Engine::w2sAddress = (DWORD_PTR)Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x89\x5C\x24\x00\x48\x89\x74\x24\x00\x57\x48\x81\xEC\x00\x00\x00\x00\x41\x0F\xB6\xF9", "xxxx?xxxx?xxxx????xxxx", 0);
+		/*auto btOffW2S = *reinterpret_cast< uint32_t* >(Utils::Engine::w2sAddress + 3);
+		DWORD_PTR w2s = Utils::Engine::w2sAddress + 7 + btOffW2S;*/
 		//SDK::FName::GNames = *reinterpret_cast<SDK::TNameEntryArray**>(BaseAddress + 0x64E5448);
 
 		//SDK::UObject::GObjects = reinterpret_cast<SDK::FUObjectArray*>(BaseAddress + 0x64EDFF0);
 
-		m_persistentLevel = m_UWorld->PersistentLevel;
-		m_owningGameInstance = m_UWorld->OwningGameInstance;
-		LocalPlayers = m_owningGameInstance->LocalPlayers;
-		m_LocalPlayer = LocalPlayers[0];
-		m_Actors = &m_persistentLevel->AActors;
-		SDK::APlayerController* m_PlayerController = m_LocalPlayer->PlayerController;
-		SDK::FRotator m_ViewAngles = m_LocalPlayer->PlayerController->ControlRotation;
+		Variables::m_persistentLevel = Variables::m_UWorld->PersistentLevel;
+		Variables::m_owningGameInstance = Variables::m_UWorld->OwningGameInstance;
+		Variables::LocalPlayers = Variables::m_owningGameInstance->LocalPlayers;
+		Variables::m_LocalPlayer = Variables::LocalPlayers[0];
+		Variables::m_Actors = &Variables::m_persistentLevel->AActors;
+		SDK::APlayerController* m_PlayerController = Variables::m_LocalPlayer->PlayerController;
+		SDK::FRotator m_ViewAngles = Variables::m_LocalPlayer->PlayerController->ControlRotation;
 
-		wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
-		wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_owningGameInstance);
-		wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&LocalPlayers);
+		wsprintfW(ptrBuf, ptrData, (DWORD_PTR)Variables::m_UWorld);
+		wsprintfW(ptrBuf2, ptrData2, Utils::Engine::w2sAddress);
+		wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&Variables::LocalPlayers);
 
-		//isInitialized = true;
+		SDK::FVector v{ 1., 1., 0 };
+		SDK::FVector2D vo;
+		bool worked = Utils::Engine::w2s(Variables::m_LocalPlayer->PlayerController, v, &vo);
+		printf("%f | %f", vo.X, vo.Y);
 
 		while (true)
 		{
-			/*wsprintfW(ptrBuf, ptrData, (DWORD_PTR)m_UWorld);
-			wsprintfW(ptrBuf2, ptrData2, (DWORD_PTR)m_OwningGameInstance);
-			wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&m_LocalPlayers);*/
 			wmemset(ptrBuf4, '\0', 1000);
-			m_PlayerController = m_LocalPlayer->PlayerController;
+			m_PlayerController = Variables::m_LocalPlayer->PlayerController;
 			if (m_PlayerController != nullptr)
 			{
 				m_ViewAngles = m_PlayerController->ControlRotation;
 				wsprintfW(ptrBuf4, ptrData4, (int)(m_ViewAngles.Pitch * 100), (int)(m_ViewAngles.Yaw * 100), (int)(m_ViewAngles.Roll * 100));
+				if (m_PlayerController->PlayerState != nullptr)
+				{
+					if (m_PlayerController->PlayerState->IsA(SDK::AFortPlayerState::StaticClass()))
+					{
+						SDK::AFortPlayerState* m_PlayerState = static_cast<SDK::AFortPlayerState*>(m_PlayerController->PlayerState);
+						if (m_PlayerState->AttributeSets.WeaponAttrSet != nullptr)
+						{
+							m_PlayerState->AttributeSets.WeaponAttrSet->WeaponVerticalRecoil.Minimum = 0;
+							m_PlayerState->AttributeSets.WeaponAttrSet->WeaponVerticalRecoil.Maximum = 0;
+							m_PlayerState->AttributeSets.WeaponAttrSet->WeaponHorizontalRecoil.Minimum = 0;
+							m_PlayerState->AttributeSets.WeaponAttrSet->WeaponHorizontalRecoil.Maximum = 0;
+						}
+					}
+				}
 				if (m_PlayerController->AcknowledgedPawn != nullptr)
 				{
 					if (m_PlayerController->AcknowledgedPawn->IsA(SDK::AFortPawn::StaticClass()))
@@ -130,7 +145,7 @@ DWORD WINAPI UpdateThread(LPVOID)
 				wsprintfW(ptrBuf4, ptrData4_);
 			}
 
-			isInitialized = true;
+			Variables::isInitialized = true;
 			Sleep(1);
 		}
 	}
@@ -254,7 +269,7 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 	if (pFontWrapper)
 	{
 		pFontWrapper->DrawString(pContext, L"not copy paste", 14, 16.0f, 16.0f, 0xff0000ff, FW1_RESTORESTATE);
-		if (isInitialized)
+		if (Variables::isInitialized)
 		{
 			pFontWrapper->DrawString(pContext, ptrBuf, 14, 16.0f, 32.0f, 0xff0000ff, FW1_RESTORESTATE);
 			pFontWrapper->DrawString(pContext, ptrBuf2, 14, 16.0f, 48.0f, 0xff0000ff, FW1_RESTORESTATE);
