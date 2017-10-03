@@ -89,8 +89,7 @@ DWORD WINAPI UpdateThread(LPVOID)
 				Variables::LocalPlayers = Variables::m_owningGameInstance->LocalPlayers;
 				Variables::m_LocalPlayer = Variables::LocalPlayers[0];
 				Variables::m_Actors = &Variables::m_persistentLevel->AActors;
-
-				wmemset(ptrBuf4, '\0', 1000);
+				
 				SDK::APlayerController* m_PlayerController = Variables::m_LocalPlayer->PlayerController;
 				if (m_PlayerController != nullptr)
 				{
@@ -109,19 +108,7 @@ DWORD WINAPI UpdateThread(LPVOID)
 								Variables::currentPlayer = closestPlayer;
 								SDK::FVector playerLoc;
 								Utils::Engine::GetBoneLocation(static_cast<SDK::ACharacter*>(closestPlayer)->Mesh, &playerLoc, 66);
-
 								Utils::LookAt(m_PlayerController, playerLoc);
-								SDK::FVector2D screen;
-								Utils::Engine::WorldToScreen(m_PlayerController, closestPlayer->RootComponent->Location, &screen);
-								printf("W2S Position: X: %f| Y: %f\n", screen.X, screen.Y);
-								int screenSizeX, screenSizeY;
-								m_PlayerController->GetViewportSize(&screenSizeX, &screenSizeY);
-
-								printf("Screen Size: X: %d| Y: %d\n", screenSizeX, screenSizeY);
-							}
-							else
-							{
-								printf("NULL!\n\n\n\n\n\n");
 							}
 						}
 						else
