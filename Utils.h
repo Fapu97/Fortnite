@@ -23,6 +23,17 @@ namespace Utils
 		}
 	}
 
+	namespace Vector2D
+	{
+		SDK::FVector2D Subtract(SDK::FVector2D point1, SDK::FVector2D point2)
+		{
+			SDK::FVector2D vector{ 0, 0 };
+			vector.X = point1.X - point2.X;
+			vector.Y = point1.Y - point2.Y;
+			return vector;
+		}
+	}
+
 	namespace Engine
 	{
 		DWORD_PTR w2sAddress;
@@ -45,19 +56,17 @@ namespace Utils
 		}
 	}
 
-	bool IsInFOV(SDK::FVector position, float fov)
-	{
-
-	}
-
 	bool IsLocalPlayer(SDK::AActor* player)
 	{
+		if (Variables::m_LocalPlayer->PlayerController->AcknowledgedPawn == nullptr)
+		{
+			return true;
+		}
 		return (static_cast<SDK::APawn*>(player) == Variables::m_LocalPlayer->PlayerController->AcknowledgedPawn);
 	}
 
 	float GetDistance(SDK::FVector point1, SDK::FVector point2)
 	{
-		SDK::FVector firstPosition = point1;
 		SDK::FVector heading = Vector::Subtract(point2, point1);
 		float distanceSquared;
 		float distance;
@@ -66,6 +75,33 @@ namespace Utils
 		distance = sqrt(distanceSquared);
 
 		return distance;
+	}
+
+	float GetDistance2D(SDK::FVector2D point1, SDK::FVector2D point2)
+	{
+		SDK::FVector2D heading = Vector2D::Subtract(point2, point1);
+		float distanceSquared;
+		float distance;
+
+		distanceSquared = heading.X * heading.X + heading.Y * heading.Y;
+		distance = sqrt(distanceSquared);
+
+		return distance;
+	}
+
+	bool IsInFOV(SDK::APlayerController* m_Player, SDK::FVector position, float fov)
+	{
+		int screenSizeX, screenSizeY;
+		m_Player->GetViewportSize(&screenSizeX, &screenSizeY);
+		SDK::FVector2D centerScreen{ (float)screenSizeX / 2, (float)screenSizeY / 2 };
+		SDK::FVector2D screenPos;
+		if (Engine::WorldToScreen(m_Player, position, &screenPos))
+		{
+			float dist = GetDistance2D(centerScreen, screenPos);
+			if (dist < fov)
+				return true;
+		}
+		return false;
 	}
 
 	SDK::AActor* GetClosestPlayer()
@@ -95,11 +131,16 @@ namespace Utils
 				{
 					if (m_Player->RootComponent != nullptr && !IsLocalPlayer(m_Player))
 					{
-						float curDist = GetDistance(localPos, m_Player->RootComponent->Location);
+						SDK::FVector playerLoc;
+						Utils::Engine::GetBoneLocation(static_cast<SDK::ACharacter*>(m_Player)->Mesh, &playerLoc, 66);
+						float curDist = GetDistance(localPos, playerLoc);
 						if (curDist < distance)
 						{
-							distance = curDist;
-							closestPlayer = m_Player;
+							if (IsInFOV(Variables::m_LocalPlayer->PlayerController, playerLoc, Variables::fov))
+							{
+								distance = curDist;
+								closestPlayer = m_Player;
+							}
 						}
 					}
 				}
@@ -115,8 +156,6 @@ namespace Utils
 		float tmp = atan2(relativePos.Y, relativePos.X) * 180 / M_PI;
 		float yaw = tmp;//(tmp < 0 ? tmp + 360 : tmp);
 		float pitch = -((acos(relativePos.Z / GetDistance(localPos, position)) * 180 / M_PI) - 90);
-
-		printf("Pitch: %f", pitch);
 
 		m_Player->ControlRotation.Pitch = pitch;
 		m_Player->ControlRotation.Yaw = yaw;

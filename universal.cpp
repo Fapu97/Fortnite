@@ -101,41 +101,33 @@ DWORD WINAPI UpdateThread(LPVOID)
 				m_ViewAngles = m_PlayerController->ControlRotation;
 				wsprintfW(ptrBuf4, ptrData4, (int)(m_ViewAngles.Pitch * 100), (int)(m_ViewAngles.Yaw * 100), (int)(m_ViewAngles.Roll * 100));
 
-				if (GetAsyncKeyState(VK_XBUTTON2) & 0x8000)
-				{
-					SDK::AActor* closestPlayer = Utils::GetClosestPlayer();
-					if (closestPlayer != nullptr)
-					{
-						SDK::FVector playerLoc;
-						Utils::Engine::GetBoneLocation(static_cast<SDK::ACharacter*>(closestPlayer)->Mesh, &playerLoc, 66);
-
-						Utils::LookAt(m_PlayerController, playerLoc);
-						SDK::FVector2D screen;
-						Utils::Engine::WorldToScreen(m_PlayerController, closestPlayer->RootComponent->Location, &screen);
-						printf("Position: X: %f| Y: %f", screen.X, screen.Y);
-					}
-					else
-					{
-						printf("NULL!\n\n\n\n\n\n");
-					}
-				}
-
-				if (m_PlayerController->PlayerState != nullptr)
-				{
-					if (m_PlayerController->PlayerState->IsA(SDK::AFortPlayerState::StaticClass()))
-					{
-						SDK::AFortPlayerState* m_PlayerState = static_cast<SDK::AFortPlayerState*>(m_PlayerController->PlayerState);
-						if (m_PlayerState->AttributeSets.WeaponAttrSet != nullptr)
-						{
-							m_PlayerState->AttributeSets.WeaponAttrSet->WeaponVerticalRecoil.Minimum = 0;
-							m_PlayerState->AttributeSets.WeaponAttrSet->WeaponVerticalRecoil.Maximum = 0;
-							m_PlayerState->AttributeSets.WeaponAttrSet->WeaponHorizontalRecoil.Minimum = 0;
-							m_PlayerState->AttributeSets.WeaponAttrSet->WeaponHorizontalRecoil.Maximum = 0;
-						}
-					}
-				}
 				if (m_PlayerController->AcknowledgedPawn != nullptr)
 				{
+
+					if (GetAsyncKeyState(VK_XBUTTON2) & 0x8000)
+					{
+						SDK::AActor* closestPlayer = Utils::GetClosestPlayer();
+						if (closestPlayer != nullptr)
+						{
+							SDK::FVector playerLoc;
+							Utils::Engine::GetBoneLocation(static_cast<SDK::ACharacter*>(closestPlayer)->Mesh, &playerLoc, 66);
+
+							Utils::LookAt(m_PlayerController, playerLoc);
+							SDK::FVector2D screen;
+							Utils::Engine::WorldToScreen(m_PlayerController, closestPlayer->RootComponent->Location, &screen);
+							printf("W2S Position: X: %f| Y: %f\n", screen.X, screen.Y);
+							int screenSizeX, screenSizeY;
+							m_PlayerController->GetViewportSize(&screenSizeX, &screenSizeY);
+
+							printf("Screen Size: X: %d| Y: %d\n", screenSizeX, screenSizeY);
+						}
+						else
+						{
+							printf("NULL!\n\n\n\n\n\n");
+						}
+					}
+
+
 					if (m_PlayerController->AcknowledgedPawn->IsA(SDK::AFortPawn::StaticClass()))
 					{
 						SDK::AFortPawn* m_LocalPawn = static_cast<SDK::AFortPawn*>(m_PlayerController->AcknowledgedPawn);

@@ -6,6 +6,7 @@
 namespace Variables
 {
 	bool isInitialized = false;
+	float fov = 100;
 
 	DWORD_PTR BaseAddress;
 	MODULEINFO info;
@@ -15,6 +16,7 @@ namespace Variables
 	SDK::TArray<SDK::ULocalPlayer*> LocalPlayers;
 	SDK::ULocalPlayer* m_LocalPlayer;
 	SDK::TArray<SDK::AActor*>* m_Actors;
+	SDK::FVector2D ViewportSize;
 }
 
 
