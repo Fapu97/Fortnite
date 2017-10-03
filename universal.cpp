@@ -77,11 +77,8 @@ DWORD WINAPI UpdateThread(LPVOID)
 		SDK::FName::GNames = *reinterpret_cast< SDK::TNameEntryArray** >(btAddrGName + 7 + btOffGName);
 
 		Utils::Engine::w2sAddress = (DWORD_PTR)Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x89\x5C\x24\x00\x48\x89\x74\x24\x00\x57\x48\x81\xEC\x00\x00\x00\x00\x41\x0F\xB6\xF9", "xxxx?xxxx?xxxx????xxxx", 0);
-		/*auto btOffW2S = *reinterpret_cast< uint32_t* >(Utils::Engine::w2sAddress + 3);
-		DWORD_PTR w2s = Utils::Engine::w2sAddress + 7 + btOffW2S;*/
-		//SDK::FName::GNames = *reinterpret_cast<SDK::TNameEntryArray**>(BaseAddress + 0x64E5448);
+		Utils::Engine::boneAddress = (DWORD_PTR)Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x40\x53\x55\x57\x41\x56\x48\x81\xEC\x00\x00\x00\x00\x45\x33\xF6", "xxxxxxxxx????xxx", 0);
 
-		//SDK::UObject::GObjects = reinterpret_cast<SDK::FUObjectArray*>(BaseAddress + 0x64EDFF0);
 
 		Variables::m_persistentLevel = Variables::m_UWorld->PersistentLevel;
 		Variables::m_owningGameInstance = Variables::m_UWorld->OwningGameInstance;
@@ -95,11 +92,6 @@ DWORD WINAPI UpdateThread(LPVOID)
 		wsprintfW(ptrBuf2, ptrData2, Utils::Engine::w2sAddress);
 		wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&Variables::LocalPlayers);
 
-		SDK::FVector v{ 1., 1., 0 };
-		SDK::FVector2D vo;
-		bool worked = Utils::Engine::w2s(Variables::m_LocalPlayer->PlayerController, v, &vo);
-		printf("%f | %f", vo.X, vo.Y);
-
 		while (true)
 		{
 			wmemset(ptrBuf4, '\0', 1000);
@@ -108,6 +100,26 @@ DWORD WINAPI UpdateThread(LPVOID)
 			{
 				m_ViewAngles = m_PlayerController->ControlRotation;
 				wsprintfW(ptrBuf4, ptrData4, (int)(m_ViewAngles.Pitch * 100), (int)(m_ViewAngles.Yaw * 100), (int)(m_ViewAngles.Roll * 100));
+
+				if (GetAsyncKeyState(VK_XBUTTON2) & 0x8000)
+				{
+					SDK::AActor* closestPlayer = Utils::GetClosestPlayer();
+					if (closestPlayer != nullptr)
+					{
+						SDK::FVector playerLoc;
+						Utils::Engine::GetBoneLocation(static_cast<SDK::ACharacter*>(closestPlayer)->Mesh, &playerLoc, 66);
+
+						Utils::LookAt(m_PlayerController, playerLoc);
+						SDK::FVector2D screen;
+						Utils::Engine::WorldToScreen(m_PlayerController, closestPlayer->RootComponent->Location, &screen);
+						printf("Position: X: %f| Y: %f", screen.X, screen.Y);
+					}
+					else
+					{
+						printf("NULL!\n\n\n\n\n\n");
+					}
+				}
+
 				if (m_PlayerController->PlayerState != nullptr)
 				{
 					if (m_PlayerController->PlayerState->IsA(SDK::AFortPlayerState::StaticClass()))
