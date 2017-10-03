@@ -66,7 +66,7 @@ DWORD WINAPI UpdateThread(LPVOID)
 		GetModuleInformation(GetCurrentProcess(), (HMODULE)Variables::BaseAddress, &Variables::info, sizeof(Variables::info));
 		auto btAddrUWorld = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8B\x1D\x00\x00\x00\x00\x00\x00\x00\x10\x4C\x8D\x4D\x00\x4C", "xxx???????xxxx?x", 0);
 		auto btOffUWorld = *reinterpret_cast< uint32_t* >(btAddrUWorld + 3);
-		Variables::m_UWorld = *reinterpret_cast< SDK::UWorld** >(btAddrUWorld + 7 + btOffUWorld);
+		Variables::m_UWorld = reinterpret_cast< SDK::UWorld** >(btAddrUWorld + 7 + btOffUWorld);
 
 		auto btAddrGObj = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8D\x0D\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\x48\x8B\xD6", "xxx????x????x????x????xxx", 0);
 		auto btOffGObj = *reinterpret_cast< uint32_t* >(btAddrGObj + 3);
@@ -80,78 +80,76 @@ DWORD WINAPI UpdateThread(LPVOID)
 		Utils::Engine::boneAddress = (DWORD_PTR)Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x40\x53\x55\x57\x41\x56\x48\x81\xEC\x00\x00\x00\x00\x45\x33\xF6", "xxxxxxxxx????xxx", 0);
 
 
-		Variables::m_persistentLevel = Variables::m_UWorld->PersistentLevel;
-		Variables::m_owningGameInstance = Variables::m_UWorld->OwningGameInstance;
-		Variables::LocalPlayers = Variables::m_owningGameInstance->LocalPlayers;
-		Variables::m_LocalPlayer = Variables::LocalPlayers[0];
-		Variables::m_Actors = &Variables::m_persistentLevel->AActors;
-		SDK::APlayerController* m_PlayerController = Variables::m_LocalPlayer->PlayerController;
-		SDK::FRotator m_ViewAngles = Variables::m_LocalPlayer->PlayerController->ControlRotation;
-
-		wsprintfW(ptrBuf, ptrData, (DWORD_PTR)Variables::m_UWorld);
-		wsprintfW(ptrBuf2, ptrData2, Utils::Engine::w2sAddress);
-		wsprintfW(ptrBuf3, ptrData3, (DWORD_PTR)&Variables::LocalPlayers);
-
 		while (true)
 		{
-			wmemset(ptrBuf4, '\0', 1000);
-			m_PlayerController = Variables::m_LocalPlayer->PlayerController;
-			if (m_PlayerController != nullptr)
+			if ((*Variables::m_UWorld) != nullptr)
 			{
-				m_ViewAngles = m_PlayerController->ControlRotation;
-				wsprintfW(ptrBuf4, ptrData4, (int)(m_ViewAngles.Pitch * 100), (int)(m_ViewAngles.Yaw * 100), (int)(m_ViewAngles.Roll * 100));
+				Variables::m_persistentLevel = (*Variables::m_UWorld)->PersistentLevel;
+				Variables::m_owningGameInstance = (*Variables::m_UWorld)->OwningGameInstance;
+				Variables::LocalPlayers = Variables::m_owningGameInstance->LocalPlayers;
+				Variables::m_LocalPlayer = Variables::LocalPlayers[0];
+				Variables::m_Actors = &Variables::m_persistentLevel->AActors;
 
-				if (m_PlayerController->AcknowledgedPawn != nullptr)
+				wmemset(ptrBuf4, '\0', 1000);
+				SDK::APlayerController* m_PlayerController = Variables::m_LocalPlayer->PlayerController;
+				if (m_PlayerController != nullptr)
 				{
+					SDK::FRotator m_ViewAngles = Variables::m_LocalPlayer->PlayerController->ControlRotation;
+					m_ViewAngles = m_PlayerController->ControlRotation;
+					wsprintfW(ptrBuf4, ptrData4, (int)(m_ViewAngles.Pitch * 100), (int)(m_ViewAngles.Yaw * 100), (int)(m_ViewAngles.Roll * 100));
 
-					if (GetAsyncKeyState(VK_XBUTTON2) & 0x8000)
+					if (m_PlayerController->AcknowledgedPawn != nullptr)
 					{
-						SDK::AActor* closestPlayer = (Variables::currentPlayer == nullptr ? Utils::GetClosestPlayer() : Variables::currentPlayer);
-						if (closestPlayer != nullptr)
+
+						if (GetAsyncKeyState(VK_XBUTTON2) & 0x8000)
 						{
-							Variables::currentPlayer = closestPlayer;
-							SDK::FVector playerLoc;
-							Utils::Engine::GetBoneLocation(static_cast<SDK::ACharacter*>(closestPlayer)->Mesh, &playerLoc, 66);
+							SDK::AActor* closestPlayer = (Variables::currentPlayer == nullptr ? Utils::GetClosestPlayer() : Variables::currentPlayer);
+							if (closestPlayer != nullptr)
+							{
+								Variables::currentPlayer = closestPlayer;
+								SDK::FVector playerLoc;
+								Utils::Engine::GetBoneLocation(static_cast<SDK::ACharacter*>(closestPlayer)->Mesh, &playerLoc, 66);
 
-							Utils::LookAt(m_PlayerController, playerLoc);
-							SDK::FVector2D screen;
-							Utils::Engine::WorldToScreen(m_PlayerController, closestPlayer->RootComponent->Location, &screen);
-							printf("W2S Position: X: %f| Y: %f\n", screen.X, screen.Y);
-							int screenSizeX, screenSizeY;
-							m_PlayerController->GetViewportSize(&screenSizeX, &screenSizeY);
+								Utils::LookAt(m_PlayerController, playerLoc);
+								SDK::FVector2D screen;
+								Utils::Engine::WorldToScreen(m_PlayerController, closestPlayer->RootComponent->Location, &screen);
+								printf("W2S Position: X: %f| Y: %f\n", screen.X, screen.Y);
+								int screenSizeX, screenSizeY;
+								m_PlayerController->GetViewportSize(&screenSizeX, &screenSizeY);
 
-							printf("Screen Size: X: %d| Y: %d\n", screenSizeX, screenSizeY);
+								printf("Screen Size: X: %d| Y: %d\n", screenSizeX, screenSizeY);
+							}
+							else
+							{
+								printf("NULL!\n\n\n\n\n\n");
+							}
 						}
 						else
 						{
-							printf("NULL!\n\n\n\n\n\n");
+							Variables::currentPlayer = nullptr;
 						}
-					}
-					else
-					{
-						Variables::currentPlayer = nullptr;
-					}
 
 
-					if (m_PlayerController->AcknowledgedPawn->IsA(SDK::AFortPawn::StaticClass()))
-					{
-						SDK::AFortPawn* m_LocalPawn = static_cast<SDK::AFortPawn*>(m_PlayerController->AcknowledgedPawn);
-						if (m_LocalPawn->CurrentWeapon != nullptr)
+						if (m_PlayerController->AcknowledgedPawn->IsA(SDK::AFortPawn::StaticClass()))
 						{
-							if (m_LocalPawn->CurrentWeapon->IsA(SDK::AFortWeaponRanged::StaticClass()))
+							SDK::AFortPawn* m_LocalPawn = static_cast<SDK::AFortPawn*>(m_PlayerController->AcknowledgedPawn);
+							if (m_LocalPawn->CurrentWeapon != nullptr)
 							{
-								SDK::AFortWeaponRanged* m_CurWeapon = static_cast<SDK::AFortWeaponRanged*>(m_LocalPawn->CurrentWeapon);
-								m_CurWeapon->CurrentReticleSpread = 0.0f;
-								m_CurWeapon->CurrentReticleSpreadMultiplier = 0.0f;
-								m_CurWeapon->CurrentStandingStillSpreadMultiplier = 0.0f;
+								if (m_LocalPawn->CurrentWeapon->IsA(SDK::AFortWeaponRanged::StaticClass()))
+								{
+									SDK::AFortWeaponRanged* m_CurWeapon = static_cast<SDK::AFortWeaponRanged*>(m_LocalPawn->CurrentWeapon);
+									m_CurWeapon->CurrentReticleSpread = 0.0f;
+									m_CurWeapon->CurrentReticleSpreadMultiplier = 0.0f;
+									m_CurWeapon->CurrentStandingStillSpreadMultiplier = 0.0f;
+								}
 							}
 						}
 					}
 				}
-			}
-			else
-			{
-				wsprintfW(ptrBuf4, ptrData4_);
+				else
+				{
+					wsprintfW(ptrBuf4, ptrData4_);
+				}
 			}
 
 			Variables::isInitialized = true;
@@ -280,15 +278,7 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 		pFontWrapper->DrawString(pContext, L"not copy paste", 14, 16.0f, 16.0f, 0xff0000ff, FW1_RESTORESTATE);
 		if (Variables::isInitialized)
 		{
-			pFontWrapper->DrawString(pContext, ptrBuf, 14, 16.0f, 32.0f, 0xff0000ff, FW1_RESTORESTATE);
-			pFontWrapper->DrawString(pContext, ptrBuf2, 14, 16.0f, 48.0f, 0xff0000ff, FW1_RESTORESTATE);
-			pFontWrapper->DrawString(pContext, ptrBuf3, 14, 16.0f, 64.0f, 0xff0000ff, FW1_RESTORESTATE);
-			pFontWrapper->DrawString(pContext, ptrBuf4, 14, 16.0f, 80.0f, 0xff0000ff, FW1_RESTORESTATE);
-
-
-			wchar_t reportValue[256];
-			swprintf_s(reportValue, L"(Keys:-O P+ I=Log) countnum = %d", countnum);
-			pFontWrapper->DrawString(pContext, reportValue, 20.0f, 220.0f, 100.0f, 0xff0000ff, FW1_RESTORESTATE);
+			//pFontWrapper->DrawString(pContext, ptrBuf, 14, 16.0f, 32.0f, 0xff0000ff, FW1_RESTORESTATE);
 		}
 
 	}

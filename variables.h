@@ -10,7 +10,7 @@ namespace Variables
 
 	DWORD_PTR BaseAddress;
 	MODULEINFO info;
-	SDK::UWorld* m_UWorld;
+	SDK::UWorld** m_UWorld;
 	SDK::ULevel* m_persistentLevel;
 	SDK::UGameInstance* m_owningGameInstance;
 	SDK::TArray<SDK::ULocalPlayer*> LocalPlayers;
