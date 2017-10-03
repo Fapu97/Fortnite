@@ -106,9 +106,10 @@ DWORD WINAPI UpdateThread(LPVOID)
 
 					if (GetAsyncKeyState(VK_XBUTTON2) & 0x8000)
 					{
-						SDK::AActor* closestPlayer = Utils::GetClosestPlayer();
+						SDK::AActor* closestPlayer = (Variables::currentPlayer == nullptr ? Utils::GetClosestPlayer() : Variables::currentPlayer);
 						if (closestPlayer != nullptr)
 						{
+							Variables::currentPlayer = closestPlayer;
 							SDK::FVector playerLoc;
 							Utils::Engine::GetBoneLocation(static_cast<SDK::ACharacter*>(closestPlayer)->Mesh, &playerLoc, 66);
 
@@ -125,6 +126,10 @@ DWORD WINAPI UpdateThread(LPVOID)
 						{
 							printf("NULL!\n\n\n\n\n\n");
 						}
+					}
+					else
+					{
+						Variables::currentPlayer = nullptr;
 					}
 
 
