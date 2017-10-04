@@ -14,10 +14,12 @@
 
 typedef HRESULT(__stdcall *D3D11PresentHook) (IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags);
 typedef void(__stdcall *D3D11DrawIndexedHook) (ID3D11DeviceContext* pContext, UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
+typedef void(__stdcall *D3D11CreateQueryHook) (ID3D11Device* pDevice, const D3D11_QUERY_DESC *pQueryDesc, ID3D11Query **ppQuery);
 
 
 D3D11PresentHook phookD3D11Present = NULL;
 D3D11DrawIndexedHook phookD3D11DrawIndexed = NULL;
+D3D11CreateQueryHook phookD3D11CreateQuery = NULL;
 
 
 ID3D11Device *pDevice = NULL;
@@ -305,6 +307,22 @@ void __stdcall hookD3D11DrawIndexed(ID3D11DeviceContext* pContext, UINT IndexCou
 
     return phookD3D11DrawIndexed(pContext, IndexCount, StartIndexLocation, BaseVertexLocation);
 }
+//==========================================================================================================================
+
+void __stdcall hookD3D11CreateQuery(ID3D11Device* pDevice, const D3D11_QUERY_DESC *pQueryDesc, ID3D11Query **ppQuery)
+{
+	//Disable Occlusion which prevents rendering player models through certain objects (used by wallhack to see models through walls at all distances, REDUCES FPS)
+	if (pQueryDesc->Query == D3D11_QUERY_OCCLUSION)
+	{
+		D3D11_QUERY_DESC oqueryDesc = CD3D11_QUERY_DESC();
+		(&oqueryDesc)->MiscFlags = pQueryDesc->MiscFlags;
+		(&oqueryDesc)->Query = D3D11_QUERY_TIMESTAMP;
+
+		return phookD3D11CreateQuery(pDevice, &oqueryDesc, ppQuery);
+	}
+
+	return phookD3D11CreateQuery(pDevice, pQueryDesc, ppQuery);
+}
 
 //==========================================================================================================================
 
@@ -396,6 +414,8 @@ DWORD __stdcall InitializeHook(LPVOID)
 	if (MH_EnableHook((DWORD_PTR*)pSwapChainVtable[8]) != MH_OK) { return 1; }
 	if (MH_CreateHook((DWORD_PTR*)pContextVTable[12], hookD3D11DrawIndexed, reinterpret_cast<void**>(&phookD3D11DrawIndexed)) != MH_OK) { return 1; }
 	if (MH_EnableHook((DWORD_PTR*)pContextVTable[12]) != MH_OK) { return 1; }
+	if (MH_CreateHook((DWORD_PTR*)pDeviceVTable[24], hookD3D11CreateQuery, reinterpret_cast<void**>(&phookD3D11CreateQuery)) != MH_OK) { return 1; }
+	if (MH_EnableHook((DWORD_PTR*)pDeviceVTable[24]) != MH_OK) { return 1; }
 
 
     DWORD dwOld;
