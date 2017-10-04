@@ -14,30 +14,10 @@
 
 typedef HRESULT(__stdcall *D3D11PresentHook) (IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags);
 typedef void(__stdcall *D3D11DrawIndexedHook) (ID3D11DeviceContext* pContext, UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
-typedef void(__stdcall *D3D11PSSetShaderResourcesHook) (ID3D11DeviceContext* pContext, UINT StartSlot, UINT NumViews, ID3D11ShaderResourceView *const *ppShaderResourceViews);
-typedef void(__stdcall *D3D11CreateQueryHook) (ID3D11Device* pDevice, const D3D11_QUERY_DESC *pQueryDesc, ID3D11Query **ppQuery);
-
-typedef void(__stdcall *D3D11DrawIndexedInstancedHook) (ID3D11DeviceContext* pContext, UINT IndexCountPerInstance, UINT InstanceCount, UINT StartIndexLocation, INT BaseVertexLocation, UINT StartInstanceLocation);
-typedef void(__stdcall *D3D11DrawHook) (ID3D11DeviceContext* pContext, UINT VertexCount, UINT StartVertexLocation);
-typedef void(__stdcall *D3D11DrawInstancedHook) (ID3D11DeviceContext* pContext, UINT VertexCountPerInstance, UINT InstanceCount, UINT StartVertexLocation, UINT StartInstanceLocation);
-typedef void(__stdcall *D3D11DrawInstancedIndirectHook) (ID3D11DeviceContext* pContext, ID3D11Buffer *pBufferForArgs, UINT AlignedByteOffsetForArgs);
-typedef void(__stdcall *D3D11DrawIndexedInstancedIndirectHook) (ID3D11DeviceContext* pContext, ID3D11Buffer *pBufferForArgs, UINT AlignedByteOffsetForArgs);
-typedef void(__stdcall *D3D11VSSetConstantBuffersHook) (ID3D11DeviceContext* pContext, UINT StartSlot, UINT NumBuffers, ID3D11Buffer *const *ppConstantBuffers);
-typedef void(__stdcall *D3D11PSSetSamplersHook) (ID3D11DeviceContext* pContext, UINT StartSlot, UINT NumSamplers, ID3D11SamplerState *const *ppSamplers);
 
 
 D3D11PresentHook phookD3D11Present = NULL;
 D3D11DrawIndexedHook phookD3D11DrawIndexed = NULL;
-D3D11PSSetShaderResourcesHook phookD3D11PSSetShaderResources = NULL;
-D3D11CreateQueryHook phookD3D11CreateQuery = NULL;
-
-D3D11DrawIndexedInstancedHook phookD3D11DrawIndexedInstanced = NULL;
-D3D11DrawHook phookD3D11Draw = NULL;
-D3D11DrawInstancedHook phookD3D11DrawInstanced = NULL;
-D3D11DrawInstancedIndirectHook phookD3D11DrawInstancedIndirect = NULL;
-D3D11DrawIndexedInstancedIndirectHook phookD3D11DrawIndexedInstancedIndirect = NULL;
-D3D11VSSetConstantBuffersHook phookD3D11VSSetConstantBuffers = NULL;
-D3D11PSSetSamplersHook phookD3D11PSSetSamplers = NULL;
 
 
 ID3D11Device *pDevice = NULL;
@@ -328,132 +308,6 @@ void __stdcall hookD3D11DrawIndexed(ID3D11DeviceContext* pContext, UINT IndexCou
 
 //==========================================================================================================================
 
-void __stdcall hookD3D11PSSetShaderResources(ID3D11DeviceContext* pContext, UINT StartSlot, UINT NumViews, ID3D11ShaderResourceView *const *ppShaderResourceViews)
-{
-	pssrStartSlot = StartSlot;
-
-	for (UINT j = 0; j < NumViews; j++)
-	{
-		//resources loop
-		ID3D11ShaderResourceView* pShaderResView = ppShaderResourceViews[j];
-		if (pShaderResView)
-		{
-			pShaderResView->GetDesc(&Descr);
-
-			ID3D11Resource *Resource;
-			pShaderResView->GetResource(&Resource);
-			ID3D11Texture2D *Texture = (ID3D11Texture2D *)Resource;
-			Texture->GetDesc(&texdesc);
-		}
-	}
-
-	/*
-	//alternative wallhack example for f'up games, only use this if no draw function works for wallhack
-	if (pssrStartSlot == 1) //if black screen, find correct pssrStartSlot
-		SetDepthStencilState(READ_NO_WRITE);
-	if (pscdesc.ByteWidth == 224 && Descr.Format == 71) //models in Tom Clancys Rainbow Six Siege old version
-	{
-		SetDepthStencilState(DISABLED);
-		//pContext->PSSetShader(psRed, NULL, NULL);
-	}
-	else if (pssrStartSlot == 1) //if black screen, find correct pssrStartSlot
-		SetDepthStencilState(READ_NO_WRITE);
-	*/
-
-	return phookD3D11PSSetShaderResources(pContext, StartSlot, NumViews, ppShaderResourceViews);
-}
-
-//==========================================================================================================================
-
-void __stdcall hookD3D11CreateQuery(ID3D11Device* pDevice, const D3D11_QUERY_DESC *pQueryDesc, ID3D11Query **ppQuery)
-{
-	/*
-	//this is required in some games for better wallhack
-	//disables Occlusion which prevents rendering player models through certain objects (used by wallhack to see models through walls at all distances, REDUCES FPS)
-	if (pQueryDesc->Query == D3D11_QUERY_OCCLUSION)
-	{
-		D3D11_QUERY_DESC oqueryDesc = CD3D11_QUERY_DESC();
-		(&oqueryDesc)->MiscFlags = pQueryDesc->MiscFlags;
-		(&oqueryDesc)->Query = D3D11_QUERY_TIMESTAMP;
-
-		return phookD3D11CreateQuery(pDevice, &oqueryDesc, ppQuery);
-	}
-	*/
-	return phookD3D11CreateQuery(pDevice, pQueryDesc, ppQuery);
-}
-
-//==========================================================================================================================
-
-void __stdcall hookD3D11DrawIndexedInstanced(ID3D11DeviceContext* pContext, UINT IndexCountPerInstance, UINT InstanceCount, UINT StartIndexLocation, INT BaseVertexLocation, UINT StartInstanceLocation)
-{
-	if (GetAsyncKeyState(VK_F9) & 1)
-		Log("DrawIndexedInstanced called");
-
-	return phookD3D11DrawIndexedInstanced(pContext, IndexCountPerInstance, InstanceCount, StartIndexLocation, BaseVertexLocation, StartInstanceLocation);
-}
-
-//==========================================================================================================================
-
-void __stdcall hookD3D11Draw(ID3D11DeviceContext* pContext, UINT VertexCount, UINT StartVertexLocation)
-{
-	if (GetAsyncKeyState(VK_F9) & 1)
-		Log("Draw called");
-
-	return phookD3D11Draw(pContext, VertexCount, StartVertexLocation);
-}
-
-//==========================================================================================================================
-
-void __stdcall hookD3D11DrawInstanced(ID3D11DeviceContext* pContext, UINT VertexCountPerInstance, UINT InstanceCount, UINT StartVertexLocation, UINT StartInstanceLocation)
-{
-	if (GetAsyncKeyState(VK_F9) & 1)
-		Log("DrawInstanced called");
-
-	return phookD3D11DrawInstanced(pContext, VertexCountPerInstance, InstanceCount, StartVertexLocation, StartInstanceLocation);
-}
-
-//==========================================================================================================================
-
-void __stdcall hookD3D11DrawInstancedIndirect(ID3D11DeviceContext* pContext, ID3D11Buffer *pBufferForArgs, UINT AlignedByteOffsetForArgs)
-{
-	if (GetAsyncKeyState(VK_F9) & 1)
-		Log("DrawInstancedIndirect called");
-
-	return phookD3D11DrawInstancedIndirect(pContext, pBufferForArgs, AlignedByteOffsetForArgs);
-}
-
-//==========================================================================================================================
-
-void __stdcall hookD3D11DrawIndexedInstancedIndirect(ID3D11DeviceContext* pContext, ID3D11Buffer *pBufferForArgs, UINT AlignedByteOffsetForArgs)
-{
-	if (GetAsyncKeyState(VK_F9) & 1)
-		Log("DrawIndexedInstancedIndirect called");
-
-	return phookD3D11DrawIndexedInstancedIndirect(pContext, pBufferForArgs, AlignedByteOffsetForArgs);
-}
-
-//==========================================================================================================================
-
-void __stdcall hookD3D11VSSetConstantBuffers(ID3D11DeviceContext* pContext, UINT StartSlot, UINT NumBuffers, ID3D11Buffer *const *ppConstantBuffers)
-{
-	if (ppConstantBuffers != NULL)
-		vsStartSlot = StartSlot;
-
-	return phookD3D11VSSetConstantBuffers(pContext, StartSlot, NumBuffers, ppConstantBuffers);
-}
-
-//==========================================================================================================================
-
-void __stdcall hookD3D11PSSetSamplers(ID3D11DeviceContext* pContext, UINT StartSlot, UINT NumSamplers, ID3D11SamplerState *const *ppSamplers)
-{
-	if(ppSamplers!=NULL)
-		psStartSlot = StartSlot;
-
-	return phookD3D11PSSetSamplers(pContext, StartSlot, NumSamplers, ppSamplers);
-}
-
-//=========================================================================================================================
-
 const int MultisampleCount = 1; // Set to 1 to disable multisampling
 LRESULT CALLBACK DXGIMsgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam){ return DefWindowProc(hwnd, uMsg, wParam, lParam); }
 DWORD __stdcall InitializeHook(LPVOID)
@@ -542,6 +396,7 @@ DWORD __stdcall InitializeHook(LPVOID)
 	if (MH_EnableHook((DWORD_PTR*)pSwapChainVtable[8]) != MH_OK) { return 1; }
 	if (MH_CreateHook((DWORD_PTR*)pContextVTable[12], hookD3D11DrawIndexed, reinterpret_cast<void**>(&phookD3D11DrawIndexed)) != MH_OK) { return 1; }
 	if (MH_EnableHook((DWORD_PTR*)pContextVTable[12]) != MH_OK) { return 1; }
+
 
     DWORD dwOld;
     VirtualProtect(phookD3D11Present, 2, PAGE_EXECUTE_READWRITE, &dwOld);
