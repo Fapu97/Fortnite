@@ -392,14 +392,30 @@ public:
 	}
 };
 
-struct FText
-{
-	char UnknownData[0x18];
+class FTextData {
+public:
+	char pad_0x0000[0x28];  //0x0000
+	wchar_t* Name;          //0x0028 
+	__int32 Length;         //0x0030 
+
+};
+
+struct FText {
+	FTextData* Data;
+	char UnknownData[0x10];
+
+	wchar_t* Get() const {
+		if (Data) {
+			return Data->Name;
+		}
+
+		return nullptr;
+	}
 };
 
 struct FScriptDelegate
 {
-	char UnknownData[10];
+	char UnknownData[16];
 };
 
 struct FScriptMulticastDelegate
@@ -485,7 +501,7 @@ class TPersistentObjectPtr
 {
 public:
 	FWeakObjectPtr WeakPtr;
-	int32_t TagAtLastTest;
+	int64_t TagAtLastTest;
 	TObjectID ObjectID;
 };
 

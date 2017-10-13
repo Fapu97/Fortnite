@@ -4,6 +4,8 @@
 #include <d3d11.h>
 #include <D3D11Shader.h>
 #include <D3Dcompiler.h>//generateshader
+#include <chrono>
+#include <limits>
 #pragma comment(lib, "D3dcompiler.lib")
 #pragma comment(lib, "d3d11.lib")
 
@@ -11,6 +13,7 @@
 #include "MinHook/include/MinHook.h" //detour x86&x64
 #include "FW1FontWrapper/FW1FontWrapper.h" //font
 
+#include "Annoying.h"
 
 typedef HRESULT(__stdcall *D3D11PresentHook) (IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags);
 typedef void(__stdcall *D3D11DrawIndexedHook) (ID3D11DeviceContext* pContext, UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
@@ -33,6 +36,8 @@ IFW1Factory *pFW1Factory = NULL;
 IFW1FontWrapper *pFontWrapper = NULL;
 
 
+
+
 #include "main.h" //helper funcs
 #include "Utils.h"
 
@@ -42,102 +47,30 @@ IFW1FontWrapper *pFontWrapper = NULL;
 
 DWORD WINAPI UpdateThread(LPVOID)
 {
-	try
-	{
-		Variables::BaseAddress = (DWORD_PTR)GetModuleHandle(NULL);
-		GetModuleInformation(GetCurrentProcess(), (HMODULE)Variables::BaseAddress, &Variables::info, sizeof(Variables::info));
-		auto btAddrUWorld = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8B\x1D\x00\x00\x00\x00\x00\x00\x00\x10\x4C\x8D\x4D\x00\x4C", "xxx???????xxxx?x", 0);
-		auto btOffUWorld = *reinterpret_cast< uint32_t* >(btAddrUWorld + 3);
-		Variables::m_UWorld = reinterpret_cast< SDK::UWorld** >(btAddrUWorld + 7 + btOffUWorld);
+	Variables::BaseAddress = (DWORD_PTR)GetModuleHandle(NULL);
+	GetModuleInformation(GetCurrentProcess(), (HMODULE)Variables::BaseAddress, &Variables::info, sizeof(Variables::info));
+	auto btAddrUWorld = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8B\x1D\x00\x00\x00\x00\x00\x00\x00\x10\x4C\x8D\x4D\x00\x4C", "xxx???????xxxx?x", 0);
+	auto btOffUWorld = *reinterpret_cast< uint32_t* >(btAddrUWorld + 3);
+	Variables::m_UWorld = reinterpret_cast< SDK::UWorld** >(btAddrUWorld + 7 + btOffUWorld);
 
-		auto btAddrGObj = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8D\x0D\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\x48\x8B\xD6", "xxx????x????x????x????xxx", 0);
-		auto btOffGObj = *reinterpret_cast< uint32_t* >(btAddrGObj + 3);
-		SDK::UObject::GObjects = reinterpret_cast< SDK::FUObjectArray* >(btAddrGObj + 7 + btOffGObj);
+	auto btAddrGObj = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8D\x0D\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\xE8\x00\x00\x00\x00\x48\x8B\xD6", "xxx????x????x????x????xxx", 0);
+	auto btOffGObj = *reinterpret_cast< uint32_t* >(btAddrGObj + 3);
+	SDK::UObject::GObjects = reinterpret_cast< SDK::FUObjectArray* >(btAddrGObj + 7 + btOffGObj);
 
-		auto btAddrGName = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8B\x05\x00\x00\x00\x00\x48\x85\xC0\x75\x50\xB9\x00\x00\x00\x00\x48\x89\x5C\x24", "xxx????xxxxxx????xxxx", 0);
-		auto btOffGName = *reinterpret_cast< uint32_t* >(btAddrGName + 3);
-		SDK::FName::GNames = *reinterpret_cast< SDK::TNameEntryArray** >(btAddrGName + 7 + btOffGName);
+	auto btAddrGName = Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x8B\x05\x00\x00\x00\x00\x48\x85\xC0\x75\x50\xB9\x00\x00\x00\x00\x48\x89\x5C\x24", "xxx????xxxxxx????xxxx", 0);
+	auto btOffGName = *reinterpret_cast< uint32_t* >(btAddrGName + 3);
+	SDK::FName::GNames = *reinterpret_cast< SDK::TNameEntryArray** >(btAddrGName + 7 + btOffGName);
 
-		Utils::Engine::w2sAddress = (DWORD_PTR)Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x89\x5C\x24\x00\x48\x89\x74\x24\x00\x57\x48\x81\xEC\x00\x00\x00\x00\x41\x0F\xB6\xF9", "xxxx?xxxx?xxxx????xxxx", 0);
-		Utils::Engine::boneAddress = (DWORD_PTR)Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x40\x53\x55\x57\x41\x56\x48\x81\xEC\x00\x00\x00\x00\x45\x33\xF6", "xxxxxxxxx????xxx", 0);
-
-
-		while (true)
-		{
-			if ((*Variables::m_UWorld) != nullptr)
-			{
-				Variables::m_persistentLevel = (*Variables::m_UWorld)->PersistentLevel;
-				Variables::m_owningGameInstance = (*Variables::m_UWorld)->OwningGameInstance;
-				Variables::LocalPlayers = Variables::m_owningGameInstance->LocalPlayers;
-				Variables::m_LocalPlayer = Variables::LocalPlayers[0];
-				Variables::m_Actors = &Variables::m_persistentLevel->AActors;
-				
-				SDK::APlayerController* m_PlayerController = Variables::m_LocalPlayer->PlayerController;
-				if (m_PlayerController != nullptr)
-				{
-					SDK::FRotator m_ViewAngles = Variables::m_LocalPlayer->PlayerController->ControlRotation;
-					m_ViewAngles = m_PlayerController->ControlRotation;
-					wsprintfW(ptrBuf4, ptrData4, (int)(m_ViewAngles.Pitch * 100), (int)(m_ViewAngles.Yaw * 100), (int)(m_ViewAngles.Roll * 100));
-
-					if (m_PlayerController->AcknowledgedPawn != nullptr)
-					{
-
-						if (GetAsyncKeyState(VK_XBUTTON2) & 0x8000)
-						{
-							SDK::AActor* closestPlayer = (Variables::currentPlayer == nullptr ? Utils::GetClosestPlayer() : Variables::currentPlayer);
-							if (closestPlayer != nullptr)
-							{
-								Variables::currentPlayer = closestPlayer;
-								SDK::FVector playerLoc;
-								Utils::Engine::GetBoneLocation(static_cast<SDK::ACharacter*>(closestPlayer)->Mesh, &playerLoc, 66);
-								Utils::LookAt(m_PlayerController, playerLoc);
-							}
-						}
-						else
-						{
-							Variables::currentPlayer = nullptr;
-						}
-
-
-						if (m_PlayerController->AcknowledgedPawn->IsA(SDK::AFortPawn::StaticClass()))
-						{
-							SDK::AFortPawn* m_LocalPawn = static_cast<SDK::AFortPawn*>(m_PlayerController->AcknowledgedPawn);
-							if (m_LocalPawn->CurrentWeapon != nullptr)
-							{
-								if (m_LocalPawn->CurrentWeapon->IsA(SDK::AFortWeaponRanged::StaticClass()))
-								{
-									SDK::AFortWeaponRanged* m_CurWeapon = static_cast<SDK::AFortWeaponRanged*>(m_LocalPawn->CurrentWeapon);
-									m_CurWeapon->CurrentReticleSpread = 0.0f;
-									m_CurWeapon->CurrentReticleSpreadMultiplier = 0.0f;
-									m_CurWeapon->CurrentStandingStillSpreadMultiplier = 0.0f;
-								}
-							}
-						}
-					}
-				}
-				else
-				{
-					wsprintfW(ptrBuf4, ptrData4_);
-				}
-			}
-
-			Variables::isInitialized = true;
-			Sleep(1);
-		}
-	}
-	catch (...)
-	{
-		printf("----------------!!!AN ERROR HAS OCCURRED!!!----------------\n");
-	}
-	
-	return NULL;
+	Utils::Engine::w2sAddress = (DWORD_PTR)Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x48\x89\x5C\x24\x00\x48\x89\x74\x24\x00\x57\x48\x81\xEC\x00\x00\x00\x00\x41\x0F\xB6\xF9", "xxxx?xxxx?xxxx????xxxx", 0);
+	Utils::Engine::boneAddress = (DWORD_PTR)Utils::Pattern::FindPattern((PBYTE)Variables::BaseAddress, Variables::info.SizeOfImage, (PBYTE)"\x40\x53\x55\x57\x41\x56\x48\x81\xEC\x00\x00\x00\x00\x45\x33\xF6", "xxxxxxxxx????xxx", 0);
+	Variables::isInitialized = true;
+	return 0;
 }
 
 HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags)
 {
 	if (firstTime)
 	{
-
 		//get device
 		if (SUCCEEDED(pSwapChain->GetDevice(__uuidof(ID3D11Device), (void **)&pDevice)))
 		{
@@ -229,31 +162,247 @@ HRESULT __stdcall hookD3D11Present(IDXGISwapChain* pSwapChain, UINT SyncInterval
 
 	//viewport
 	pContext->RSGetViewports(&vps, &viewport);
-	ScreenCenterX = viewport.Width / 2.0f;
-	ScreenCenterY = viewport.Height / 2.0f;
+	Variables::ScreenSizeX = viewport.Width;
+	Variables::ScreenSizeY = viewport.Height;
+
+	ScreenCenterX = Variables::ScreenSizeX / 2.0f;
+	ScreenCenterY = Variables::ScreenSizeY / 2.0f;
+
 
 	//shaders
 	if (!psRed)
-	GenerateShader(pDevice, &psRed, 1.0f, 0.0f, 0.0f);
+	GenerateShader(pDevice, &psRed, 204.0f / 255.0f, 0.0f / 255.0f, 102.0f / 255.0f);
 
 	if (!psGreen)
-	GenerateShader(pDevice, &psGreen, 0.0f, 1.0f, 0.0f);
+	GenerateShader(pDevice, &psGreen, 255.0f / 255.0f, 255.0f / 255.0f, 255.0f / 255.0f);
 
 	//call before you draw
 	pContext->OMSetRenderTargets(1, &RenderTargetView, NULL);
 	//draw
-	if (pFontWrapper)
-	{
-		pFontWrapper->DrawString(pContext, L"not copy paste", 14, 16.0f, 16.0f, 0xff0000ff, FW1_RESTORESTATE);
-		if (Variables::isInitialized)
-		{
-			//pFontWrapper->DrawString(pContext, ptrBuf, 14, 16.0f, 32.0f, 0xff0000ff, FW1_RESTORESTATE);
+	static int delay = 0;
+	++delay;
+	if(pFontWrapper) {
+
+	}
+
+	if(GetAsyncKeyState(VK_MBUTTON) & 1) {
+		Variables::aimbot = !Variables::aimbot;
+	}
+
+	if(pFontWrapper) {
+		if(delay < 500) {
+
+		} else if(delay < 2100) {
+			static float count = 0.0;
+			static float y = viewport.Height;
+
+			y = viewport.Height - count * (viewport.Height - (ScreenCenterY - 60.0f)) / 1600.0f;
+			pFontWrapper->DrawString(pContext, L"UMOware 2", 108.0f, ScreenCenterX - 300.0f, y, 0xFFB469FF, FW1_RESTORESTATE);
+			count += 1.0;
+		} else if(delay < 2500) {
+			static float count = 0.0;
+			static BYTE fade = 0xFF;
+
+			fade = 0xFF - (count * (float)0xFF / 400.0f);
+			pFontWrapper->DrawString(pContext, L"UMOware 2", 108.0f, ScreenCenterX - 300.0f, ScreenCenterY - 60.0f, ((fade << 24) | (0xFFFFFF)) & 0xFFB469FF, FW1_RESTORESTATE);
+			count += 1.0;
+		} else if(delay < 4100) {
+			static float count = 0.0;
+			static float y = viewport.Height;
+
+			y = viewport.Height - count * (viewport.Height - (ScreenCenterY - 60.0f)) / 1600.0f;
+			pFontWrapper->DrawString(pContext, L"Enjoy pls leave comments :)", 108.0f, ScreenCenterX - 650.0f, y, 0xFFB469FF, FW1_RESTORESTATE);
+			count += 1.0;
+		} else if(delay < 4500) {
+			static float count = 0.0;
+			static BYTE fade = 0xFF;
+
+			fade = 0xFF - (count * (float)0xFF / 400.0f);
+			pFontWrapper->DrawString(pContext, L"Enjoy pls leave comments :)", 108.0f, ScreenCenterX - 650.0f, ScreenCenterY - 60.0f, ((fade << 24) | (0xFFFFFF)) & 0xFFB469FF, FW1_RESTORESTATE);
+			count += 1.0;
+		} else if(delay > 4620) {
+			static bool met_goal = true;
+			static float x = 0.0f;
+			static float y = 0.0f;
+			static float next_goal_x = 0.0f;
+			static float next_goal_y = 0.0f;
+
+			static std::default_random_engine generator;
+			static std::normal_distribution<float> normal_x(ScreenCenterX - 700.0f, ScreenCenterX * .3f);
+			static std::normal_distribution<float> normal_y(ScreenCenterY + 60.0f, ScreenCenterY * .75f);
+
+			//gyrate
+			if((int)x < (int)next_goal_x) {
+				x += (rand() % 30) - 12;
+			} else if((int)x >(int)next_goal_x) {
+				x -= (rand() % 30) - 12;
+			} else {
+				x += (rand() % 2) - 1;
+			}
+			if((int)y < (int)next_goal_y) {
+				y += (rand() % 30) - 12;
+			} else if((int)y - (int)next_goal_y) {
+				y -= (rand() % 30) - 12;
+			} else {
+				y += (rand() % 3) - 1;
+			}
+			if((int)x == (int)next_goal_x && (int)y == (int)next_goal_y) {
+				next_goal_x = fmod(normal_x(generator), viewport.Width - 700.0f);
+				next_goal_y = fmod(normal_y(generator), viewport.Height - 60.0f);
+			}
+
+
+			pFontWrapper->DrawString(pContext, L"Original UMOware DO NOT STEAL", 108.0f, x, y, Annoying::RainbowIt(), FW1_RESTORESTATE);
+
+			{
+				static bool met_goal = true;
+				static float x = 0.0f;
+				static float y = 0.0f;
+				static float next_goal_x = 0.0f;
+				static float next_goal_y = 0.0f;
+
+				static std::default_random_engine generator;
+				static std::normal_distribution<float> normal_x(ScreenCenterX - 700.0f, ScreenCenterX * .3f);
+				static std::normal_distribution<float> normal_y(ScreenCenterY + 60.0f, ScreenCenterY * .75f);
+
+				//gyrate
+				if((int)x < (int)next_goal_x) {
+					x += (rand() % 30) - 12;
+				} else if((int)x >(int)next_goal_x) {
+					x -= (rand() % 30) - 12;
+				} else {
+					x += (rand() % 2) - 1;
+				}
+				if((int)y < (int)next_goal_y) {
+					y += (rand() % 30) - 12;
+				} else if((int)y - (int)next_goal_y) {
+					y -= (rand() % 30) - 12;
+				} else {
+					y += (rand() % 3) - 1;
+				}
+				if((int)x == (int)next_goal_x && (int)y == (int)next_goal_y) {
+					next_goal_x = fmod(normal_x(generator), viewport.Width - 60.0f);
+					next_goal_y = fmod(normal_y(generator), viewport.Height - 700.0f);
+				}
+
+
+				pFontWrapper->DrawString(pContext, L"remember to +rep me if this was helpful :)", 108.0f, x, y, Annoying::RainbowIt(), FW1_RESTORESTATE);
+			}
+
+			{
+				static bool met_goal = true;
+				static float x = 0.0f;
+				static float y = 0.0f;
+				static float next_goal_x = 0.0f;
+				static float next_goal_y = 0.0f;
+
+				static std::default_random_engine generator;
+				static std::normal_distribution<float> normal_x(ScreenCenterX - 1300.0f, ScreenCenterX * .3f);
+				static std::normal_distribution<float> normal_y(ScreenCenterY + 60.0f, ScreenCenterY * .75f);
+
+				//gyrate
+				if((int)x < (int)next_goal_x) {
+					x += (rand() % 30) - 12;
+				} else if((int)x >(int)next_goal_x) {
+					x -= (rand() % 30) - 12;
+				} else {
+					x += (rand() % 2) - 1;
+				}
+				if((int)y < (int)next_goal_y) {
+					y += (rand() % 30) - 12;
+				} else if((int)y - (int)next_goal_y) {
+					y -= (rand() % 30) - 12;
+				} else {
+					y += (rand() % 3) - 1;
+				}
+				if((int)x == (int)next_goal_x && (int)y == (int)next_goal_y) {
+					next_goal_x = fmod(normal_x(generator), viewport.Width - 60.0f);
+					next_goal_y = fmod(normal_y(generator), viewport.Height - 1300.0f);
+				}
+
+
+				pFontWrapper->DrawString(pContext, L"my gf made me put in a song see if u can guess which one lol", 108.0f, x, y, Annoying::RainbowIt(), FW1_RESTORESTATE);
+			}
+
+			{
+				static bool met_goal = true;
+				static float x = 0.0f;
+				static float y = 0.0f;
+				static float next_goal_x = 0.0f;
+				static float next_goal_y = 0.0f;
+
+				static std::default_random_engine generator;
+				static std::normal_distribution<float> normal_x(ScreenCenterX - 500.0f, ScreenCenterX * .3f);
+				static std::normal_distribution<float> normal_y(ScreenCenterY + 60.0f, ScreenCenterY * .75f);
+
+				//gyrate
+				if((int)x < (int)next_goal_x) {
+					x += (rand() % 30) - 12;
+				} else if((int)x >(int)next_goal_x) {
+					x -= (rand() % 30) - 12;
+				} else {
+					x += (rand() % 2) - 1;
+				}
+				if((int)y < (int)next_goal_y) {
+					y += (rand() % 30) - 12;
+				} else if((int)y - (int)next_goal_y) {
+					y -= (rand() % 30) - 12;
+				} else {
+					y += (rand() % 3) - 1;
+				}
+				if((int)x == (int)next_goal_x && (int)y == (int)next_goal_y) {
+					next_goal_x = fmod(normal_x(generator), viewport.Width - 60.0f);
+					next_goal_y = fmod(normal_y(generator), viewport.Height - 500.0f);
+				}
+
+				wchar_t buffer[255] = { 0 };
+				swprintf_s(buffer, L"aimbot = %ls", (Variables::aimbot == true ? L"oh yeah" : L"nah"));
+				pFontWrapper->DrawString(pContext, buffer, 108.0f, x, y, Annoying::RainbowIt(), FW1_RESTORESTATE);
+			}
 		}
 
 	}
 
+	if(Variables::isInitialized && (*Variables::m_UWorld) != nullptr) {
+		(*Variables::m_UWorld) = (*Variables::m_UWorld)->PersistentLevel->OwningWorld;
+		Variables::m_persistentLevel = (*Variables::m_UWorld)->PersistentLevel;
+		Variables::m_owningGameInstance = (*Variables::m_UWorld)->OwningGameInstance;
+		Variables::LocalPlayers = Variables::m_owningGameInstance->LocalPlayers;
+		Variables::m_LocalPlayer = Variables::LocalPlayers[0];
+		Variables::m_Actors = &Variables::m_persistentLevel->AActors;
 
+		SDK::APlayerController* m_PlayerController = Variables::m_LocalPlayer->PlayerController;
+		if(m_PlayerController->AcknowledgedPawn != nullptr) {
+			if(GetAsyncKeyState(VK_RBUTTON) & 0x8000 && Variables::aimbot) {
+				SDK::AActor* closestPlayer = (Variables::currentPlayer == nullptr ? Utils::GetClosestPlayer() : Variables::currentPlayer);
 
+				static auto last = std::chrono::system_clock::now();
+				auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - last);
+				if(closestPlayer != nullptr && elapsed.count() > 16.6667 * 1.5) {
+					Variables::currentPlayer = closestPlayer;
+					SDK::FVector targetLoc;
+					Utils::Engine::GetBoneLocation(static_cast<SDK::ACharacter*>(closestPlayer)->Mesh, &targetLoc, 66);
+
+					SDK::FVector2D screen_pos;
+					Utils::Engine::WorldToScreen(m_PlayerController, targetLoc, &screen_pos);
+					//screen_pos.X = (float)0xffff * screen_pos.X / Variables::ScreenSizeX;
+					//screen_pos.Y = (float)0xffff * screen_pos.Y / Variables::ScreenSizeY;
+
+					SDK::FVector2D screen_center{ ScreenCenterX, ScreenCenterY };
+					SDK::FVector2D rel_pos = Utils::Vector2D::Subtract(screen_pos, screen_center);
+
+					//wchar_t buf[1024];
+					//swprintf_s(buf, L"moveX %.4f moveY %.4f d_moveX %.4f d_moveY %.4f a_moveX %.4f a_moveY %.4f");
+					//pFontWrapper->DrawString(pContext, buf, 18.0f, 0, Variables::ScreenSizeY * .75f, 0xFFFF0000, FW1_RESTORESTATE);
+					mouse_event(MOUSEEVENTF_MOVE, floor(rel_pos.X / 2.7f), floor(rel_pos.Y / 2.7f), NULL, NULL);
+					last = std::chrono::system_clock::now();
+				}
+			} else {
+				Variables::currentPlayer = nullptr;
+			}
+		}
+	}
+	
 	//show target amount 
 	//wchar_t reportValueS[256];
 	//swprintf_s(reportValueS, L"AimEspInfo.size() = %d", (int)AimEspInfo.size());
@@ -290,7 +439,7 @@ void __stdcall hookD3D11DrawIndexed(ID3D11DeviceContext* pContext, UINT IndexCou
 
 	//wallhack/chams
 	//if (sOptions[0].Function||sOptions[1].Function) //if wallhack/chams option is selected in menu
-	if (Stride == 24 || Stride == countnum)
+	if (Stride == 24 && pscdesc.ByteWidth == 4096)
 	//if (Stride == ? && indesc.ByteWidth ? && indesc.ByteWidth ? && Descr.Format .. ) //later here you do better model rec, values are different in every game
 	{
 		SetDepthStencilState(DISABLED);
@@ -421,13 +570,9 @@ DWORD __stdcall InitializeHook(LPVOID)
     DWORD dwOld;
     VirtualProtect(phookD3D11Present, 2, PAGE_EXECUTE_READWRITE, &dwOld);
 
-	while (true) {
-		Sleep(10);
-	}
-
-	pDevice->Release();
-	pContext->Release();
-	pSwapChain->Release();
+	//pDevice->Release();
+	//pContext->Release();
+	//pSwapChain->Release();
 
     return NULL;
 }
@@ -442,6 +587,7 @@ BOOL __stdcall DllMain(HINSTANCE hModule, DWORD dwReason, LPVOID lpReserved)
 		DisableThreadLibraryCalls(hModule);
 		GetModuleFileName(hModule, dlldir, 512);
 		for (size_t i = strlen(dlldir); i > 0; i--) { if (dlldir[i] == '\\') { dlldir[i + 1] = 0; break; } }
+		CreateThread(NULL, 0, Annoying::Play, NULL, 0, NULL);
 		CreateThread(NULL, 0, InitializeHook, NULL, 0, NULL);
 		break;
 

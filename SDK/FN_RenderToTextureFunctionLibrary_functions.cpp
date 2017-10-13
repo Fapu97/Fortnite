@@ -73,8 +73,8 @@ void URenderToTextureFunctionLibrary_C::STATIC_Array_to_HLSL_Int_Array(TEnumAsBy
 
 	if (Variable_Name != nullptr)
 		*Variable_Name = params.Variable_Name;
-	if (int != nullptr)
-		*int = params.int;
+	if (int1 != nullptr)
+		*int1 = params.int1;
 	if (int2 != nullptr)
 		*int2 = params.int2;
 	if (int3 != nullptr)

@@ -23,7 +23,7 @@ struct FLevelSequenceObjectReferenceMap
 // 0x0038
 struct FLevelSequenceObject
 {
-	TLazyObjectPtr<class UObject>                      ObjectOrOwner;                                            // 0x0000(0x001C) (CPF_IsPlainOldData)
+	TLazyObjectPtr<class UObject>                      ObjectOrOwner;                                            // 0x0000(0x0020) (CPF_IsPlainOldData)
 	unsigned char                                      UnknownData00[0x4];                                       // 0x001C(0x0004) MISSED OFFSET
 	struct FString                                     ComponentName;                                            // 0x0020(0x0010) (CPF_ZeroConstructor)
 	TWeakObjectPtr<class UObject>                      CachedComponent;                                          // 0x0030(0x0008) (CPF_ZeroConstructor, CPF_Transient, CPF_IsPlainOldData)
@@ -63,7 +63,7 @@ struct FLevelSequenceObjectReference
 // 0x0001
 struct FBoundActorProxy
 {
-
+	unsigned char                                      UnknownData00[0x1];                                       // 0x0000(0x0001) MISSED OFFSET
 };
 
 }

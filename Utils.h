@@ -17,6 +17,14 @@ namespace Utils
 			return vector;
 		}
 
+		SDK::FVector Add(SDK::FVector point1, SDK::FVector point2) {
+			SDK::FVector vector{ 0, 0, 0 };
+			vector.X = point1.X + point2.X;
+			vector.Y = point1.Y + point2.Y;
+			vector.Z = point1.Z + point2.Z;
+			return vector;
+		}
+
 		SDK::FVector Square(SDK::FVector vector)
 		{
 			return SDK::FVector{ vector.X * vector.X, vector.Y * vector.Y, vector.Z * vector.Z };
@@ -106,7 +114,7 @@ namespace Utils
 
 	SDK::AActor* GetClosestPlayer()
 	{
-		float distance = 999999999;
+		float distance = 999999999.;
 		SDK::AActor* closestPlayer = nullptr;
 		SDK::FVector localPos;
 
@@ -147,17 +155,5 @@ namespace Utils
 			}
 		}
 		return closestPlayer;
-	}
-
-	void LookAt(SDK::APlayerController* m_Player, SDK::FVector position)
-	{
-		SDK::FVector localPos = m_Player->PlayerCameraManager->TransformComponent->Location;
-		SDK::FVector relativePos = Vector::Subtract(position, localPos);
-		float tmp = atan2(relativePos.Y, relativePos.X) * 180 / M_PI;
-		float yaw = tmp;//(tmp < 0 ? tmp + 360 : tmp);
-		float pitch = -((acos(relativePos.Z / GetDistance(localPos, position)) * 180 / M_PI) - 90);
-
-		m_Player->ControlRotation.Pitch = pitch;
-		m_Player->ControlRotation.Yaw = yaw;
 	}
 }
